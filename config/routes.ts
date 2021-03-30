@@ -18,6 +18,12 @@
             component: './Welcome',
           },
           {
+            path: '/glossary',
+            name: 'glossary',
+            icon: 'smile',
+            component: './Glossary',
+          },
+          {
             component: './404',
           },
         ],

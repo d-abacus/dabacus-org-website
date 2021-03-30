@@ -15,10 +15,10 @@ import snapshot from '../assets/snapshot.png';
 import wechat from '../assets/wechat.png';
 
 
-const features: Array = [
+const features: Array<String> = [
   "Trustless", "Scalable", "Open", "Verifiable", "Secure", "Permissionless"
 ];
-const featureDesc: Array = [
+const featureDesc: Array<String> = [
   "Dabacus has no trusted central party.", 
   "Our new blocktree architecture allows unbounded on-chain scaling.", 
   "Dabacus will remain open for participants to join the network by performing physical permissionless work (PoW) instead of through virtual permissioned ownership (PoS).", 
@@ -26,7 +26,7 @@ const featureDesc: Array = [
   "Dabacus will be backed by Proof-of-Work, tested and proven to be the highest level of ledger security for an open distributed ledger.", 
   "Dabacus allows everyone to participate as equals."
 ];
-const featuresImg: Array = [
+const featuresImg: Array<String> = [
   trustlessImg, scalableImg, openImg, verifiableImg, secureImg, permissionlessImg
 ];
 
