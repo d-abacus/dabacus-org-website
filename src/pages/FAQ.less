@@ -1,0 +1,49 @@
+@import '../global.less';
+
+.faq-title {
+	font-family: @dabacus-font-medium;
+	font-size: 36px;
+	line-height: 36px;
+	font-weight: 800;
+	margin-top: 88px;
+	margin-bottom: 38px;
+}
+
+.faqs {
+	&.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+		background: #F9F9F9;
+		color: #AAB0B8;
+		font-family: @dabacus-font-medium;
+		font-size: 24px;
+		font-weight: 700;
+	}
+
+	&.ant-collapse > .ant-collapse-item {
+		margin-bottom: 40px;
+	}
+
+	&.ant-collapse > .ant-collapse-item {
+		border-bottom: none;
+	}
+
+	&.ant-collapse {
+		border: none;
+		background-color: transparent;
+	}
+
+	&.ant-collapse .ant-collapse-content {
+		border-top: none;
+		font-family: @dabacus-font-medium;
+		font-size: 14px;
+		color: #AAB0B8;
+
+		.ant-collapse-content-box {
+			width: 80%;
+		}
+	}
+
+	&.ant-collapse > .ant-collapse-item.ant-collapse-item-active > .ant-collapse-header {
+		background: #fff;
+		color: #000;
+	}
+}

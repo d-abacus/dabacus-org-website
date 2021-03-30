@@ -24,6 +24,18 @@
             component: './Glossary',
           },
           {
+            path: '/about',
+            name: 'about',
+            icon: 'smile',
+            component: './About',
+          },
+          {
+            path: '/faq',
+            name: 'faq',
+            icon: 'smile',
+            component: './FAQ',
+          },
+          {
             component: './404',
           },
         ],
