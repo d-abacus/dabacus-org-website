@@ -4,6 +4,7 @@ import { Link, withRouter } from 'umi';
 import logo from '../../assets/logo.svg';
 import styles from './index.less';
 import './menu.less';
+import ThemeButton from '../ThemeButton';
 
 
 const { SubMenu } = Menu;
@@ -49,7 +50,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <Menu.Item key="products:3">Exchange</Menu.Item>
         </SubMenu>
         <Menu.Item key="useApp">
-          Use App
+          <Link to="/app/index"><ThemeButton>Use App</ThemeButton></Link>
         </Menu.Item>
       </Menu>
     </div>

@@ -93,10 +93,10 @@ export default (): React.ReactNode => {
           <Button className={currentSlide < 3 ? 'active' : ''} type="text" onClick={() => next(1)}>2019</Button>
         </Col>
         <Col span={4}>
-          <Button className={currentSlide < 6 && currentSlide > 2 ? 'active' : ''} type="text" onClick={() => next(3)}>2021</Button>
+          <Button className={currentSlide < 6 && currentSlide > 2 ? 'active' : ''} type="text" onClick={() => next(4)}>2021</Button>
         </Col>
         <Col span={4}>
-          <Button className={currentSlide < 9 && currentSlide > 5 ? 'active' : ''} type="text" onClick={() => next(6)}>2022</Button>
+          <Button className={currentSlide < 9 && currentSlide > 5 ? 'active' : ''} type="text" onClick={() => next(7)}>2022</Button>
         </Col>
         <Col span={4}>
           <Button className={currentSlide > 8 ? 'active' : ''} type="text" onClick={() => next(9)}>Future</Button>

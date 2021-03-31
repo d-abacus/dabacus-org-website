@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Button } from 'antd';
 import styles from './index.less';
 
-const ThemeButton: React.FC = ({ children }) => {
+
+interface ThemeButtonProps extends PropsWithChildren<any> {
+  small: Boolean;
+};
+
+const ThemeButton: React.FC<ThemeButtonProps> = ({ small = false, children }: ThemeButtonProps) => {
   return (
-    <Button type="primary" shape="round" className={styles.button}>
+    <Button type="primary" shape="round" className={styles.button + (small ? 'small' : '')}>
       {children}
     </Button>
   );

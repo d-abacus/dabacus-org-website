@@ -4,6 +4,17 @@
     component: '../layouts/BlankLayout',
     routes: [
       {
+        path: '/app',
+        component: '../layouts/AppLayout',
+        routes: [
+          {
+            name: 'dindex',
+            path: '/app/index',
+            component: './Dindex',
+          },
+        ],
+      },
+      {
         path: '/',
         component: '../layouts/MainLayout',
         routes: [
