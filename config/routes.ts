@@ -36,6 +36,12 @@
             component: './FAQ',
           },
           {
+            path: '/road-map',
+            name: 'RoadMap',
+            icon: 'smile',
+            component: './Timeline',
+          },
+          {
             component: './404',
           },
         ],

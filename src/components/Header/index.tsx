@@ -27,7 +27,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         <SubMenu key="developers" title="Developers">
           <Menu.Item key="developers:1">Docs</Menu.Item>
           <Menu.Item key="developers:2">Github</Menu.Item>
-          <Menu.Item key="developers:3">Road Map</Menu.Item>
+          <Menu.Item key="developers:3">
+            <Link to="/road-map">Road Map</Link>
+          </Menu.Item>
         </SubMenu>
         <SubMenu key="learn" title="Learn">
           <Menu.Item key="learn:1">Dabacus' Philosophy</Menu.Item>

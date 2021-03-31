@@ -1,0 +1,82 @@
+	@import '../global.less';
+
+.faq-title {
+	font-family: @dabacus-font-medium;
+	font-size: 36px;
+	line-height: 36px;
+	font-weight: 800;
+	margin-top: 88px;
+	margin-bottom: 120px;
+}
+
+.control-dots, .carousel-status {
+	display: none;
+}
+
+.carousel {
+	.slide {
+		img {
+			height: 66px;
+		}
+
+		.events {
+			img.indicator {
+				position: absolute;
+				width: 39px;
+				height: 248px;
+			}
+
+			.all-events {
+				margin-left: 60%;
+    			text-align: left;
+
+    			h2 {
+    				font-family: @dabacus-font-medium;
+    				font-weight: 800;
+    				font-size: 24px;
+    				color: @theme-color;
+    			}
+
+    			p {
+    				font-family: @dabacus-font-medium;
+    				width: 277px;
+    				line-height: 19px;
+    				margin-top: 0;
+    				margin-bottom: 16px;
+
+    				&:before {
+    					content:"\A";
+					    width:4px;
+					    height:4px;
+					    border-radius:50%;
+					    background: #000;
+					    display:inline-block;
+					    margin-right: 8px;
+    				}
+    			}
+			}
+		}
+	}
+}
+
+.events, .empty-div {
+	height: 220px;
+}
+
+.buttons-row {
+	margin-top: 120px;
+
+	.ant-btn-text {
+		font-family: @dabacus-font-medium;
+		font-weight: 800;
+		color: #AAB0B8;
+
+		&.active {
+			color: #000;
+		}
+
+		&:focus {
+			background: none;
+		}
+	}
+}
