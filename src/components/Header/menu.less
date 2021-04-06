@@ -1,3 +1,5 @@
+@import '../../global.less';
+
 .ant-menu-submenu {
 	border-bottom: none !important;
 
@@ -8,10 +10,66 @@
 	.ant-menu {
 		box-shadow: 0px 0px 12px rgba(19, 27, 105, 0.1) !important;
 		border-radius: 8px !important;
+		color: #656A71;
+	}
+
+	.ant-menu-item, .ant-menu-item { 
+		a {
+			color: #656A71;
+		}
+
+		&.ant-menu-item-selected {
+			background: none;
+
+			a {
+				color: #000;
+				font-family: @dabacus-font-medium;
+			}
+		}
+	}
+
+	.ant-menu-item:hover {
+		color: #656A71;
+		background: #F9F9F9;
+	}
+
+	.ant-menu-item-selected {
+		font-family: @dabacus-font-medium;
+		color: #000;
+
+		&:hover {
+			color: #000;
+		}
 	}
 }
 
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
 	margin-left: 36px;
 	margin-right: 36px;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) {
+	border-bottom: none !important;
+
+	.ant-menu-item:hover {
+		border-bottom: none !important;
+	}
+}
+
+.ant-menu-horizontal > .ant-menu-item {
+	border-bottom: none !important;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected.language-menu {
+	color: #000;
+
+	.ant-menu-submenu-title {
+		img {
+			margin-top: -3px;
+		}
+
+		span {
+			margin-left: 4px;
+		}
+	}
 }

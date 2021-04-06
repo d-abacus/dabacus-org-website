@@ -5,6 +5,9 @@ import logo from '../../assets/logo.svg';
 import styles from './index.less';
 import './menu.less';
 import ThemeButton from '../ThemeButton';
+import CustomIcon from '../CustomIcon';
+import earthIcon from '../../assets/ic_round-language.png';
+
 
 
 const { SubMenu } = Menu;
@@ -14,11 +17,20 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
+
+  var skeys: Array<string> = [];
+  const path: string = props.location['pathname'].substring(1);
+  if (path.indexOf('about') > -1 || path.indexOf('glossary') > -1 || path.indexOf('faq') > -1) {
+    skeys.push('learn');
+  }
+  skeys.push(path);
+  skeys.push('english');
+
   return (
     <div className={styles.header}>
-      <img alt="logo" className={styles.logo} src={logo} />
+      <Link to="/"><img alt="logo" className={styles.logo} src={logo} /></Link>
 
-      <Menu className={styles.pageMenu} mode="horizontal" selectedKeys={[props.location['pathname'].substring(1)]}>
+      <Menu className={styles.pageMenu} mode="horizontal" selectedKeys={skeys}>
         <SubMenu key="community" title="Community">
           <Menu.Item key="community:1">Snapshot</Menu.Item>
           <Menu.Item key="community:2">Medium</Menu.Item>
@@ -34,13 +46,13 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         </SubMenu>
         <SubMenu key="learn" title="Learn">
           <Menu.Item key="learn:1">Dabacus' Philosophy</Menu.Item>
-          <Menu.Item key="learn:2">
+          <Menu.Item key="about">
             <Link to="/about">About</Link>
           </Menu.Item>
-          <Menu.Item key="learn:3">
+          <Menu.Item key="glossary">
             <Link to="/glossary">Glossary</Link>
           </Menu.Item>
-          <Menu.Item key="learn:4">
+          <Menu.Item key="faq">
             <Link to="/faq">FAQ</Link>
           </Menu.Item>
         </SubMenu>
@@ -52,6 +64,11 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         <Menu.Item key="useApp">
           <Link to="/app/index"><ThemeButton>Use App</ThemeButton></Link>
         </Menu.Item>
+        <SubMenu className="language-menu" icon={<CustomIcon imgSrc={earthIcon} size={20} />} key="language" title="English">
+          <Menu.Item key="english">English</Menu.Item>
+          <Menu.Item key="chinese">Chinese</Menu.Item>
+          <Menu.Item key="spanish">Spanish</Menu.Item>
+        </SubMenu>
       </Menu>
     </div>
   );
