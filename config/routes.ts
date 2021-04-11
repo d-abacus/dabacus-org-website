@@ -47,6 +47,12 @@
             component: './FAQ',
           },
           {
+            path: '/philosophy',
+            name: 'philosophy',
+            icon: 'smile',
+            component: './Principle',
+          },
+          {
             path: '/road-map',
             name: 'RoadMap',
             icon: 'smile',

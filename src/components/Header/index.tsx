@@ -20,7 +20,8 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   var skeys: Array<string> = [];
   const path: string = props.location['pathname'].substring(1);
-  if (path.indexOf('about') > -1 || path.indexOf('glossary') > -1 || path.indexOf('faq') > -1) {
+  if (path.indexOf('about') > -1 || path.indexOf('glossary') > -1 || 
+      path.indexOf('faq') > -1 || path.indexOf('philosophy') > -1) {
     skeys.push('learn');
   }
   skeys.push(path);
@@ -45,7 +46,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           </Menu.Item>
         </SubMenu>
         <SubMenu key="learn" title="Learn">
-          <Menu.Item key="learn:1">Dabacus' Philosophy</Menu.Item>
+          <Menu.Item key="philosophy">
+            <Link to="/philosophy">Dabacus' Philosophy</Link>
+          </Menu.Item>
           <Menu.Item key="about">
             <Link to="/about">About</Link>
           </Menu.Item>
