@@ -9,11 +9,18 @@ export default (): React.ReactNode => {
 
   const [data, setData] = useState([]);
   const [tableData, setTableData] = useState([]);
+  const [coinData, setCoinData] = useState([]);
   const columns: Array<Object> = [
     {
       title: 'Rank',
       dataIndex: 'market_cap_rank',
       key: 'rank',
+    },
+    {
+      title: '',
+      dataIndex: 'image',
+      key: 'image',
+      render: text => <img width="32" src={text} />,
     },
     {
       title: 'Name',
@@ -29,6 +36,9 @@ export default (): React.ReactNode => {
       title: '24H',
       dataIndex: 'price_change_percentage_24h',
       key: 'change',
+      render: text => <span className={text.indexOf('-') > -1 ? 'dropped' : 'increased'}>
+        {(text.indexOf('-') > -1 ? '' : '+') + text}
+        </span>,
     },
     {
       title: 'Volumn(24h)',
@@ -39,6 +49,7 @@ export default (): React.ReactNode => {
   useEffect(() => {
     asyncFetch();
     asyncFetchTable();
+    asyncFetchCoinData();
   }, []);
   const asyncFetch = () => {
     fetch('https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json')
@@ -48,10 +59,32 @@ export default (): React.ReactNode => {
         console.log('fetch data failed', error);
       });
   };
+  const isBigEnough = (element: Object, index: number, array: Array<Object>) => { 
+   return element["id"] !== 'tether' && element["id"] !== 'usd-coin' && element["id"] !== 'wrapped-bitcoin'; 
+  } 
+  const calTotal = () => {
+    var total: number = 0;
+    console.log(coinData);
+    for (var i=0;i<tableData.length;i++) {
+      const coinId: Object = coinData[tableData[i]["id"]];
+      if (coinId) {
+        total += coinId["btc_market_cap"];
+      }
+    }
+    return total;
+  }
+  const asyncFetchCoinData = () => {
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Cripple%2Clitecoin%2Cbitcoin-cash%2Cchainlink%2Ccardano%2Cpolkadot%2Cbinancecoin%2Cstellar%2Cbitcoin-cash-sv%2Ceos%2Cmonero%2Cnem%2Ctron&vs_currencies=btc&include_market_cap=true&include_24hr_vol=true')
+      .then((response) => response.json())
+      .then((json) => setCoinData(json))
+      .catch((error) => {
+        console.log('fetch data failed', error);
+      });
+  };
   const asyncFetchTable = () => {
     fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=btc&order=market_cap_desc&per_page=23&page=1&sparkline=false')
       .then((response) => response.json())
-      .then((json) => setTableData(json))
+      .then((json) => setTableData(json.filter(isBigEnough)))
       .catch((error) => {
         console.log('fetch data failed', error);
       });
@@ -65,9 +98,25 @@ export default (): React.ReactNode => {
       return { fill: 'l(270) 0:#ffffff 0.5:#7ec2f3 1:#1890ff' };
     },
   };
+  var total: number = tableData.length > 0 ? calTotal() : 0;
+  console.log("total: " + total);
+  const currentWorldPopulation: number = 7673533972;
+  const averageLifeExpectancyInYears: number = 72.6;
+  var WUNBTC: number = total / (currentWorldPopulation * averageLifeExpectancyInYears);
+  console.log("WUNBTC: " + WUNBTC);
+  var resData: Array<Object> = tableData.map((element: Object) => {
+    return {
+      market_cap_rank: element["market_cap_rank"],
+      image: element["image"],
+      name: element["name"],
+      current_price: (element["current_price"] / WUNBTC).toFixed(2).toLocaleString(),
+      total_volume: (element["total_volume"] / WUNBTC).toFixed(0).toLocaleString(),
+      price_change_percentage_24h: ((element["price_change_24h"] / WUNBTC / (element["current_price"] / WUNBTC)).toFixed(3)) + '%',
+    }
+  })
   return <PageContainer>
     <Area {...config} />
     <div className="indexed-ranking">Indexed Currencies Ranking</div>
-    <Table dataSource={tableData} columns={columns} />
+    <Table dataSource={resData} columns={columns} pagination={{ pageSize: 50}} />
   </PageContainer>;
 };

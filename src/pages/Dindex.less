@@ -8,6 +8,10 @@
 	border-bottom: none;
 }
 
+.ant-table-pagination {
+	display: none;
+}
+
 .ant-table-tbody > tr > td {
 	border-bottom: none;
 
@@ -16,24 +20,31 @@
 		font-family: @dabacus-font-medium;
 	}
 
-	&:nth-child(2) {
-		font-size: 18px;
-		font-family: @dabacus-font-heavy;
-	}
-
 	&:nth-child(3) {
 		font-size: 18px;
-		font-family: @dabacus-font-medium;
-		color: @theme-color;
+		font-family: @dabacus-font-heavy;
 	}
 
 	&:nth-child(4) {
 		font-size: 18px;
 		font-family: @dabacus-font-medium;
-		color: green;
+		color: @theme-color;
 	}
 
 	&:nth-child(5) {
+		font-size: 18px;
+		font-family: @dabacus-font-medium;
+		
+		.increased {
+			color: green;
+		}
+
+		.dropped {
+			color: red;
+		}
+	}
+
+	&:nth-child(6) {
 		font-size: 18px;
 		font-family: @dabacus-font-medium;
 	}

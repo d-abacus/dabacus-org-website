@@ -53,6 +53,12 @@
             component: './Principle',
           },
           {
+            path: '/announcements',
+            name: 'announcements',
+            icon: 'smile',
+            component: './Principle',
+          },
+          {
             path: '/road-map',
             name: 'RoadMap',
             icon: 'smile',

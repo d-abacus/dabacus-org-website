@@ -11,7 +11,6 @@ import styles from './AppLayout.less';
 import indexIcon from '../assets/index-icon.png';
 import farmIcon from '../assets/farm-icon.png';
 import swapIcon from '../assets/swap-icon.png';
-import '../components/AppHeader/menu.less';
 
 
 type MainLayoutProps = {

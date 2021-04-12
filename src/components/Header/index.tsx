@@ -24,6 +24,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
       path.indexOf('faq') > -1 || path.indexOf('philosophy') > -1) {
     skeys.push('learn');
   }
+  if (path.indexOf('announcements') > -1) {
+    skeys.push('community');
+  }
   skeys.push(path);
   skeys.push('english');
 
@@ -36,7 +39,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <Menu.Item key="community:1">Snapshot</Menu.Item>
           <Menu.Item key="community:2">Medium</Menu.Item>
           <Menu.Item key="community:3">Discord</Menu.Item>
-          <Menu.Item key="community:4">Announcements</Menu.Item>
+          <Menu.Item key="announcements"><Link to="/announcements">Announcements</Link></Menu.Item>
         </SubMenu>
         <SubMenu key="developers" title="Developers">
           <Menu.Item key="developers:1">Docs</Menu.Item>
@@ -47,7 +50,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         </SubMenu>
         <SubMenu key="learn" title="Learn">
           <Menu.Item key="philosophy">
-            <Link to="/philosophy">Dabacus' Philosophy</Link>
+           Dabacus' Philosophy
           </Menu.Item>
           <Menu.Item key="about">
             <Link to="/about">About</Link>
