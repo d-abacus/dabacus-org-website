@@ -27,8 +27,8 @@ const featureDesc: Array<String> = [
   "Dabacus has no trusted central party.", 
   "Our new blocktree architecture allows unbounded on-chain scaling.", 
   "Dabacus will remain open for participants to join the network by performing physical permissionless work (PoW) instead of through virtual permissioned ownership (PoS).", 
-  "All code and transaction data is fully independently verifiable.", 
   "Dabacus will be backed by Proof-of-Work, tested and proven to be the highest level of ledger security for an open distributed ledger.", 
+  "All code and transaction data is fully independently verifiable.", 
   "Dabacus allows everyone to participate as equals."
 ];
 const featuresImg: Array<String> = [
