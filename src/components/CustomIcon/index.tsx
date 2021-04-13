@@ -6,10 +6,10 @@ interface CustomIconProps {
   size: number;
 };
 
-const ThemeButton: React.FC<CustomIconProps> = (props: CustomIconProps) => {
+const CustomIcon: React.FC<CustomIconProps> = (props: CustomIconProps) => {
   return (
     <img src={props.imgSrc} width={props.size}/>
   );
 };
 
-export default ThemeButton;
+export default CustomIcon;

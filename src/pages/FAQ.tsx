@@ -1,10 +1,13 @@
 import React from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
-import { Collapse } from 'antd';
+import { Collapse, Row, Col } from 'antd';
+import CustomIcon from '../components/CustomIcon';
+import caretDown from '../assets/caret-down.png';
+import caretUp from '../assets/caret-up.png';
+
 import './FAQ.less';
 
 const { Panel } = Collapse;
-
 
 export default (): React.ReactNode => {
 
@@ -15,7 +18,15 @@ export default (): React.ReactNode => {
       </div>
 
 
-      <Collapse className="faqs" expandIconPosition="right">
+      <Row>
+      <Col span={18}>
+        <Collapse className="faqs" expandIcon={(panelProps) => {
+          if (panelProps.isActive) {
+            return <CustomIcon imgSrc={caretUp} size={24} />
+          } else {
+            return <CustomIcon imgSrc={caretDown} size={24} />
+          }
+        }} expandIconPosition="left">
         <Panel header="01  What is Dabacus?" key="1">
           <p>Dabacus is a peer-to-peer network and distributed open-source software project 
           that bases itself on the blocktree ledger structure. Dabacus is also a new medium 
@@ -44,6 +55,8 @@ export default (): React.ReactNode => {
           of two of the four properties of money while Dabax will fulfill the remaining two functions.</p>
         </Panel>
       </Collapse>
+      </Col>
+      </Row>
 
 
     </PageContainer>
