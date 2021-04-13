@@ -6,7 +6,6 @@ import discord from '../../assets/discord-black.png';
 import medium from '../../assets/medium-black.png';
 import snapshot from '../../assets/snapshot-black.png';
 import wechat from '../../assets/wechat-blakc.png';
-import bitcointalk from '../../assets/bitcointalk-black.png';
 import logo from '../../assets/logo.svg';
 
 const Footer: React.FC = () => {
@@ -39,13 +38,12 @@ const Footer: React.FC = () => {
   			<a href="#">Exchange</a>
   		</Col>
   		<Col span={8}>
-  			<ul className={styles.footerSocial}>
-  				<li><a href="#"><img src={snapshot} /></a></li>
-  				<li><a href="#"><img src={medium} /></a></li>
-  				<li><a href="#"><img src={discord} /></a></li>
-  				<li><a href="#"><img src={wechat} /></a></li>
-  				<li><a href="#"><img src={bitcointalk} /></a></li>
-  			</ul>
+  			<Row className={styles.socialLinks}>
+  				<Col span={6}><a href="#"><img src={snapshot} /></a></Col>
+  				<Col span={6}><a href="#"><img src={medium} /></a></Col>
+  				<Col span={6}><a href="#"><img src={discord} /></a></Col>
+  				<Col span={6}><a href="#"><img src={wechat} /></a></Col>
+  			</Row>
   		</Col>
   	</Row>
   	<img className={styles.logoImg} src={logo} />

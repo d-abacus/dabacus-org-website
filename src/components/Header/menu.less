@@ -1,7 +1,25 @@
 @import '../../global.less';
 
+.ant-menu-vertical {
+	padding-top: 12px;
+    padding-bottom: 16px;
+
+	.ant-menu-item {
+		padding: 0 12px;
+	}
+}
+
+.ant-menu-vertical .ant-menu-item:not(:last-child) {
+	margin-bottom: 12px;
+}
+
+.ant-menu-vertical > .ant-menu-item {
+	line-height: 24px;
+}
+
 .ant-menu-submenu {
 	border-bottom: none !important;
+	font-family: @dabacus-font-medium;
 
 	&:hover {
 		border-bottom: none !important;
@@ -13,9 +31,15 @@
 		color: #656A71;
 	}
 
-	.ant-menu-item, .ant-menu-item { 
+	.ant-menu-item {
+
+		height: 24px;
+		margin-bottom: 0;
+
 		a {
 			color: #656A71;
+			padding: 0;
+			margin: 0;
 		}
 
 		&.ant-menu-item-selected {
@@ -28,9 +52,17 @@
 		}
 	}
 
+	.menu-item-span {
+		padding: 4px 8px;
+		border-radius: 4px;
+	}
+
 	.ant-menu-item:hover {
 		color: #656A71;
-		background: #F9F9F9;
+
+		.menu-item-span {
+			background: #F9F9F9;
+		}
 	}
 
 	.ant-menu-item-selected {

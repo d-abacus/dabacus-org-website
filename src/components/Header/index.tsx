@@ -36,44 +36,44 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
       <Menu className={styles.pageMenu} mode="horizontal" selectedKeys={skeys}>
         <SubMenu key="community" title="Community">
-          <Menu.Item key="community:1">Snapshot</Menu.Item>
-          <Menu.Item key="community:2">Medium</Menu.Item>
-          <Menu.Item key="community:3">Discord</Menu.Item>
-          <Menu.Item key="announcements"><Link to="/announcements">Announcements</Link></Menu.Item>
+          <Menu.Item key="community:1"><span className="menu-item-span">Snapshot</span></Menu.Item>
+          <Menu.Item key="community:2"><span className="menu-item-span">Medium</span></Menu.Item>
+          <Menu.Item key="community:3"><span className="menu-item-span">Discord</span></Menu.Item>
+          <Menu.Item key="announcements"><Link to="/announcements"><span className="menu-item-span">Announcements</span></Link></Menu.Item>
         </SubMenu>
         <SubMenu key="developers" title="Developers">
-          <Menu.Item key="developers:1">Docs</Menu.Item>
-          <Menu.Item key="developers:2">Github</Menu.Item>
+          <Menu.Item key="developers:1"><span className="menu-item-span">Docs</span></Menu.Item>
+          <Menu.Item key="developers:2"><span className="menu-item-span">Github</span></Menu.Item>
           <Menu.Item key="developers:3">
-            <Link to="/road-map">Road Map</Link>
+            <Link to="/road-map"><span className="menu-item-span">Road Map</span></Link>
           </Menu.Item>
         </SubMenu>
         <SubMenu key="learn" title="Learn">
           <Menu.Item key="philosophy">
-           Dabacus' Philosophy
+           <span className="menu-item-span">Dabacus' Philosophy</span>
           </Menu.Item>
           <Menu.Item key="about">
-            <Link to="/about">About</Link>
+            <Link to="/about"><span className="menu-item-span">About</span></Link>
           </Menu.Item>
           <Menu.Item key="glossary">
-            <Link to="/glossary">Glossary</Link>
+            <Link to="/glossary"><span className="menu-item-span">Glossary</span></Link>
           </Menu.Item>
           <Menu.Item key="faq">
-            <Link to="/faq">FAQ</Link>
+            <Link to="/faq"><span className="menu-item-span">FAQ</span></Link>
           </Menu.Item>
         </SubMenu>
         <SubMenu key="products" title="Products">
-          <Menu.Item key="products:1">White Paper</Menu.Item>
-          <Menu.Item key="products:2">World Unit of Account Index</Menu.Item>
-          <Menu.Item key="products:3">Exchange</Menu.Item>
+          <Menu.Item key="products:1"><span className="menu-item-span">White Paper</span></Menu.Item>
+          <Menu.Item key="products:2"><span className="menu-item-span">World Unit of Account Index</span></Menu.Item>
+          <Menu.Item key="products:3"><span className="menu-item-span">Exchange</span></Menu.Item>
         </SubMenu>
         <Menu.Item key="useApp">
           <Link to="/app/index"><ThemeButton>Use App</ThemeButton></Link>
         </Menu.Item>
         <SubMenu className="language-menu" icon={<CustomIcon imgSrc={earthIcon} size={20} />} key="language" title="English">
-          <Menu.Item key="english">English</Menu.Item>
-          <Menu.Item key="chinese">Chinese</Menu.Item>
-          <Menu.Item key="spanish">Spanish</Menu.Item>
+          <Menu.Item key="english"><span className="menu-item-span">English</span></Menu.Item>
+          <Menu.Item key="chinese"><span className="menu-item-span">Chinese</span></Menu.Item>
+          <Menu.Item key="spanish"><span className="menu-item-span">Spanish</span></Menu.Item>
         </SubMenu>
       </Menu>
     </div>
