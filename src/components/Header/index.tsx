@@ -1,5 +1,5 @@
-import React from 'react';
-import { Menu } from 'antd';
+import React, { useState } from 'react';
+import { Menu, Affix } from 'antd';
 import { Link, withRouter } from 'umi';
 import logo from '../../assets/logo.svg';
 import styles from './index.less';
@@ -18,6 +18,8 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
+  const [top, setTop] = useState(0);
+
   var skeys: Array<string> = [];
   const path: string = props.location['pathname'].substring(1);
   if (path.indexOf('about') > -1 || path.indexOf('glossary') > -1 || 
@@ -31,10 +33,10 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   skeys.push('english');
 
   return (
+    <Affix offsetTop={top}>
     <div className={styles.header}>
       <Link to="/"><img alt="logo" className={styles.logo} src={logo} /></Link>
-
-      <Menu className={styles.pageMenu} mode="horizontal" selectedKeys={skeys}>
+        <Menu className={styles.pageMenu} mode="horizontal" selectedKeys={skeys}>
         <SubMenu key="community" title="Community">
           <Menu.Item key="community:1"><span className="menu-item-span">Snapshot</span></Menu.Item>
           <Menu.Item key="community:2"><span className="menu-item-span">Medium</span></Menu.Item>
@@ -77,6 +79,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         </SubMenu>
       </Menu>
     </div>
+    </Affix>
   );
 };
 

@@ -7,11 +7,11 @@ import Scrollspy from 'react-scrollspy';
 
 export default (): React.ReactNode => {
 
-  const [top, setTop] = useState(10);
+  const [top, setTop] = useState(110);
 
   return (
     <PageContainer>
-      <Row>
+      <Row className="announcements-row">
         <Col span={5}>
           <Affix offsetTop={top} className="affix-container">
             <Scrollspy items={ ['introduction', 'interstella', 'accounting', 'crypto-native', 'vision', 'technology', 'incentives', 'tentative', 'community'] } currentClassName="is-current">
