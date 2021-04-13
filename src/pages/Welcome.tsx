@@ -21,7 +21,7 @@ import bgdImg from '../assets/bgd-img.png';
 
 
 const features: Array<String> = [
-  "Trustless", "Scalable", "Open", "Verifiable", "Secure", "Permissionless"
+  "Trustless", "Scalable", "Open", "Secure", "Verifiable", "Permissionless"
 ];
 const featureDesc: Array<String> = [
   "Dabacus has no trusted central party.", 
@@ -55,7 +55,7 @@ export default (): React.ReactNode => {
           <ThemeButton>Use App</ThemeButton>
         </Col>
         <Col span={10}>
-          <img className={styles.featureGif} src={gif1} />
+          <img className={styles.featureGif + " " + styles.topGif} src={gif1} />
         </Col>
       </Row>
 
@@ -91,7 +91,7 @@ export default (): React.ReactNode => {
           </div>
         </Col>
         <Col span={12}>
-          <img className={styles.featureGif} src={gif3} />
+          <img className={styles.featureGif + " " + styles.bottomGif} src={gif3} />
         </Col>
       </Row>
 
