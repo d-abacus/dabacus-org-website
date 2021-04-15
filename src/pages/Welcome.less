@@ -26,6 +26,9 @@
 	margin: 20px 0 33px 0;
 	max-width: 622px;
 }
+.p.topPara {
+	font-family: @dabacus-font-medium;
+}
 .featureImg {
 	width: 75px;
 	height: 50px;
@@ -34,16 +37,47 @@
 	font-family: @dabacus-font-heavy;
 	font-size: 24px;
 	margin: 16px 0;
+	line-height: 24px;
 }
 .featureDesc {
 	font-family: @dabacus-font-medium;
 	font-size: 14px;
+	line-height: 19px;
 }
 .feature {
-	padding: 50px 77px;
+	padding: 18px 20px;
+}
+.allFeaturesWrapper {
+	padding: 32px;
+	border: 1px solid #E3E4E7;
+	border-radius: 16px;
+	width: 328px;
+	height: 265px;
+	margin-right: 0;
+}
+.firstLine {
+	width: 302px;
+    position: relative;
+    left: 50%;
+    margin-top: 15px;
+}
+.secondLine {
+	width: 636px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 30px;
+}
+.thirdLine {
+	width: 302px;
+    position: relative;
+    left: 50%;
+    margin-top: 15px;
+    margin-left: -302px;
+    margin-bottom: 30px;
 }
 .features {
-	margin: 200px 0;
+	margin-top: 200px;
+	padding: 0 100px;
 }
 .subtitle {
 	font-family: @dabacus-font-heavy;
@@ -66,9 +100,6 @@
 	text-align: left;
 	margin-bottom: 24px;
 }
-.halfFeature {
-	margin-bottom: 300px;
-}
 .subtitleLeft {
 	margin-bottom: 24px;
 }
@@ -82,11 +113,23 @@
 		width: 160px;
 		margin: 0 auto;
 		display: block;
+		cursor: pointer;
+	}
 
-		&:hover {
+	img.activeSocial {
+		display: none;
+	}
+
+	&:hover {
+		img {
 			box-shadow: 0px 0px 16px 1px rgba(19, 27, 105, 0.08);
 			border-radius: 16px;
-			cursor: pointer;
+
+			display: none;
+		}
+
+		img.activeSocial {
+			display: block;
 		}
 	}
 }

@@ -9,25 +9,32 @@ import scalableImg from '../assets/Scalable.png';
 import verifiableImg from '../assets/Verifiable.png';
 import permissionlessImg from '../assets/Permissionless.png';
 import openImg from '../assets/Open.png';
-import discord from '../assets/discord.png';
-import medium from '../assets/medium.png';
-import snapshot from '../assets/snapshot.png';
-import wechat from '../assets/wechat.png';
+import discord from '../assets/discord-normal.png';
+import medium from '../assets/medium-normal.png';
+import snapshot from '../assets/snapshot-normal.png';
+import wechat from '../assets/wechat-normal.png';
+import discordActive from '../assets/discord-active.png';
+import mediumActive from '../assets/medium-active.png';
+import snapshotActive from '../assets/snapshot-active.png';
+import wechatActive from '../assets/wechat-active.png';
 import gif1 from '../assets/gif1.gif';
 import gif2 from '../assets/gif2.gif';
 import gif3 from '../assets/gif3.gif';
 import bgdImg from '../assets/bgd-img.png';
+import shortLine from '../assets/short-line.png';
+import longLine from '../assets/long-line.png';
 import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade';
 import Bounce from 'react-reveal/Bounce';
 import Roll from 'react-reveal/Roll';
+import Flip from 'react-reveal/Flip';
 
 
 
-const features: Array<String> = [
+const features: Array<string> = [
   "Trustless", "Scalable", "Open", "Secure", "Verifiable", "Permissionless"
 ];
-const featureDesc: Array<String> = [
+const featureDesc: Array<string> = [
   "Dabacus has no trusted central party.", 
   "Our new blocktree architecture allows unbounded on-chain scaling.", 
   "Dabacus will remain open for participants to join the network by performing physical permissionless work (PoW) instead of through virtual permissioned ownership (PoS).", 
@@ -35,7 +42,7 @@ const featureDesc: Array<String> = [
   "All code and transaction data is fully independently verifiable.", 
   "Dabacus allows everyone to participate as equals."
 ];
-const featuresImg: Array<String> = [
+const featuresImg: Array<string> = [
   trustlessImg, scalableImg, openImg, verifiableImg, secureImg, permissionlessImg
 ];
 
@@ -53,7 +60,7 @@ export default (): React.ReactNode => {
             <span className={styles.titleSpan}> Supernet </span> 
             for Edge Decentralized Applications
           </div>
-          <p className={styles.p}>Our network of networks aims at achieving consensus throughout 
+          <p className={styles.p + " " + styles.topPara}>Our network of networks aims at achieving consensus throughout 
             the Milky Way and beyond thanks to our Blocktree ledger structure and 
             our focus on post-quantum cryptography.</p>
           <ThemeButton>Use App</ThemeButton>
@@ -65,15 +72,23 @@ export default (): React.ReactNode => {
 
       <Fade>
       <Row className={styles.features}>
-        {features.map((row: String, index: Number) => 
+        {features.map((row: string, index: number) => 
           <Col span={8} className={styles.feature}>
-            <div><img className={styles.featureImg} src={featuresImg[index]} /></div>
-            <div className={styles.featureTitle}>{row}</div>
-            <div className={styles.featureDesc}>{featureDesc[index]}</div>
+            <div className={styles.allFeaturesWrapper}>
+              <div><img className={styles.featureImg} src={featuresImg[index]} /></div>
+              <div className={styles.featureTitle}>{row}</div>
+              <div className={styles.featureDesc}>{featureDesc[index]}</div>
+            </div>
           </Col>
          )}
       </Row>
       </Fade>
+
+      <Bounce>
+      <div className={styles.lineWrapper}>
+        <img className={styles.firstLine} src={shortLine} />
+      </div>
+      </Bounce>
 
       <Zoom>
       <Row className={styles.halfFeature} align="middle">
@@ -88,6 +103,12 @@ export default (): React.ReactNode => {
         </Col>
       </Row>
       </Zoom>
+
+      <Fade>
+      <div className={styles.lineWrapper}>
+        <img className={styles.secondLine} src={longLine} />
+      </div>
+      </Fade>
 
       <Bounce>
       <Row className={styles.halfFeature} align="middle">
@@ -104,20 +125,30 @@ export default (): React.ReactNode => {
       </Row>
       </Bounce>
 
+      <Zoom>
+      <div className={styles.lineWrapper}>
+        <img className={styles.thirdLine} src={shortLine} />
+      </div>
+      </Zoom>
+
       <Roll>
       <div className={styles.subtitle + " " + styles.communityTitle}>Community</div>
-      <Row className={styles.communityImg}>
-        <Col span={6}>
+      <Row>
+        <Col span={6} className={styles.communityImg}>
           <img src={snapshot} />
+          <img src={snapshotActive} className={styles.activeSocial} />
         </Col>
-        <Col span={6}>
+        <Col span={6} className={styles.communityImg}>
           <img src={medium} />
+          <img src={mediumActive} className={styles.activeSocial} />
         </Col>
-        <Col span={6}>
+        <Col span={6} className={styles.communityImg}>
           <img src={discord} />
+          <img src={discordActive} className={styles.activeSocial} />
         </Col>
-        <Col span={6}>
+        <Col span={6} className={styles.communityImg}>
           <img src={wechat} />
+          <img src={wechatActive} className={styles.activeSocial} />
         </Col>
       </Row>
       </Roll>
