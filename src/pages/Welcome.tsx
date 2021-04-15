@@ -17,6 +17,10 @@ import gif1 from '../assets/gif1.gif';
 import gif2 from '../assets/gif2.gif';
 import gif3 from '../assets/gif3.gif';
 import bgdImg from '../assets/bgd-img.png';
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce';
+import Roll from 'react-reveal/Roll';
 
 
 
@@ -59,7 +63,7 @@ export default (): React.ReactNode => {
         </Col>
       </Row>
 
-
+      <Fade>
       <Row className={styles.features}>
         {features.map((row: String, index: Number) => 
           <Col span={8} className={styles.feature}>
@@ -69,7 +73,9 @@ export default (): React.ReactNode => {
           </Col>
          )}
       </Row>
+      </Fade>
 
+      <Zoom>
       <Row className={styles.halfFeature} align="middle">
       <Col span={12}>
           <img className={styles.featureGif} src={gif2} />
@@ -81,7 +87,9 @@ export default (): React.ReactNode => {
           </div>
         </Col>
       </Row>
+      </Zoom>
 
+      <Bounce>
       <Row className={styles.halfFeature} align="middle">
         <Col span={12}>
           <div className={styles.halfFeatureWrapperLeft}>
@@ -94,7 +102,9 @@ export default (): React.ReactNode => {
           <img className={styles.featureGif + " " + styles.bottomGif} src={gif3} />
         </Col>
       </Row>
+      </Bounce>
 
+      <Roll>
       <div className={styles.subtitle + " " + styles.communityTitle}>Community</div>
       <Row className={styles.communityImg}>
         <Col span={6}>
@@ -110,6 +120,7 @@ export default (): React.ReactNode => {
           <img src={wechat} />
         </Col>
       </Row>
+      </Roll>
 
 
     </PageContainer>
