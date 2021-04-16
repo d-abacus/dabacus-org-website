@@ -1,4 +1,19 @@
 .container {
   max-width: 1300px;
   margin: 0 auto;
+  display: block;
+}
+
+.containerMobile {
+	display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+	  display: none;
+	}
+
+	.containerMobile {
+		display: block;
+	}
 }

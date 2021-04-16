@@ -1,0 +1,65 @@
+@import '../../global.less';
+
+.menu-accordion {
+	position: absolute;
+	right: -100%;
+  	transition: all .3s ease-in-out;
+  	width: 100%;
+
+	&.show {
+		visibility: visible;
+		z-index: 200;
+		opacity: 1;
+		right: 0;
+	}
+}
+
+.mobile-header-wrapper {
+	.am-accordion, .am-list-body {
+		border: none;
+	}
+
+	.am-list-item .am-list-line .am-list-content {
+		color: #000;
+		font-size: 14px;
+		padding-left: 20px;
+		font-family: @dabacus-font-medium;
+	}
+
+	.am-accordion .am-accordion-item .am-accordion-header {
+		color: #000;
+		font-family: @dabacus-font-medium;
+		font-size: 18px;
+		border: none;
+
+		i {
+			background-image: url(../../assets/angle-down.png);
+			background-repeat: no-repeat;
+			transform: rotate(0deg);
+		}
+	}
+
+	.am-accordion .am-accordion-item .am-accordion-header[aria-expanded~="true"] {
+
+		color: @theme-color;
+
+		i {
+			background-image: url(../../assets/angle-up.png);
+		    transform: rotate(0deg);
+		    color: @theme-color;
+		}
+	}
+
+	.am-list-body div:not(:last-child) .am-list-line {
+		border: none;
+	}
+
+	.am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box {
+		border: none;
+	}
+
+	.mobile-header-wrapper .am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box {
+		border: none;
+	}
+}
+

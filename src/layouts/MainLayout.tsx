@@ -5,6 +5,7 @@ import { connect } from 'umi';
 import type { ConnectState } from '@/models/connect';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from '../components/Header';
+import MobileHeader from '../components/MobileHeader';
 import Footer from '../components/Footer';
 import styles from './MainLayout.less';
 
@@ -46,6 +47,11 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
           <Header />
           {children}
           <Footer />
+        </div>
+
+        <div className={styles.containerMobile}>
+          <MobileHeader />
+          
         </div>
       </HelmetProvider>
     );
