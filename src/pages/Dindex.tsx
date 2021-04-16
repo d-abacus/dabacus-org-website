@@ -42,6 +42,7 @@ export default (): React.ReactNode => {
     },
     {
       title: 'Volumn(24h)',
+      width: 168,
       dataIndex: 'total_volume',
       key: 'volum',
     },
@@ -111,7 +112,7 @@ export default (): React.ReactNode => {
       name: element["name"],
       current_price: (element["current_price"] / WUNBTC).toFixed(2).toLocaleString(),
       total_volume: (element["total_volume"] / WUNBTC).toFixed(0).toLocaleString(),
-      price_change_percentage_24h: ((element["price_change_24h"] / WUNBTC / (element["current_price"] / WUNBTC)).toFixed(3)) + '%',
+      price_change_percentage_24h: ((element["price_change_24h"] / WUNBTC / (element["current_price"] / WUNBTC) *100).toFixed(2)) + '%',
     }
   })
   return <PageContainer>
