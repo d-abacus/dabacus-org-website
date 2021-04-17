@@ -15,6 +15,7 @@ type MobileHeaderProps = {
 const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => {
 
   const [visible, setVisible] = useState(false);
+  const [langVisible, setLangVisible] = useState(false);
 
   var skeys: Array<string> = [];
   const path: string = props.location['pathname'].substring(1);
@@ -31,41 +32,81 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
   const onSelect = (opt) => {
     setVisible(!visible)
   };
-  const handleVisibleChange = (visible: boolean) => {
-    setVisible(visible)
+
+  const handleLangVisibleChange = (visible: boolean) => {
+    setLangVisible(visible)
   };
+
+  const onLangSelected = (lang: string) => {
+
+  }
 
   return (
     <div className="mobile-header-wrapper">
     <NavBar
         mode="light"
+        leftContent={
+          <img src={logo} className={styles.logo} />
+        }
         rightContent={
-          <button onClick={onSelect} className={styles.menuButton}>
+
+          <div className={styles.actions}>
+
+            <button onClick={onSelect} className={styles.menuButton}>
               { visible ? <img src={closeIcon} /> : <img src={menuIcon} /> }
             </button>
+
+            <Popover mask={false}
+              visible={langVisible}
+              overlay={[
+               (<button onClick={() => { onLangSelected("en") }}>English</button>), 
+               (<button onClick={() => { onLangSelected("zh") }}>Chinese</button>), 
+               (<button onClick={() => { onLangSelected("sp") }}>Spanish</button>), 
+              ]}
+              onVisibleChange={handleLangVisibleChange}
+              align={{
+                overflow: { adjustY: 0, adjustX: 0 },
+                offset: [0, 15],
+              }}
+            >
+              <div className={styles.languageSwitcher}>
+                English
+              </div>
+            </Popover>
+
+          </div>
         }
       >
       </NavBar>
       <Accordion defaultActiveKey="0" className={"menu-accordion" + (visible ? " show" : "")}>
           <Accordion.Panel header="Community">
             <List className="my-list">
-              <List.Item>content 1</List.Item>
-              <List.Item>content 2</List.Item>
-              <List.Item>content 3</List.Item>
+              <List.Item>Snapshot</List.Item>
+              <List.Item>Medium</List.Item>
+              <List.Item>Discord</List.Item>
+              <List.Item><Link to="/announcements">Announcements</Link></List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Developers" className="pad">
             <List className="my-list">
-              <List.Item>content 1</List.Item>
-              <List.Item>content 2</List.Item>
-              <List.Item>content 3</List.Item>
+              <List.Item>Docs</List.Item>
+              <List.Item>Github</List.Item>
+              <List.Item><Link to="/road-map">Road Map</Link></List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Learn" className="pad">
             <List className="my-list">
-              <List.Item>content 1</List.Item>
-              <List.Item>content 2</List.Item>
-              <List.Item>content 3</List.Item>
+              <List.Item>Dabacus' Philosophy</List.Item>
+              <List.Item><Link to="/about">About</Link></List.Item>
+              <List.Item><Link to="/glossary">Glossary</Link></List.Item>
+              <List.Item><Link to="/faq">FAQ</Link></List.Item>
+            </List>
+          </Accordion.Panel>
+          <Accordion.Panel header="Products" className="pad">
+            <List className="my-list">
+              <List.Item>White Paper</List.Item>
+              <List.Item>World Unit of Account Index</List.Item>
+              <List.Item>Exchange</List.Item>
             </List>
           </Accordion.Panel>
         </Accordion>
