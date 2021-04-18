@@ -67,7 +67,7 @@ export default (): React.ReactNode => {
 
       <Row className={styles.features}>
         {glossaryTitles.map((row: String, index: Number) => 
-          <Col span={6} className={styles.feature}>
+          <Col xs={12} sm={12} md={6} className={styles.feature}>
             <div className={styles.featureWrapper}>
               <div className={styles.featureTitle}>{row}</div>
               <div className={styles.featureDesc}>{glossaryDescs[index]}</div>

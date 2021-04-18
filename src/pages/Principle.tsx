@@ -12,7 +12,7 @@ export default (): React.ReactNode => {
   return (
     <PageContainer>
       <Row className="announcements-row">
-        <Col span={5}>
+        <Col xs={0} sm={0} md={5}>
           <Affix offsetTop={top} className="affix-container">
             <Scrollspy items={ ['introduction', 'interstella', 'accounting', 'crypto-native', 'vision', 'technology', 'incentives', 'tentative', 'community'] } currentClassName="is-current">
               <li><a href="#introduction">Introduction</a></li>
@@ -27,7 +27,7 @@ export default (): React.ReactNode => {
             </Scrollspy>
           </Affix>
         </Col>
-        <Col className="right-col" span={19}>
+        <Col className="right-col" xs={24} sm={24} md={19}>
           <div className="page-title">Welcome to Dabacus</div>
           <div id="introduction" className="page-subtitle">Introduction</div>
           <p className="page-content"><span className="para-initial">B</span>itcoin brought together the mathematical ideas that first allowed us to 

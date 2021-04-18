@@ -41,6 +41,10 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
 
   }
 
+  const onMenuSelect = () => {
+    console.log("AAAAAA");
+  }
+
   return (
     <div className="mobile-header-wrapper">
     <NavBar

@@ -19,7 +19,7 @@ export default (): React.ReactNode => {
 
 
       <Row>
-      <Col span={18}>
+      <Col xs={24} sm={24} md={18}>
         <Collapse className="faqs" expandIcon={(panelProps) => {
           if (panelProps.isActive) {
             return <CustomIcon imgSrc={caretUp} size={24} />

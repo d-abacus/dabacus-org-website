@@ -46,13 +46,20 @@ export default (): React.ReactNode => {
     {},
   ]
 
+  const mobileTimelines: Array<String> = 
+    timelines.filter((obj: Object) => Object.keys(obj).length > 0);
+
+  const onSlideChange = (index: number, item: Object) => {
+    setCurrentSlide(index);
+  }
+
   return (
     <PageContainer>
       <div className="faq-title">
         Road Map
       </div>
 
-
+      <div className="hide-mobile">
       <Carousel 
         centerMode={true} 
         centerSlidePercentage={33} 
@@ -60,6 +67,7 @@ export default (): React.ReactNode => {
         showArrows={false} 
         showThumbs={false} 
         selectedItem={currentSlide}
+        onChange={onSlideChange}
       >
 
         {timelines.map((obj: Object, index: number) => {
@@ -87,7 +95,6 @@ export default (): React.ReactNode => {
          })}
 
       </Carousel>
-
       <Row className="buttons-row" justify="center">
         <Col span={4}>
           <Button className={currentSlide < 3 ? 'active' : ''} type="text" onClick={() => next(1)}>2019</Button>
@@ -102,6 +109,52 @@ export default (): React.ReactNode => {
           <Button className={currentSlide > 8 ? 'active' : ''} type="text" onClick={() => next(9)}>Future</Button>
         </Col>
       </Row>
+      </div>
+
+      <div className="show-mobile">
+      <Carousel 
+        className="show-mobile"
+        centerMode={false} 
+        emulateTouch={true} 
+        showArrows={false} 
+        showThumbs={false} 
+        selectedItem={currentSlide}
+        onChange={onSlideChange}
+      >
+
+        {mobileTimelines.map((obj: Object, index: number) => {
+          const month: String = Object.keys(obj)[0];
+            const events: Array<String> = obj[month];
+            return <div>
+              <div className="events">
+              <img className="indicator" src={indicatorImg} />
+              <div className="all-events">
+                <h2>{month}</h2>
+                {events.map((event: String, index: number) => 
+                                <p>{event}</p>
+                              )}
+              </div>
+              </div>
+              <div><img src={pathImg} /></div>
+            </div>
+         })}
+
+      </Carousel>
+      <Row className="buttons-row">
+        <Col span={6}>
+          <Button className={currentSlide == 0 ? 'active' : ''} type="text" onClick={() => next(0)}>2019</Button>
+        </Col>
+        <Col span={6}>
+          <Button className={currentSlide < 4 && currentSlide > 0 ? 'active' : ''} type="text" onClick={() => next(1)}>2021</Button>
+        </Col>
+        <Col span={6}>
+          <Button className={currentSlide < 6 && currentSlide > 3 ? 'active' : ''} type="text" onClick={() => next(4)}>2022</Button>
+        </Col>
+        <Col span={6}>
+          <Button className={currentSlide > 5 ? 'active' : ''} type="text" onClick={() => next(6)}>Future</Button>
+        </Col>
+      </Row>
+      </div>
 
 
     </PageContainer>
