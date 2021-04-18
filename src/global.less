@@ -59,6 +59,10 @@ ol {
   margin-right: 0;
 }
 
+.show-mobile {
+  display: none;
+}
+
 @media (max-width: @screen-xs) {
   .ant-table {
     width: 100%;
@@ -81,4 +85,15 @@ ol {
   body .ant-design-pro > .ant-layout {
     min-height: 100vh;
   }
+}
+
+@media only screen and (max-width: 768px) {
+  .ant-pro-page-container-children-content {
+    padding: 0 24px;
+  }
+
+  .show-mobile {
+    display: block;
+  }
+
 }

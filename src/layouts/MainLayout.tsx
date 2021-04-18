@@ -51,7 +51,8 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
 
         <div className={styles.containerMobile}>
           <MobileHeader />
-          
+          {children}
+          <Footer />
         </div>
       </HelmetProvider>
     );
