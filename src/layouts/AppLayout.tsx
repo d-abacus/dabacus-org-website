@@ -56,7 +56,7 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
             <AppHeader />
           </Affix>
           <Row className={styles.appContent}>
-            <Col span={4}>
+            <Col xs={0} sm={0} md={4}>
               <Affix offsetTop={sideTop}>
                 <Menu
                   className={styles.sideMenu}
@@ -69,7 +69,7 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
                 </Menu>
               </Affix>
             </Col>
-            <Col span={20}>
+            <Col xs={24} sm={24} md={20}>
               { children }
             </Col>
           </Row>
