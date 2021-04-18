@@ -59,14 +59,14 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
             <Popover mask={false}
               visible={langVisible}
               overlay={[
-               (<button onClick={() => { onLangSelected("en") }}>English</button>), 
-               (<button onClick={() => { onLangSelected("zh") }}>Chinese</button>), 
-               (<button onClick={() => { onLangSelected("sp") }}>Spanish</button>), 
+               (<button className="lang-btn" onClick={() => { onLangSelected("en") }}>English</button>), 
+               (<button className="lang-btn" onClick={() => { onLangSelected("zh") }}>Chinese</button>), 
+               (<button className="lang-btn" onClick={() => { onLangSelected("sp") }}>Spanish</button>), 
               ]}
               onVisibleChange={handleLangVisibleChange}
               align={{
                 overflow: { adjustY: 0, adjustX: 0 },
-                offset: [0, 15],
+                offset: [0, 12],
               }}
             >
               <div className={styles.languageSwitcher}>
