@@ -83,7 +83,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
         }
       >
       </NavBar>
-      <Accordion defaultActiveKey="0" className={"menu-accordion" + (visible ? " show" : "")}>
+      <Accordion className={"menu-accordion" + (visible ? " show" : "")}>
           <Accordion.Panel header="Community">
             <List className="my-list">
               <List.Item>Snapshot</List.Item>
