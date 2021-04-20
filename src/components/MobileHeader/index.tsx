@@ -51,7 +51,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
     <NavBar
         mode="light"
         leftContent={
-          <img src={logo} className={styles.logo} />
+          <Link to="/"><img src={logo} className={styles.logo} /></Link>
         }
         rightContent={
 

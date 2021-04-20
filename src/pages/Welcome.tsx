@@ -115,7 +115,8 @@ export default (): React.ReactNode => {
       <Row className={styles.halfFeature} align="middle">
         <Col xs={24} sm={24} md={12}>
           <div className={styles.halfFeatureWrapperLeft}>
-            <div className={styles.subtitle}>A crypto-native<span className={styles.titleSpan}> Unit </span>of Account</div>
+            <div className={styles.subtitle + " hide-mobile"}>A crypto-native<span className={styles.titleSpan}> Unit </span>of Account</div>
+            <div className={styles.subtitle + " show-mobile"}>A crypto-native<span className={styles.titleSpan}> Unit</span><br />of Account</div>
             <div className={styles.subtitleDesc + " " + styles.subtitleLeft}>Our comprehensive community managed crypto index tied to global population data aims to replace the USD as the World Unit of Account.</div>
             <ThemeButton>Use Index</ThemeButton>
           </div>
