@@ -3,13 +3,11 @@
 .menu-accordion {
 	position: absolute;
 	right: -100%;
-  	transition: all .3s ease-in-out;
+  	transition: all .5s ease-in-out;
   	width: 100%;
+  	z-index: 200;
 
 	&.show {
-		visibility: visible;
-		z-index: 200;
-		opacity: 1;
 		right: 0;
 	}
 }
@@ -95,10 +93,6 @@
 	}
 
 	.am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box {
-		border: none;
-	}
-
-	.mobile-header-wrapper .am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box {
 		border: none;
 	}
 }
