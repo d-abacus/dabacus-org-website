@@ -114,3 +114,16 @@
 		}
 	}
 }
+
+.ant-menu-horizontal > .ant-menu-submenu.hide-app,
+.ant-menu-horizontal > .ant-menu-item.hide-app {
+	display: none;
+}
+
+.ant-menu-horizontal > .ant-menu-item.hide-other {
+	display: none;
+
+	&.show-app {
+		display: inline-block;
+	}
+}

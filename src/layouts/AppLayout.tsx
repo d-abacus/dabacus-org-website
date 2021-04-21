@@ -5,7 +5,7 @@ import { connect } from 'umi';
 import { Row, Col, Menu, Affix } from 'antd';
 import type { ConnectState } from '@/models/connect';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import AppHeader from '../components/AppHeader';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from './AppLayout.less';
 import '../components/AppHeader/menu.less';
@@ -53,7 +53,7 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
 
         <div className={styles.container}>
           <Affix offsetTop={top}>
-            <AppHeader />
+            <Header />
           </Affix>
           <Row className={styles.appContent}>
             <Col xs={0} sm={0} md={4}>
