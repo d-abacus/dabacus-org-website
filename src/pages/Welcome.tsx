@@ -23,11 +23,7 @@ import gif3 from '../assets/gif3.gif';
 import bgdImg from '../assets/bgd-img.png';
 import shortLine from '../assets/short-line.png';
 import longLine from '../assets/long-line.png';
-import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade';
-import Bounce from 'react-reveal/Bounce';
-import Roll from 'react-reveal/Roll';
-import Flip from 'react-reveal/Flip';
 
 
 
@@ -71,7 +67,7 @@ export default (): React.ReactNode => {
         </Col>
       </Row>
 
-      <Fade>
+      <Fade duration={1500}>
       <Row className={styles.features} gutter={{xs: 13, sm: 13}}>
         {features.map((row: string, index: number) => 
           <Col xs={12} sm={12} md={8} className={styles.feature}>
@@ -85,13 +81,13 @@ export default (): React.ReactNode => {
       </Row>
       </Fade>
 
-      <Bounce>
+      <Fade>
       <div className={styles.lineWrapper}>
         <img className={styles.firstLine} src={shortLine} />
       </div>
-      </Bounce>
+      </Fade>
 
-      <Zoom>
+      <Fade>
       <Row className={styles.halfFeature} align="middle">
       <Col xs={24} sm={24} md={12} order={2}>
         <img className={styles.featureGif} src={gif2} />
@@ -103,7 +99,7 @@ export default (): React.ReactNode => {
         </div>
       </Col>
       </Row>
-      </Zoom>
+      </Fade>
 
       <Fade>
       <div className={styles.lineWrapper}>
@@ -111,7 +107,7 @@ export default (): React.ReactNode => {
       </div>
       </Fade>
 
-      <Bounce>
+      <Fade>
       <Row className={styles.halfFeature} align="middle">
         <Col xs={24} sm={24} md={12}>
           <div className={styles.halfFeatureWrapperLeft}>
@@ -125,15 +121,15 @@ export default (): React.ReactNode => {
           <img className={styles.featureGif + " " + styles.bottomGif} src={gif3} />
         </Col>
       </Row>
-      </Bounce>
+      </Fade>
 
-      <Zoom>
+      <Fade>
       <div className={styles.lineWrapper}>
         <img className={styles.thirdLine} src={shortLine} />
       </div>
-      </Zoom>
+      </Fade>
 
-      <Roll>
+      <Fade>
       <div className={styles.subtitle + " " + styles.communityTitle}>Community</div>
       <Row>
         <Col xs={12} sm={12} md={6} className={styles.communityImg}>
@@ -153,7 +149,7 @@ export default (): React.ReactNode => {
           <img src={wechatActive} className={styles.activeSocial} />
         </Col>
       </Row>
-      </Roll>
+      </Fade>
 
 
     </PageContainer>
