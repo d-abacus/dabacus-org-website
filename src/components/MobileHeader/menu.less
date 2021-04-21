@@ -2,15 +2,14 @@
 
 .menu-accordion {
 	position: absolute;
-	right: -100%;
-  	transition: all .3s ease-in-out;
+	top: -1000px;
+  	transition: all .5s ease-in-out;
   	width: 100%;
+  	z-index: 200;
 
 	&.show {
-		visibility: visible;
-		z-index: 200;
-		opacity: 1;
-		right: 0;
+		top: 50px;
+		background: #fff;
 	}
 }
 
@@ -25,6 +24,10 @@
 	&:not(:last-child) {
 		margin-bottom: 12px;
 	}
+}
+
+.am-navbar-title {
+	display: none;
 }
 
 .am-popover-inner {
@@ -95,10 +98,6 @@
 	}
 
 	.am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box {
-		border: none;
-	}
-
-	.mobile-header-wrapper .am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box {
 		border: none;
 	}
 }

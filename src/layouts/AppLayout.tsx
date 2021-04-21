@@ -73,7 +73,6 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
               { children }
             </Col>
           </Row>
-          <Footer />
         </div>
       </HelmetProvider>
     );

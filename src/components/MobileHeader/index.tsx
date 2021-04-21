@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, withRouter } from 'umi';
+import { Link, withRouter, history } from 'umi';
 import { Popover, NavBar, Accordion, List } from 'antd-mobile';
 import logo from '../../assets/logo.svg';
 import styles from './index.less';
@@ -41,8 +41,9 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
 
   }
 
-  const onMenuSelect = () => {
-    console.log("AAAAAA");
+  const onLinkTapped = (link: string) => {
+    setVisible(false);
+    history.push(link);
   }
 
   return (
@@ -50,7 +51,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
     <NavBar
         mode="light"
         leftContent={
-          <img src={logo} className={styles.logo} />
+          <Link to="/"><img src={logo} className={styles.logo} /></Link>
         }
         rightContent={
 
@@ -82,28 +83,28 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
         }
       >
       </NavBar>
-      <Accordion defaultActiveKey="0" className={"menu-accordion" + (visible ? " show" : "")}>
+      <Accordion className={"menu-accordion" + (visible ? " show" : "")}>
           <Accordion.Panel header="Community">
             <List className="my-list">
               <List.Item>Snapshot</List.Item>
               <List.Item>Medium</List.Item>
               <List.Item>Discord</List.Item>
-              <List.Item><Link to="/announcements">Announcements</Link></List.Item>
+              <List.Item onClick={() => onLinkTapped("/announcements")}>Announcements</List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Developers" className="pad">
             <List className="my-list">
               <List.Item>Docs</List.Item>
               <List.Item>Github</List.Item>
-              <List.Item><Link to="/road-map">Road Map</Link></List.Item>
+              <List.Item onClick={() => onLinkTapped("/road-map")}>Road Map</List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Learn" className="pad">
             <List className="my-list">
               <List.Item>Dabacus' Philosophy</List.Item>
-              <List.Item><Link to="/about">About</Link></List.Item>
-              <List.Item><Link to="/glossary">Glossary</Link></List.Item>
-              <List.Item><Link to="/faq">FAQ</Link></List.Item>
+              <List.Item onClick={() => onLinkTapped("/about")}>About</List.Item>
+              <List.Item onClick={() => onLinkTapped("/glossary")}>Glossary</List.Item>
+              <List.Item onClick={() => onLinkTapped("/faq")}>FAQ</List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Products" className="pad">
