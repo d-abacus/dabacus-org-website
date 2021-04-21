@@ -67,7 +67,7 @@ export default (): React.ReactNode => {
         </Col>
       </Row>
 
-      <Fade duration={1500}>
+      <Fade bottom cascade>
       <Row className={styles.features} gutter={{xs: 13, sm: 13}}>
         {features.map((row: string, index: number) => 
           <Col xs={12} sm={12} md={8} className={styles.feature}>
@@ -81,13 +81,13 @@ export default (): React.ReactNode => {
       </Row>
       </Fade>
 
-      <Fade>
+      <Fade bottom cascade>
       <div className={styles.lineWrapper}>
         <img className={styles.firstLine} src={shortLine} />
       </div>
       </Fade>
 
-      <Fade>
+      <Fade bottom cascade>
       <Row className={styles.halfFeature} align="middle">
       <Col xs={24} sm={24} md={12} order={2}>
         <img className={styles.featureGif} src={gif2} />
@@ -101,13 +101,13 @@ export default (): React.ReactNode => {
       </Row>
       </Fade>
 
-      <Fade>
+      <Fade bottom cascade>
       <div className={styles.lineWrapper}>
         <img className={styles.secondLine} src={longLine} />
       </div>
       </Fade>
 
-      <Fade>
+      <Fade bottom cascade>
       <Row className={styles.halfFeature} align="middle">
         <Col xs={24} sm={24} md={12}>
           <div className={styles.halfFeatureWrapperLeft}>
@@ -123,13 +123,13 @@ export default (): React.ReactNode => {
       </Row>
       </Fade>
 
-      <Fade>
+      <Fade bottom cascade>
       <div className={styles.lineWrapper}>
         <img className={styles.thirdLine} src={shortLine} />
       </div>
       </Fade>
 
-      <Fade>
+      <Fade bottom cascade>
       <div className={styles.subtitle + " " + styles.communityTitle}>Community</div>
       <Row>
         <Col xs={12} sm={12} md={6} className={styles.communityImg}>
