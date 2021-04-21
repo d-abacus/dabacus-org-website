@@ -36,8 +36,8 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   return (
     <Affix offsetTop={top}>
-    <div className={styles.header}>
-      <Link to="/"><img alt="logo" className={styles.logo} src={logo} /></Link>
+    <div className={styles.header + (isApp ? (" " + styles.appPageHeader) : '')}>
+      <Link className={isApp ? 'hide-app' : ''} to="/"><img alt="logo" className={styles.logo} src={logo} /></Link>
         <Menu className={styles.pageMenu} mode="horizontal" selectedKeys={skeys}>
         <SubMenu className={isApp ? 'hide-app' : ''} key="community" title="Community">
           <Menu.Item key="community:1"><span className="menu-item-span">Snapshot</span></Menu.Item>
