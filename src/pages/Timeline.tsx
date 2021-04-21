@@ -6,6 +6,7 @@ import { Button, Row, Col } from 'antd';
 import './Timeline.less';
 import pathImg from "../assets/path.png";
 import indicatorImg from "../assets/timeline-indicator.png";
+import indicatorEmptyImg from "../assets/indicator-empty.png";
 
 
 
@@ -76,7 +77,7 @@ export default (): React.ReactNode => {
             const events: Array<String> = obj[month];
             return <div>
               <div className="events">
-              <img className="indicator" src={indicatorImg} />
+              <img className="indicator" src={currentSlide < 4 ? indicatorImg : indicatorEmptyImg} />
               <div className="all-events">
                 <h2>{month}</h2>
                 {events.map((event: String, index: number) => 
@@ -127,7 +128,7 @@ export default (): React.ReactNode => {
             const events: Array<String> = obj[month];
             return <div>
               <div className="events">
-              <img className="indicator" src={indicatorImg} />
+              <img className="indicator" src={currentSlide < 2 ? indicatorImg : indicatorEmptyImg} />
               <div className="all-events">
                 <h2>{month}</h2>
                 {events.map((event: String, index: number) => 
