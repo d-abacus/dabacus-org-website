@@ -86,6 +86,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
       >
       </NavBar>
       </div>
+      <div className="mobile-submenu-wrapper">
       <Accordion className={"menu-accordion" + (visible ? " show" : "")}>
           <Accordion.Panel header="Community">
             <List className="my-list">
@@ -118,6 +119,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
             </List>
           </Accordion.Panel>
         </Accordion>
+        </div>
       </div>
 
   );

@@ -3,6 +3,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import ThemeButton from '../components/ThemeButton';
 import styles from './Welcome.less';
 import { Row, Col } from 'antd';
+import { Link } from 'umi';
 import trustlessImg from '../assets/Trustless.png';
 import secureImg from '../assets/Secure.png';
 import scalableImg from '../assets/Scalable.png';
@@ -60,7 +61,7 @@ export default (): React.ReactNode => {
           <p className={styles.p + " " + styles.topPara}>Our network of networks aims at achieving consensus throughout 
             the Milky Way and beyond thanks to our Blocktree ledger structure and 
             our focus on post-quantum cryptography.</p>
-          <ThemeButton>Use App</ThemeButton>
+          <Link to='/app/index'><ThemeButton>Use App</ThemeButton></Link>
         </Col>
         <Col xs={0} sm={0} md={10}>
           <img className={styles.featureGif + " " + styles.topGif} src={gif1} />

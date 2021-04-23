@@ -128,3 +128,27 @@ a.hide-app {
 		display: inline-block;
 	}
 }
+
+@media only screen and (max-width: 768px) {
+	a.hide-app.show-app-mobile {
+		display: inline-block;
+
+		img {
+			width: 134px;
+			margin-top: 16px;
+		}
+	}
+
+	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected.language-menu {
+
+		.ant-menu-submenu-title {
+			margin-right: 8px;
+			line-height: 38px;
+			font-size: 14px;
+
+			img {
+				width: 18px;
+			}
+		}
+	}
+}
