@@ -4,6 +4,16 @@
     component: '../layouts/BlankLayout',
     routes: [
       {
+        path: '/coming-soon',
+        routes: [
+          {
+            name: 'comingSoon',
+            path: '/coming-soon',
+            component: './Coming',
+          },
+        ],
+      },
+      {
         path: '/app',
         component: '../layouts/AppLayout',
         routes: [

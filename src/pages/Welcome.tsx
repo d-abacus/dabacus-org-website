@@ -52,9 +52,14 @@ export default (): React.ReactNode => {
 
       <Row align="middle">
         <Col sm={24} md={14}>
-          <div className={styles.title}>
+          <div className={styles.title + " hide-mobile"}>
             An Interstellar 
             <span className={styles.titleSpan}> Supernet </span> 
+            for Edge Decentralized Applications
+          </div>
+          <div className={styles.title + " show-mobile"}>
+            An Interstellar<br/>
+            <span className={styles.titleSpan}>Supernet </span> 
             for Edge Decentralized Applications
           </div>
           <img className={styles.featureGif + " show-mobile"} src={gif1} />

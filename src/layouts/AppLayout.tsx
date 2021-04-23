@@ -64,7 +64,7 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
                 >
                   <Menu.Item key="1"><img src={indexIcon} /> Index</Menu.Item>
                   <Menu.Item key="2"><img src={swapIcon} /> Swap</Menu.Item>
-                  <Menu.Item key="3"><img src={farmIcon} /> Farm</Menu.Item>
+                  <Menu.Item key="3"><Link to="/coming-soon"><img src={swapIcon} /><img src={farmIcon} /> Farm</Link></Menu.Item>
                 </Menu>
               </Affix>
             </Col>
