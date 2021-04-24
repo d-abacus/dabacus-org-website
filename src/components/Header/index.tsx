@@ -31,26 +31,28 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   }
   skeys.push(path);
   skeys.push('english');
+  console.log(path);
+  const isApp: boolean = path.indexOf('app') == 0;
 
   return (
     <Affix offsetTop={top}>
-    <div className={styles.header}>
-      <Link to="/"><img alt="logo" className={styles.logo} src={logo} /></Link>
+    <div className={styles.header + (isApp ? (" " + styles.appPageHeader) : '')}>
+      <Link className={isApp ? 'hide-app show-app-mobile' : ''} to="/"><img alt="logo" className={styles.logo} src={logo} /></Link>
         <Menu className={styles.pageMenu} mode="horizontal" selectedKeys={skeys}>
-        <SubMenu key="community" title="Community">
+        <SubMenu className={isApp ? 'hide-app' : ''} key="community" title="Community">
           <Menu.Item key="community:1"><span className="menu-item-span">Snapshot</span></Menu.Item>
           <Menu.Item key="community:2"><span className="menu-item-span">Medium</span></Menu.Item>
           <Menu.Item key="community:3"><span className="menu-item-span">Discord</span></Menu.Item>
           <Menu.Item key="announcements"><Link to="/announcements"><span className="menu-item-span">Announcements</span></Link></Menu.Item>
         </SubMenu>
-        <SubMenu key="developers" title="Developers">
+        <SubMenu className={isApp ? 'hide-app' : ''} key="developers" title="Developers">
           <Menu.Item key="developers:1"><span className="menu-item-span">Docs</span></Menu.Item>
           <Menu.Item key="developers:2"><span className="menu-item-span">Github</span></Menu.Item>
           <Menu.Item key="developers:3">
             <Link to="/road-map"><span className="menu-item-span">Road Map</span></Link>
           </Menu.Item>
         </SubMenu>
-        <SubMenu key="learn" title="Learn">
+        <SubMenu className={isApp ? 'hide-app' : ''} key="learn" title="Learn">
           <Menu.Item key="philosophy">
            <span className="menu-item-span">Dabacus' Philosophy</span>
           </Menu.Item>
@@ -64,13 +66,16 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             <Link to="/faq"><span className="menu-item-span">FAQ</span></Link>
           </Menu.Item>
         </SubMenu>
-        <SubMenu key="products" title="Products">
+        <SubMenu className={isApp ? 'hide-app' : ''} key="products" title="Products">
           <Menu.Item key="products:1"><span className="menu-item-span">White Paper</span></Menu.Item>
           <Menu.Item key="products:2"><span className="menu-item-span">World Unit of Account Index</span></Menu.Item>
           <Menu.Item key="products:3"><span className="menu-item-span">Exchange</span></Menu.Item>
         </SubMenu>
-        <Menu.Item key="useApp">
+        <Menu.Item className={isApp ? 'hide-app' : ''} key="useApp">
           <Link to="/app/index"><ThemeButton>Use App</ThemeButton></Link>
+        </Menu.Item>
+        <Menu.Item className={isApp ? 'hide-other show-app' : 'hide-other'} key="connectWallet">
+          <ThemeButton>Connect Wallet</ThemeButton>
         </Menu.Item>
         <SubMenu className="language-menu" icon={<CustomIcon imgSrc={earthIcon} size={20} />} key="language" title="English">
           <Menu.Item key="english"><span className="menu-item-span">English</span></Menu.Item>

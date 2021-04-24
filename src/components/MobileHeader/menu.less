@@ -3,13 +3,16 @@
 .menu-accordion {
 	position: absolute;
 	top: -1000px;
-  	transition: all .5s ease-in-out;
+	opacity: 0;
+  	transition: all .3s ease-in-out;
   	width: 100%;
-  	z-index: 200;
+  	z-index: 5;
 
 	&.show {
-		top: 50px;
+		top: 45px;
 		background: #fff;
+		z-index: 5;
+		opacity: 1;
 	}
 }
 
@@ -42,12 +45,20 @@
 
 .mobile-header-wrapper {
 
-	padding: 15px;
+	padding: 0 15px;
+	height: 45px;
+	z-index: 999;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
 
 	.am-navbar-right {
 		margin-right: 2px;
 	}
+}
 
+.mobile-submenu-wrapper {
 	a {
 		color: #000;
 	}
@@ -100,6 +111,10 @@
 	.am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box {
 		border: none;
 	}
+}
+
+.ant-pro-page-container {
+	margin-top: 100px;
 }
 
 

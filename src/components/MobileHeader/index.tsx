@@ -5,6 +5,7 @@ import logo from '../../assets/logo.svg';
 import styles from './index.less';
 import menuIcon from '../../assets/menu.png';
 import closeIcon from '../../assets/close.png';
+import earthIcon from '../../assets/ic_round-language.png';
 import './menu.less';
 
 
@@ -47,6 +48,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
   }
 
   return (
+    <div>
     <div className="mobile-header-wrapper">
     <NavBar
         mode="light"
@@ -75,7 +77,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
               }}
             >
               <div className={styles.languageSwitcher}>
-                English
+                <img width="18" src={earthIcon} /> English
               </div>
             </Popover>
 
@@ -83,6 +85,8 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
         }
       >
       </NavBar>
+      </div>
+      <div className="mobile-submenu-wrapper">
       <Accordion className={"menu-accordion" + (visible ? " show" : "")}>
           <Accordion.Panel header="Community">
             <List className="my-list">
@@ -115,6 +119,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
             </List>
           </Accordion.Panel>
         </Accordion>
+        </div>
       </div>
 
   );

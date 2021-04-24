@@ -3,6 +3,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import ThemeButton from '../components/ThemeButton';
 import styles from './Welcome.less';
 import { Row, Col } from 'antd';
+import { Link } from 'umi';
 import trustlessImg from '../assets/Trustless.png';
 import secureImg from '../assets/Secure.png';
 import scalableImg from '../assets/Scalable.png';
@@ -23,11 +24,7 @@ import gif3 from '../assets/gif3.gif';
 import bgdImg from '../assets/bgd-img.png';
 import shortLine from '../assets/short-line.png';
 import longLine from '../assets/long-line.png';
-import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade';
-import Bounce from 'react-reveal/Bounce';
-import Roll from 'react-reveal/Roll';
-import Flip from 'react-reveal/Flip';
 
 
 
@@ -55,23 +52,28 @@ export default (): React.ReactNode => {
 
       <Row align="middle">
         <Col sm={24} md={14}>
-          <div className={styles.title}>
+          <div className={styles.title + " hide-mobile"}>
             An Interstellar 
             <span className={styles.titleSpan}> Supernet </span> 
+            for Edge Decentralized Applications
+          </div>
+          <div className={styles.title + " show-mobile"}>
+            An Interstellar<br/>
+            <span className={styles.titleSpan}>Supernet </span> 
             for Edge Decentralized Applications
           </div>
           <img className={styles.featureGif + " show-mobile"} src={gif1} />
           <p className={styles.p + " " + styles.topPara}>Our network of networks aims at achieving consensus throughout 
             the Milky Way and beyond thanks to our Blocktree ledger structure and 
             our focus on post-quantum cryptography.</p>
-          <ThemeButton>Use App</ThemeButton>
+          <Link to='/app/index'><ThemeButton>Use App</ThemeButton></Link>
         </Col>
         <Col xs={0} sm={0} md={10}>
           <img className={styles.featureGif + " " + styles.topGif} src={gif1} />
         </Col>
       </Row>
 
-      <Fade>
+      <Fade bottom cascade>
       <Row className={styles.features} gutter={{xs: 13, sm: 13}}>
         {features.map((row: string, index: number) => 
           <Col xs={12} sm={12} md={8} className={styles.feature}>
@@ -85,13 +87,13 @@ export default (): React.ReactNode => {
       </Row>
       </Fade>
 
-      <Bounce>
+      <Fade bottom cascade>
       <div className={styles.lineWrapper}>
         <img className={styles.firstLine} src={shortLine} />
       </div>
-      </Bounce>
+      </Fade>
 
-      <Zoom>
+      <Fade bottom cascade>
       <Row className={styles.halfFeature} align="middle">
       <Col xs={24} sm={24} md={12} order={2}>
         <img className={styles.featureGif} src={gif2} />
@@ -103,15 +105,15 @@ export default (): React.ReactNode => {
         </div>
       </Col>
       </Row>
-      </Zoom>
+      </Fade>
 
-      <Fade>
+      <Fade bottom cascade>
       <div className={styles.lineWrapper}>
         <img className={styles.secondLine} src={longLine} />
       </div>
       </Fade>
 
-      <Bounce>
+      <Fade bottom cascade>
       <Row className={styles.halfFeature} align="middle">
         <Col xs={24} sm={24} md={12}>
           <div className={styles.halfFeatureWrapperLeft}>
@@ -125,15 +127,15 @@ export default (): React.ReactNode => {
           <img className={styles.featureGif + " " + styles.bottomGif} src={gif3} />
         </Col>
       </Row>
-      </Bounce>
+      </Fade>
 
-      <Zoom>
+      <Fade bottom cascade>
       <div className={styles.lineWrapper}>
         <img className={styles.thirdLine} src={shortLine} />
       </div>
-      </Zoom>
+      </Fade>
 
-      <Roll>
+      <Fade bottom cascade>
       <div className={styles.subtitle + " " + styles.communityTitle}>Community</div>
       <Row>
         <Col xs={12} sm={12} md={6} className={styles.communityImg}>
@@ -153,7 +155,7 @@ export default (): React.ReactNode => {
           <img src={wechatActive} className={styles.activeSocial} />
         </Col>
       </Row>
-      </Roll>
+      </Fade>
 
 
     </PageContainer>
