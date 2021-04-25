@@ -41,4 +41,15 @@ export default defineConfig({
     basePath: '/',
   },
   esbuild: {},
+  chainWebpack: (config) => {
+    config.module
+      .rule('mp4')
+      .test(/\.(mp4|zip)(\?.*)?$/)
+      .use('file-loader')
+      .loader(require.resolve('file-loader'))
+      .options({
+        name: 'assets/[name].[hash:8].[ext]',
+        esModule: false,
+      });
+  },
 });
