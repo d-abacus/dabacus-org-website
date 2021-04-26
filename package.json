@@ -74,7 +74,8 @@
     "react-reveal": "^1.2.2",
     "react-scrollspy": "^3.4.3",
     "umi": "^3.4.1",
-    "umi-request": "^1.0.8"
+    "umi-request": "^1.0.8",
+    "use-wallet": "^0.8.1"
   },
   "devDependencies": {
     "@ant-design/pro-cli": "^1.0.28",

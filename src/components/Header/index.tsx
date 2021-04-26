@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, Affix } from 'antd';
 import { Link, withRouter } from 'umi';
+import { useWallet } from 'use-wallet'
 import logo from '../../assets/logo.svg';
 import styles from './index.less';
 import './menu.less';
@@ -19,6 +20,8 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   const [top, setTop] = useState(0);
+  const wallet = useWallet()
+  const blockNumber = wallet.getBlockNumber()
 
   var skeys: Array<string> = [];
   const path: string = props.location['pathname'].substring(1);
@@ -75,7 +78,12 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <Link to="/app/index"><ThemeButton>Use App</ThemeButton></Link>
         </Menu.Item>
         <Menu.Item className={isApp ? 'hide-other show-app' : 'hide-other'} key="connectWallet">
-          <ThemeButton>Connect Wallet</ThemeButton>
+        {wallet.status === 'connected' ? (
+          <div className={styles.walletAccount}>{wallet.account}</div>
+          ) : (
+          <ThemeButton callback={ () => wallet.connect() }>Connect Wallet</ThemeButton>
+         )
+        }
         </Menu.Item>
         <SubMenu className="language-menu" icon={<CustomIcon imgSrc={earthIcon} size={20} />} key="language" title="English">
           <Menu.Item key="english"><span className="menu-item-span">English</span></Menu.Item>

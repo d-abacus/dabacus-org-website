@@ -5,11 +5,12 @@ import styles from './index.less';
 
 interface ThemeButtonProps extends PropsWithChildren<any> {
   small: Boolean;
+  callback: Function;
 };
 
-const ThemeButton: React.FC<ThemeButtonProps> = ({ small = false, children }: ThemeButtonProps) => {
+const ThemeButton: React.FC<ThemeButtonProps> = ({ small = false, callback = () => {}, children }: ThemeButtonProps) => {
   return (
-    <Button type="primary" shape="round" className={styles.button + (small ? 'small' : '')}>
+    <Button onClick={() => { callback() }} type="primary" shape="round" className={styles.button + (small ? 'small' : '')}>
       {children}
     </Button>
   );
