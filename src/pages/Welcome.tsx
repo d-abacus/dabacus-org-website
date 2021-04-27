@@ -101,7 +101,8 @@ export default (): React.ReactNode => {
       <Col xs={24} sm={24} md={12} order={1}>
         <div className={styles.halfFeatureWrapper}>
         <div className={styles.subtitle}>Building<span className={styles.titleSpan}> the World’s Accounting </span>Machine</div>
-        <div className={styles.subtitleDesc}>Dabacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the post-quantum era.</div>
+        <div className={styles.subtitleDesc + " hide-mobile"}>Dabacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the post-quantum era.</div>
+        <div className={styles.subtitleDesc + " show-mobile"}>Dabacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the <br/>post-quantum era.</div>
         </div>
       </Col>
       </Row>
@@ -119,7 +120,8 @@ export default (): React.ReactNode => {
           <div className={styles.halfFeatureWrapperLeft}>
             <div className={styles.subtitle + " hide-mobile"}>A crypto-native<span className={styles.titleSpan}> Unit </span>of Account</div>
             <div className={styles.subtitle + " show-mobile"}>A crypto-native<span className={styles.titleSpan}> Unit</span><br />of Account</div>
-            <div className={styles.subtitleDesc + " " + styles.subtitleLeft}>Our comprehensive community managed crypto index tied to global population data aims to replace the USD as the World Unit of Account.</div>
+            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " hide-mobile"}>Our comprehensive community managed crypto index tied to global population data aims to replace the USD as the World Unit of Account.</div>
+            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " show-mobile"}>Our comprehensive community managed crypto index tied to global population data aims to replace the USD as the <br/>World Unit of Account.</div>
             <ThemeButton>Use Index</ThemeButton>
           </div>
         </Col>
