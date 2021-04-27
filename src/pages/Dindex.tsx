@@ -5,6 +5,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import './Dindex.less';
 
 
+
 export default (): React.ReactNode => {
 
   const [data, setData] = useState([]);
@@ -116,7 +117,7 @@ export default (): React.ReactNode => {
     }
   })
   return <PageContainer>
-    <Area {...config} />
+    <div className="index-chart"><Area {...config} /></div>
     <div className="indexed-ranking">Indexed Currencies Ranking</div>
     <Table dataSource={resData} columns={columns} pagination={{ pageSize: 50}} />
   </PageContainer>;
