@@ -21,7 +21,6 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   const [top, setTop] = useState(0);
   const wallet = useWallet()
-  const blockNumber = wallet.getBlockNumber()
 
   var skeys: Array<string> = [];
   const path: string = props.location['pathname'].substring(1);

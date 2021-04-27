@@ -6,7 +6,6 @@ import { Row, Col, Menu, Affix } from 'antd';
 import type { ConnectState } from '@/models/connect';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from '../components/Header';
-import { UseWalletProvider } from 'use-wallet'
 import styles from './AppLayout.less';
 import '../components/AppHeader/menu.less';
 import indexIcon from '../assets/index-icon.png';
@@ -53,7 +52,6 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
         </Helmet>
 
         <div className={styles.container}>
-        <UseWalletProvider chainId={1}>
           <Row className={styles.appContent}>
             <Col xs={0} sm={0} md={4} className={styles.appSideBar}>
               <Affix offsetTop={sideTop}>
@@ -78,7 +76,6 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
               </div>
             </Col>
           </Row>
-          </UseWalletProvider>
         </div>
       </HelmetProvider>
     );

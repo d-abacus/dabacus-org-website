@@ -113,10 +113,6 @@
 	}
 }
 
-.ant-pro-page-container {
-	margin-top: 100px;
-}
-
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
 	html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line:after,
@@ -125,5 +121,11 @@
 	html:not([data-scale]) .am-accordion .am-accordion-item .am-accordion-content .am-accordion-content-box::after,
 	html:not([data-scale]) .am-accordion::before {
 		display: none;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.ant-pro-page-container {
+		margin-top: 100px;
 	}
 }
