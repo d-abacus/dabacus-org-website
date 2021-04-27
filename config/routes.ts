@@ -22,6 +22,11 @@
             path: '/app/index',
             component: './Dindex',
           },
+          {
+            name: 'swap',
+            path: '/app/swap',
+            component: './Swap',
+          },
         ],
       },
       {

@@ -6,12 +6,9 @@ import { Row, Col, Menu, Affix } from 'antd';
 import type { ConnectState } from '@/models/connect';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from '../components/Header';
+import SideMenu from '../components/SideMenu';
 import styles from './AppLayout.less';
 import '../components/AppHeader/menu.less';
-import indexIcon from '../assets/index-icon.png';
-import farmIcon from '../assets/farm-icon.png';
-import swapIcon from '../assets/swap-icon.png';
-import logo from '../assets/logo.svg';
 
 
 type MainLayoutProps = {
@@ -21,14 +18,12 @@ type MainLayoutProps = {
 type MainLayoutState = {
   isReady: boolean;
   top: number;
-  sideTop: number;
 };
 
 class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
   state: MainLayoutState = {
     isReady: false,
     top: 0,
-    sideTop: 0,
   };
 
   componentDidMount() {
@@ -38,7 +33,7 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
   }
 
   render() {
-    const { isReady, top, sideTop } = this.state;
+    const { isReady, top } = this.state;
     const { children, loading } = this.props;
 
     if (loading || !isReady) {
@@ -53,19 +48,8 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
 
         <div className={styles.container}>
           <Row className={styles.appContent}>
-            <Col xs={0} sm={0} md={4} className={styles.appSideBar}>
-              <Affix offsetTop={sideTop}>
-                <Link to="/"><img alt="logo" className={styles.logo} src={logo} /></Link>
-                <Menu
-                  className={styles.sideMenu}
-                  defaultSelectedKeys={['1']}
-                  mode="inline"
-                >
-                  <Menu.Item key="1"><img src={indexIcon} /> Index</Menu.Item>
-                  <Menu.Item key="2"><img src={swapIcon} /> Swap</Menu.Item>
-                  <Menu.Item key="3"><Link to="/coming-soon"><img src={farmIcon} /> Farm</Link></Menu.Item>
-                </Menu>
-              </Affix>
+            <Col xs={0} sm={0} md={4}>
+              <SideMenu />
             </Col>
             <Col xs={24} sm={24} md={20}>
               <Affix offsetTop={top} className={styles.appHeader}>
