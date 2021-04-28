@@ -1,39 +1,75 @@
-.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-	background-color: transparent !important;
-	background: none !important;
+.app-side-bar {
+	.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+		background-color: transparent !important;
+		background: none !important;
 
-	&:after {
+		&:after {
+			display: none;
+		}
+
+		color: #000;
+		border-right: 5px solid #5956FF;
+	}
+
+	.normal-icon {
+		display: inline-block;
+	}
+
+	.active-icon {
 		display: none;
 	}
 
-	color: #000;
-	border-right: 5px solid #5956FF;
-}
+	.ant-menu-item-selected {
+		.normal-icon {
+			display: none;
+		}
 
-.ant-menu-inline {
-	border-right: none;
-}
-
-.ant-menu-inline .ant-menu-item:not(:last-child) {
-	margin-bottom: 24px;
-}
-
-.ant-menu-inline .ant-menu-item {
-	margin-top: 24px;
-}
-
-.ant-menu-item a {
-	color: #AAB0B8;
-}
-
-@media only screen and (max-width: 768px) {
-	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
-		margin-left: 8px;
-    	margin-right: 0px;
+		.active-icon {
+			display: inline-block;
+		}
 	}
 
-	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item {
-		margin-left: 8px;
-		margin-right: 8px;
+	.ant-menu-inline {
+		border-right: none;
+	}
+
+	.ant-menu-inline .ant-menu-item:not(:last-child) {
+		margin-bottom: 24px;
+	}
+
+	.ant-menu-inline .ant-menu-item {
+		margin-top: 24px;
+	}
+
+	.ant-menu-item {
+		a {
+			color: #AAB0B8;
+		}
+
+		&.ant-menu-item-selected a {
+			color: #000;
+		}
+
+		&:hover {
+			border-right: 5px solid #5956FF;
+
+			a {
+				color: #000;
+			}
+		}
+
+
+	}
+
+	@media only screen and (max-width: 768px) {
+		.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
+			margin-left: 8px;
+	    	margin-right: 0px;
+		}
+
+		.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item {
+			margin-left: 8px;
+			margin-right: 8px;
+		}
 	}
 }
