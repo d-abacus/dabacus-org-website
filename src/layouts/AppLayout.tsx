@@ -47,19 +47,15 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
         </Helmet>
 
         <div className={styles.container}>
-          <Row className={styles.appContent}>
-            <Col xs={0} sm={0} md={4}>
-              <SideMenu />
-            </Col>
-            <Col xs={24} sm={24} md={20}>
-              <Affix offsetTop={top} className={styles.appHeader}>
-                <Header />
-              </Affix>
-              <div className={styles.pageContentContainer}>
-              { children }
-              </div>
-            </Col>
-          </Row>
+          <SideMenu />
+          <div className={styles.pageContentContainer}>
+          <Affix offsetTop={top} className={styles.appHeader}>
+            <Header />
+          </Affix>
+          <div className={styles.pageContentWrapper}>
+          { children }
+          </div>
+          </div>
         </div>
       </HelmetProvider>
     );

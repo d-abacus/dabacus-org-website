@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Menu, Affix } from 'antd';
+import React from 'react';
+import { Menu } from 'antd';
 import { Link, withRouter } from 'umi';
 import indexIcon from '../../assets/index-icon.png';
 import farmIcon from '../../assets/farm-icon.png';
@@ -15,14 +15,12 @@ type SideMenuProps = {
 
 const SideMenu: React.FC<SideMenuProps> = (props: SideMenuProps) => {
 
-  const [top, setTop] = useState(0);
-
   var skeys: Array<string> = [];
   const path: string = props.location['pathname'].replace('/app/', '');
   skeys.push(path);
 
   return (
-    <Affix offsetTop={top} className={styles.appSideBar + " app-side-bar"}>
+    <div className={styles.appSideBar + " app-side-bar"}>
       <Link to="/"><img alt="logo" className={styles.logo} src={logo} /></Link>
       <Menu
         className={styles.sideMenu}
@@ -41,7 +39,7 @@ const SideMenu: React.FC<SideMenuProps> = (props: SideMenuProps) => {
           <img className="normal-icon" src={farmIcon} /> Farm
         </Link></Menu.Item>
       </Menu>
-    </Affix>
+    </div>
   );
 };
 
