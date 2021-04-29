@@ -4,6 +4,7 @@ import { Area } from '@ant-design/charts';
 import { PageContainer } from '@ant-design/pro-layout';
 import './Dindex.less';
 import appBgd from '../assets/app-bgd.png';
+import logoBall from '../assets/logo-ball.png';
 
 
 export default (): React.ReactNode => {
@@ -120,6 +121,9 @@ export default (): React.ReactNode => {
     <div className="chart-bgd"><img src={appBgd} /></div>
     <div className="index-chart"><Area {...config} /></div>
     <div className="indexed-ranking">Indexed Currencies Ranking</div>
-    <Table dataSource={resData} columns={columns} pagination={{ pageSize: 50}} />
+    <div className="index-table">
+      <Table dataSource={resData} columns={columns} pagination={{ pageSize: 50}} />
+      <img className="logo-ball" src={logoBall} />
+    </div>
   </PageContainer>;
 };
