@@ -95,3 +95,28 @@
 		right: -40px;	
 	}
 }
+
+@media only screen and (max-width: 768px) {
+  .chart-bgd {
+    display: none;
+  }
+
+  .ant-table-tbody > tr > td, .ant-table-thead > tr > th {
+
+		&:first-child, &:nth-child(2), &:nth-child(6) {
+			display: none;
+		}
+	}
+
+	.index-chart, .ant-table-wrapper {
+		padding: 8px;
+	}
+
+	.index-table {
+		.logo-ball {
+			display: none;	
+		}
+	}
+
+
+}
