@@ -119,7 +119,19 @@ export default (): React.ReactNode => {
   })
   return <PageContainer>
     <div className="chart-bgd"><img src={appBgd} /></div>
-    <div className="index-chart"><Area {...config} /></div>
+    <div className="index-chart">
+      <div className="world-unit-title">A World Unit of Account (WUA)</div>
+      <div className="time-buttons">
+        <ul>
+          <li className="selected">24H</li>
+          <li>1W</li>
+          <li>1M</li>
+        </ul>
+      </div>
+      <div className="world-unit-amount">$167.284</div>
+      <div className="world-unit-percent">+12.212 + 16%</div>
+      <Area {...config} />
+    </div>
     <div className="indexed-ranking">Indexed Currencies Ranking</div>
     <div className="index-table">
       <Table dataSource={resData} columns={columns} pagination={{ pageSize: 50}} />

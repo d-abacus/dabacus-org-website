@@ -104,9 +104,61 @@
 	}
 }
 
+.world-unit-title {
+	font-family: @dabacus-font-medium;
+	font-size: 24px;
+	color: #000;
+}
+
+.world-unit-percent {
+	font-family: @dabacus-font-medium;
+	font-size: 18px;
+	color: #00CD08;
+	margin-bottom: 54px;
+}
+
+.world-unit-amount {
+	font-family: @dabacus-font-heavy;
+	font-size: 36px;
+	color: @theme-color;
+}
+
+.time-buttons {
+
+	    float: right;
+	    margin-top: -35px;
+
+	li {
+		display: inline-block;
+		background: #F9F9F9;
+		border-radius: 12px;
+		width: 42px;
+		height: 42px;
+		font-family: @dabacus-font-heavy;
+		font-size: 12px;
+		margin-left: 24px;
+		color: @theme-color;
+		text-align: center;
+		line-height: 42px;
+
+		&.selected, &:hover {
+			background: @theme-color;
+			color: #fff;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
 @media only screen and (max-width: 768px) {
   .chart-bgd {
     display: none;
+  }
+
+  .time-buttons {
+  	display: none;
   }
 
   .ant-table-tbody > tr > td, .ant-table-thead > tr > th {
