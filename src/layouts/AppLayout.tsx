@@ -49,7 +49,7 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
         <div className={styles.container}>
           <SideMenu />
           <div className={styles.pageContentContainer}>
-          <Affix offsetTop={top} className={styles.appHeader}>
+          <Affix offsetTop={top} className={styles.appHeader + " app-header"}>
             <Header />
           </Affix>
           <div className={styles.pageContentWrapper}>
