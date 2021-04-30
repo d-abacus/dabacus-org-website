@@ -15,12 +15,12 @@
 		display: inline-block;
 	}
 
-	.active-icon {
+	.active-icon, .light-icon {
 		display: none;
 	}
 
 	.ant-menu-item-selected {
-		.normal-icon {
+		.normal-icon, light-icon {
 			display: none;
 		}
 
@@ -50,10 +50,18 @@
 			color: #000;
 		}
 
-		&:hover {
+		&:not(.ant-menu-item-selected):hover {
+
+			.light-icon {
+				display: inline-block;
+			}
+
+			.normal-icon, .active-icon {
+				display: none;
+			}
 
 			a {
-				color: #000;
+				color: #E3E4E7;
 			}
 		}
 
