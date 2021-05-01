@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
-import { Area } from '@ant-design/charts';
+import { Line } from '@ant-design/charts';
 import { PageContainer } from '@ant-design/pro-layout';
 import './Dindex.less';
 import appBgd from '../assets/app-bgd.png';
@@ -63,7 +63,8 @@ export default (): React.ReactNode => {
       });
   };
   const isBigEnough = (element: Object, index: number, array: Array<Object>) => { 
-   return element["id"] !== 'tether' && element["id"] !== 'usd-coin' && element["id"] !== 'wrapped-bitcoin'; 
+   return element["id"] !== 'tether' && element["id"] !== 'usd-coin' && element["id"] !== 'wrapped-bitcoin' && 
+            element["id"] !== 'binance-usd' && element["id"] !== 'cusdc'; 
   } 
   const calTotal = () => {
     var total: number = 0;
@@ -92,13 +93,47 @@ export default (): React.ReactNode => {
         console.log('fetch data failed', error);
       });
   };
+
+  var labelConfig = {
+        style:{
+          fontSize: 14,
+          fontWeight: 800,
+          fill: '#AAB0B8',
+          fontFamily: 'Avenir-Medium',
+        }
+      };
+
   var config = {
     data: data,
+    smooth: true,
     xField: 'Date',
     yField: 'scales',
-    xAxis: { tickCount: 5 },
-    areaStyle: function areaStyle() {
-      return { fill: 'l(270) 0:#ffffff 0.5:#7ec2f3 1:#1890ff' };
+    color: '#5956FF',
+    lineStyle: {
+      lineWidth: 2,
+    },
+    tooltip: {
+      customContent: (title, data) => {
+        return <div style={{ color: '#AAB0B8', fontWeight: 800, fontSize: 14, fontFamily: 'Avenir-Medium' }}>
+          {title}
+        </div>
+      }
+    },
+    xAxis: { 
+      label: labelConfig,
+      tickLine: null,
+      grid: null,
+    },
+    yAxis: { 
+      label: labelConfig,
+      tickLine: null,
+      grid: {
+        line: {
+          style: {
+            stroke: '#f1f1f1',
+          }
+        }
+      },
     },
   };
   var total: number = tableData.length > 0 ? calTotal() : 0;
@@ -130,7 +165,7 @@ export default (): React.ReactNode => {
       </div>
       <div className="world-unit-amount">$167.284</div>
       <div className="world-unit-percent">+12.212 + 16%</div>
-      <Area {...config} />
+      <Line {...config} />
     </div>
     <div className="indexed-ranking">Indexed Currencies Ranking</div>
     <div className="index-table">

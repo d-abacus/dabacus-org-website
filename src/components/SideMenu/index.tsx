@@ -3,10 +3,11 @@ import { Menu } from 'antd';
 import { Link, withRouter } from 'umi';
 import indexIcon from '../../assets/index-icon.png';
 import indexLightIcon from '../../assets/index-light-icon.png';
-import farmIcon from '../../assets/farm-icon.png';
-import swapIcon from '../../assets/swap-icon.png';
+import farmIcon from '../../assets/farm-normal-icon.png';
+import swapIcon from '../../assets/swap-normal-icon.png';
 import swapLightIcon from '../../assets/swap-light-icon.png';
 import farmLightIcon from '../../assets/farm-light-icon.png';
+import farmActiveIcon from '../../assets/farm-active-icon.png';
 import indexActiveIcon from '../../assets/index-icon-active.png';
 import swapActiveIcon from '../../assets/swap-icon-active.png';
 import logo from '../../assets/logo.svg';
@@ -43,6 +44,7 @@ const SideMenu: React.FC<SideMenuProps> = (props: SideMenuProps) => {
         <Menu.Item key="farm">
           <Link to="/coming-soon" target="_blank">
             <img className="light-icon" src={farmLightIcon} />
+            <img className="active-icon" src={farmActiveIcon} />
             <img className="normal-icon" src={farmIcon} /> Farm
           </Link>
         </Menu.Item>
