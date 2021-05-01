@@ -40,10 +40,12 @@ const SideMenu: React.FC<SideMenuProps> = (props: SideMenuProps) => {
           <img className="normal-icon" src={swapIcon} />
           <img className="active-icon" src={swapActiveIcon} /> Swap
         </Link></Menu.Item>
-        <Menu.Item key="farm"><Link to="/coming-soon">
-          <img className="light-icon" src={farmLightIcon} />
-          <img className="normal-icon" src={farmIcon} /> Farm
-        </Link></Menu.Item>
+        <Menu.Item key="farm">
+          <Link to="/coming-soon" target="_blank">
+            <img className="light-icon" src={farmLightIcon} />
+            <img className="normal-icon" src={farmIcon} /> Farm
+          </Link>
+        </Menu.Item>
       </Menu>
     </div>
   );

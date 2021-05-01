@@ -84,7 +84,13 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
          )
         }
         </Menu.Item>
-        <SubMenu className="language-menu" icon={<CustomIcon imgSrc={earthIcon} size={20} />} key="language" title="English">
+        <SubMenu 
+          className="language-menu" 
+          icon={<CustomIcon imgSrc={earthIcon} size={20} />} 
+          key="language" 
+          title="English"
+          popupClassName="language-popup"
+        >
           <Menu.Item key="english"><span className="menu-item-span">English</span></Menu.Item>
           <Menu.Item key="chinese"><span className="menu-item-span">Chinese</span></Menu.Item>
           <Menu.Item key="spanish"><span className="menu-item-span">Spanish</span></Menu.Item>

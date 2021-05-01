@@ -138,8 +138,8 @@ export default (): React.ReactNode => {
       </Fade>
 
       <Fade bottom cascade>
-      <div className={styles.subtitle + " " + styles.communityTitle}>Community</div>
       <Row>
+        <Col span={24}><div className={styles.subtitle + " " + styles.communityTitle}>Community</div></Col>
         <Col xs={12} sm={12} md={6} className={styles.communityImg}>
           <img src={snapshot} />
           <img src={snapshotActive} className={styles.activeSocial} />

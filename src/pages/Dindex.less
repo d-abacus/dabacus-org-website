@@ -12,10 +12,30 @@
 	display: none;
 }
 
+.index-table .ant-table-wrapper {
+	padding: 32px;
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td {
+	background: #FFFFFF;
+}
+
 .ant-table-tbody > tr {
+	overflow: hidden;
+
 	&:hover {
-		background: #F9F9F9;
-		box-shadow: 0px 3px 8px rgba(13, 13, 13, 0.1);
+		& > td {
+			background: #FFFFFF;
+
+			&:first-child, &:last-child {
+				border-radius: 12px;
+			}
+		}
+
+		background: #FFFFFF;
+		border: 1px solid #F9F9F9;
+		box-sizing: border-box;
+		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
 		border-radius: 12px;
 	}
 }
@@ -137,14 +157,19 @@
 		font-family: @dabacus-font-heavy;
 		font-size: 12px;
 		margin-left: 24px;
-		color: @theme-color;
+		color: #AAB0B8;
 		text-align: center;
 		line-height: 42px;
 
-		&.selected, &:hover {
+		&.selected, &.selected:hover {
 			background: @theme-color;
 			color: #fff;
 		}
+
+		&:hover {
+			color: @theme-color;
+		}
+
 
 		&:hover {
 			cursor: pointer;
