@@ -25,14 +25,26 @@
     background-size: cover;
 }
 
+.tabBar {
+		display: none;
+}
+
 
 @media only screen and (max-width: 768px) {
   .pageContentContainer {
 		margin-left: 0px;
 	}
 
+	.tabBar {
+		display: block;
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		padding-top: 68px;
+	}
+
 	.pageContentWrapper {
-		padding: 15px;
-		background: none;
+		display: none;
 	}
 }

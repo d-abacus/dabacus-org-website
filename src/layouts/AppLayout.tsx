@@ -7,6 +7,7 @@ import type { ConnectState } from '@/models/connect';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from '../components/Header';
 import SideMenu from '../components/SideMenu';
+import TabBar from '../components/TabBar';
 import styles from './AppLayout.less';
 import '../components/AppHeader/menu.less';
 
@@ -54,6 +55,9 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
           </Affix>
           <div className={styles.pageContentWrapper}>
           { children }
+          </div>
+          <div className={styles.tabBar}>
+            <TabBar />
           </div>
           </div>
         </div>

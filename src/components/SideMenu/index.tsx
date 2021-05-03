@@ -9,7 +9,7 @@ import swapLightIcon from '../../assets/swap-light-icon.png';
 import farmLightIcon from '../../assets/farm-light-icon.png';
 import farmActiveIcon from '../../assets/farm-active-icon.png';
 import indexActiveIcon from '../../assets/index-icon-active.png';
-import swapActiveIcon from '../../assets/swap-icon-active.png';
+import swapActiveIcon from '../../assets/swap-active-icon.png';
 import logo from '../../assets/logo.svg';
 import styles from './index.less';
 

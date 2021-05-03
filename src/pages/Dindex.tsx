@@ -127,6 +127,7 @@ export default (): React.ReactNode => {
     yAxis: { 
       label: labelConfig,
       tickLine: null,
+      subTickLine: null,
       grid: {
         line: {
           style: {

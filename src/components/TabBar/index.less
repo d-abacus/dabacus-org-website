@@ -1,0 +1,17 @@
+@import '../../global.less';
+
+.am-tab-bar-bar {
+  height: 80px;
+  padding-bottom: 15px;
+
+  .am-tab-bar-tab-title {
+    font-family: @dabacus-font-medium;
+    font-size: 12px;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  html:not([data-scale]) .am-tab-bar-bar::before {
+    display: none;
+  }
+}
