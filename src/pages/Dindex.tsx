@@ -13,6 +13,8 @@ export default (): React.ReactNode => {
   const [data, setData] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [coinData, setCoinData] = useState([]);
+  const [dailyData, setDailyData] = useState([]);
+  const [range, setRange] = useState(0);
   const columns: Array<Object> = [
     {
       title: 'Rank',
@@ -51,12 +53,13 @@ export default (): React.ReactNode => {
     },
   ];
   useEffect(() => {
-    asyncFetch();
+    asyncFetch('HourlyData');
+    asyncFetch('DailyData');
     asyncFetchTable();
     asyncFetchCoinData();
   }, []);
-  const asyncFetch = () => {
-    fetch('https://htapi.easy-ins.cn/1.1/classes/HourlyData?limit=24', {
+  const asyncFetch = (cname: string) => {
+    fetch('https://htapi.easy-ins.cn/1.1/classes/'+cname+'?limit=24', {
       headers: {
         'X-LC-Id': 'Hg1dKKWBU8CPrnI2M13FSjyT-gzGzoHsz',
         'X-LC-Key': 'tRpxTTU9l9QROGBKW54h8TcC',
@@ -64,12 +67,16 @@ export default (): React.ReactNode => {
       },
     })
       .then((response) => response.json())
-      .then((json) => setData(json['results'].map((obj) => {
-        console.log('ttttttt: ', obj.time);
-        const res = { value: obj.value, "time": moment(obj.time.iso).format('HH')};
-        console.log(JSON.stringify(res));
-        return res;
-      })))
+      .then((json) => {
+        const res: Array<Object> = json['results'].map((obj) => {
+            return { value: obj.value, "time": moment(obj.time.iso).format(cname === 'HourlyData' ? 'HH' : 'DD')};
+          });
+        if (cname === 'HourlyData') {
+          setData(res);
+        } else {
+          setDailyData(res);
+        }
+      })
       .catch((error) => {
         console.log('fetch data failed', error);
       });
@@ -115,6 +122,9 @@ export default (): React.ReactNode => {
         console.log('fetch data failed', error);
       });
   };
+  const changeRange = (index: number) => {
+    setRange(index);
+  };
 
   var labelConfig = {
         style:{
@@ -126,7 +136,10 @@ export default (): React.ReactNode => {
       };
 
   var config = {
-    data: data,
+    data: range == 0 ? data : ( range == 1 ? 
+      dailyData.slice(Math.max(0, dailyData.length - 7), dailyData.length) :
+      dailyData
+    ),
     smooth: true,
     xField: 'time',
     yField: 'value',
@@ -181,9 +194,9 @@ export default (): React.ReactNode => {
       <div className="world-unit-title">A World Unit of Account (WUA)</div>
       <div className="time-buttons">
         <ul>
-          <li className="selected">24H</li>
-          <li>1W</li>
-          <li>1M</li>
+          <li onClick={() => { changeRange(0) }} className={range == 0 ? "selected" : ""}>24H</li>
+          <li onClick={() => { changeRange(1) }} className={range == 1 ? "selected" : ""}>1W</li>
+          <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
         </ul>
       </div>
       <div className="world-unit-amount">$167.284</div>
