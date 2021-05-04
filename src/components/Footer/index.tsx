@@ -2,39 +2,40 @@ import React from 'react';
 
 import styles from './index.less';
 import { Row, Col } from 'antd';
+import { Link } from 'umi';
 import discord from '../../assets/discord-black.png';
 import medium from '../../assets/medium-black.png';
 import snapshot from '../../assets/snapshot-black.png';
 import wechat from '../../assets/wechat-blakc.png';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
 
 const Footer: React.FC = () => {
   return <div className={styles.footer}>
   	<Row>
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Community</div>
+        <Link to="/announcements">Announcements</Link>
   			<a href="#">Snapshot</a>
   			<a href="#">Medium</a>
   			<a href="#">Discord</a>
-  			<a href="#">Announcements</a>
   		</Col>
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Developers</div>
+        <Link to="/road-map">Road Map</Link>
   			<a href="#">Docs</a>
   			<a href="#">Github</a>
-  			<a href="#">Road Map</a>
   		</Col>
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Learn</div>
-  			<a href="#">Dabacus’ Philosophy</a>
-  			<a href="#">About</a>
-  			<a href="#">Glossary</a>
-  			<a href="#">FAQ</a>
+        <Link to="/about">About</Link>
+  			<a href="#">dAbacus’ Values</a>
+  			<Link to="/glossary">Glossary</Link>
+  			<Link to="/faq">FAQ</Link>
   		</Col>
   		<Col xs={12} sm={12} md={4}>
-  			<div className={styles.footerTitle}>Products</div>
-  			<a href="#">White Paper</a>
-  			<a href="#">World Unit of Account Index</a>
+  			<div className={styles.footerTitle}>Applications</div>
+  			<Link to="/app/index">The Unit</Link>
+  			<a href="#">The Unit White Paper</a>
   			<a href="#">Exchange</a>
   		</Col>
   		<Col xs={24} sm={24} md={8}>

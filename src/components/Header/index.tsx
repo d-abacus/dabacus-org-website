@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, Affix } from 'antd';
 import { Link, withRouter } from 'umi';
 import { useWallet } from 'use-wallet'
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
 import styles from './index.less';
 import './menu.less';
 import ThemeButton from '../ThemeButton';
@@ -42,10 +42,10 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
       <Link className={isApp ? 'hide-app show-app-mobile' : ''} to="/"><img alt="logo" className={styles.logo} src={logo} /></Link>
         <Menu className={styles.pageMenu} mode="horizontal" selectedKeys={skeys}>
         <SubMenu className={isApp ? 'hide-app' : ''} key="community" title="Community">
+        <Menu.Item key="announcements"><Link to="/announcements"><span className="menu-item-span">Announcements</span></Link></Menu.Item>
           <Menu.Item key="community:1"><span className="menu-item-span">Snapshot</span></Menu.Item>
           <Menu.Item key="community:2"><span className="menu-item-span">Medium</span></Menu.Item>
           <Menu.Item key="community:3"><span className="menu-item-span">Discord</span></Menu.Item>
-          <Menu.Item key="announcements"><Link to="/announcements"><span className="menu-item-span">Announcements</span></Link></Menu.Item>
         </SubMenu>
         <SubMenu className={isApp ? 'hide-app' : ''} key="developers" title="Developers">
           <Menu.Item key="developers:1"><span className="menu-item-span">Docs</span></Menu.Item>
@@ -55,11 +55,11 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           </Menu.Item>
         </SubMenu>
         <SubMenu className={isApp ? 'hide-app' : ''} key="learn" title="Learn">
-          <Menu.Item key="philosophy">
-           <span className="menu-item-span">Dabacus' Philosophy</span>
-          </Menu.Item>
           <Menu.Item key="about">
             <Link to="/about"><span className="menu-item-span">About</span></Link>
+          </Menu.Item>
+          <Menu.Item key="philosophy">
+           <span className="menu-item-span">Dabacus' Values</span>
           </Menu.Item>
           <Menu.Item key="glossary">
             <Link to="/glossary"><span className="menu-item-span">Glossary</span></Link>
@@ -68,13 +68,13 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             <Link to="/faq"><span className="menu-item-span">FAQ</span></Link>
           </Menu.Item>
         </SubMenu>
-        <SubMenu className={isApp ? 'hide-app' : ''} key="products" title="Products">
-          <Menu.Item key="products:1"><span className="menu-item-span">White Paper</span></Menu.Item>
-          <Menu.Item key="products:2"><span className="menu-item-span">World Unit of Account Index</span></Menu.Item>
+        <SubMenu className={isApp ? 'hide-app' : ''} key="applications" title="Applications">
+        <Menu.Item key="products:2"><span className="menu-item-span">The Unit</span></Menu.Item>
+          <Menu.Item key="products:1"><span className="menu-item-span">The Unit White Paper</span></Menu.Item>
           <Menu.Item key="products:3"><span className="menu-item-span">Exchange</span></Menu.Item>
         </SubMenu>
         <Menu.Item className={isApp ? 'hide-app' : ''} key="useApp">
-          <Link to="/app/index"><ThemeButton>Use App</ThemeButton></Link>
+          <Link to="/app/index"><ThemeButton>The Unit</ThemeButton></Link>
         </Menu.Item>
         <Menu.Item className={isApp ? 'hide-other show-app' : 'hide-other'} key="connectWallet">
         {wallet.status === 'connected' ? (

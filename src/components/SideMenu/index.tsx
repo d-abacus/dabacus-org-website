@@ -10,7 +10,7 @@ import farmLightIcon from '../../assets/farm-light-icon.png';
 import farmActiveIcon from '../../assets/farm-active-icon.png';
 import indexActiveIcon from '../../assets/index-icon-active.png';
 import swapActiveIcon from '../../assets/swap-active-icon.png';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
 import styles from './index.less';
 
 type SideMenuProps = {
@@ -34,7 +34,7 @@ const SideMenu: React.FC<SideMenuProps> = (props: SideMenuProps) => {
         <Menu.Item key="index"><Link to="/app/index">
           <img className="light-icon" src={indexLightIcon} />
           <img className="normal-icon" src={indexIcon} />
-          <img className="active-icon" src={indexActiveIcon} /> Index
+          <img className="active-icon" src={indexActiveIcon} /> The Unit
         </Link></Menu.Item>
         <Menu.Item key="swap"><Link to="/app/swap">
           <img className="light-icon" src={swapLightIcon} />

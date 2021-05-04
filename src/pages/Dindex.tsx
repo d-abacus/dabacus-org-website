@@ -188,10 +188,15 @@ export default (): React.ReactNode => {
       price_change_percentage_24h: ((element["price_change_24h"] / WUNBTC / (element["current_price"] / WUNBTC) *100).toFixed(2)) + '%',
     }
   })
+  const initialValue: number = data.length > 0 ? data[0].value * 100000000 : 0;
+  const endValue: number = data.length > 0 ? data[data.length-1].value * 100000000 : 0;
+  const diff: number = (endValue - initialValue).toFixed(3);
+  const sign: string = diff > 0 ? '+' : '-';
+  const percentage: string = sign + (initialValue > 0 ? diff / initialValue : 0).toFixed(2) + '%';
   return <PageContainer>
     <div className="chart-bgd"><img src={appBgd} /></div>
     <div className="index-chart">
-      <div className="world-unit-title">A World Unit of Account (WUA)</div>
+      <div className="world-unit-title">The Unit (Ø)</div>
       <div className="time-buttons">
         <ul>
           <li onClick={() => { changeRange(0) }} className={range == 0 ? "selected" : ""}>24H</li>
@@ -199,8 +204,8 @@ export default (): React.ReactNode => {
           <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
         </ul>
       </div>
-      <div className="world-unit-amount">$167.284</div>
-      <div className="world-unit-percent">+12.212 + 16%</div>
+      <div className="world-unit-amount">{'1Ø = ' + endValue.toFixed(2) + 's'}</div>
+      <div className="world-unit-percent">{sign + diff + '   ' + percentage}</div>
       <Line {...config} />
     </div>
     <div className="indexed-ranking">Indexed Currencies Ranking</div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, withRouter, history } from 'umi';
 import { Popover, NavBar, Accordion, List } from 'antd-mobile';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
 import styles from './index.less';
 import menuIcon from '../../assets/menu.png';
 import closeIcon from '../../assets/close.png';
@@ -90,31 +90,31 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
       <Accordion className={"menu-accordion" + (visible ? " show" : "")}>
           <Accordion.Panel header="Community">
             <List className="my-list">
+              <List.Item onClick={() => onLinkTapped("/announcements")}>Announcements</List.Item>
               <List.Item>Snapshot</List.Item>
               <List.Item>Medium</List.Item>
               <List.Item>Discord</List.Item>
-              <List.Item onClick={() => onLinkTapped("/announcements")}>Announcements</List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Developers" className="pad">
             <List className="my-list">
+              <List.Item onClick={() => onLinkTapped("/road-map")}>Road Map</List.Item>
               <List.Item>Docs</List.Item>
               <List.Item>Github</List.Item>
-              <List.Item onClick={() => onLinkTapped("/road-map")}>Road Map</List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Learn" className="pad">
             <List className="my-list">
-              <List.Item>Dabacus' Philosophy</List.Item>
               <List.Item onClick={() => onLinkTapped("/about")}>About</List.Item>
+              <List.Item>Dabacus' Values</List.Item>
               <List.Item onClick={() => onLinkTapped("/glossary")}>Glossary</List.Item>
               <List.Item onClick={() => onLinkTapped("/faq")}>FAQ</List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Products" className="pad">
             <List className="my-list">
-              <List.Item>White Paper</List.Item>
-              <List.Item>World Unit of Account Index</List.Item>
+              <List.Item onClick={() => onLinkTapped("/app/index")}>The Unit</List.Item>
+              <List.Item>The Unit White Paper</List.Item>
               <List.Item>Exchange</List.Item>
             </List>
           </Accordion.Panel>

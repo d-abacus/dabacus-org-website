@@ -66,7 +66,7 @@ export default (): React.ReactNode => {
           <p className={styles.p + " " + styles.topPara}>Our network of networks aims at achieving consensus throughout 
             the Milky Way and beyond thanks to our Blocktree ledger structure and 
             our focus on post-quantum cryptography.</p>
-          <Link to='/app/index'><ThemeButton>Use App</ThemeButton></Link>
+          <Link to='/app/index'><ThemeButton>The Unit</ThemeButton></Link>
         </Col>
         <Col xs={0} sm={0} md={10}>
           <img className={styles.featureGif + " " + styles.topGif} src={gif1} />
@@ -120,9 +120,9 @@ export default (): React.ReactNode => {
           <div className={styles.halfFeatureWrapperLeft}>
             <div className={styles.subtitle + " hide-mobile"}>A crypto-native<span className={styles.titleSpan}> Unit </span>of Account</div>
             <div className={styles.subtitle + " show-mobile"}>A crypto-native<span className={styles.titleSpan}> Unit</span><br />of Account</div>
-            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " hide-mobile"}>Our comprehensive community managed crypto index tied to global population data aims to replace the USD as the World Unit of Account.</div>
-            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " show-mobile"}>Our comprehensive community managed crypto index tied to global population data aims to replace the USD as the <br/>World Unit of Account.</div>
-            <ThemeButton>Use Index</ThemeButton>
+            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " hide-mobile"}>Our comprehensive community-managed crypto index tied to global population data, The Unit, aims to replace the USD as the World Unit of Account.</div>
+            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " show-mobile"}>Our comprehensive community-managed crypto index tied to global population data, The Unit, aims to replace the USD as the <br/>World Unit of Account.</div>
+            <Link to='/app/index'><ThemeButton>The Unit</ThemeButton></Link>
           </div>
         </Col>
         <Col xs={24} sm={24} md={12}>
