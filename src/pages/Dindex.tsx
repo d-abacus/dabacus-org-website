@@ -147,13 +147,12 @@ export default (): React.ReactNode => {
     lineStyle: {
       lineWidth: 2,
     },
-    // tooltip: {
-    //   customContent: (title, data) => {
-    //     return <div style={{ color: '#AAB0B8', fontWeight: 800, fontSize: 14, fontFamily: 'Avenir-Medium' }}>
-    //       {JSON.stringify(data.data)}
-    //     </div>
-    //   }
-    // },
+    tooltip: {
+      fields: ['value'],
+      formatter: (datum: Datum) => {
+        return { name: datum.time, value: (datum.value*100000000).toFixed(2) + 's' };
+      },
+    },
     xAxis: { 
       label: labelConfig,
       tickLine: null,
@@ -162,8 +161,8 @@ export default (): React.ReactNode => {
     yAxis: { 
       label: labelConfig,
       tickLine: null,
-      min: 0.000056,
-      max: 0.000058,
+      min: 0.000055,
+      max: 0.000059,
       subTickLine: null,
       grid: {
         line: {
