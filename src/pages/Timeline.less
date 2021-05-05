@@ -8,17 +8,15 @@
 	margin-bottom: 120px;
 }
 
-.control-dots, .carousel-status {
-	display: none;
-}
-
 .buttons-row .ant-btn-text:hover,
 .buttons-row .ant-btn-text:focus {
 	background: none;
 }
 
-.carousel {
-	.slide {
+.slick-slider {
+	.slick-slide {
+		position: relative;
+
 		img {
 			height: 66px;
 		}
@@ -28,10 +26,11 @@
 				position: absolute;
 				width: 43px;
 				height: 248px;
+				left: 36%;
 			}
 
 			.all-events {
-				margin-left: 60%;
+				margin-left: 48%;
     			text-align: left;
 
     			h2 {
@@ -89,8 +88,8 @@
 }
 
 @media only screen and (max-width: 768px) {
-	.carousel {
-		.slide {
+	.slick-slider {
+		.slick-slide {
 
 			.events {
 				img.indicator {

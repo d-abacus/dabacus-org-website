@@ -71,9 +71,10 @@
     "react-dom": "^17.0.0",
     "react-helmet-async": "^1.0.4",
     "react-parallax": "^3.3.0",
-    "react-responsive-carousel": "^3.2.16",
     "react-reveal": "^1.2.2",
     "react-scrollspy": "^3.4.3",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1",
     "umi": "^3.4.1",
     "umi-request": "^1.0.8",
     "use-wallet": "^0.8.1"
