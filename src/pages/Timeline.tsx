@@ -15,30 +15,41 @@ export default (): React.ReactNode => {
 
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const mySlider = useRef(null)
+  const myMobileSlider = useRef(null)
   const next = (num: number) => {
     setCurrentSlide(num);
     mySlider.current.slickGoTo(num)
   }
 
+  const nextMobile = (num: number) => {
+    setCurrentSlide(num);
+    myMobileSlider.current.slickGoTo(num)
+  }
+
   const timelines: Array<Object> = [
+  {},
     {"February 2019": ["Ignition of the Ideas"]},
+    {},
     {"5-5-5 (May 5, 2021)": [
-      "Launch of dAbacus.org", 
-      "Launch of the first instance of ABA on the Ethereum network",
+      "Launch of dAbacus.org",
     ]},
     {"June-July": [
-      "Launch of the next instance of ABA on a new network", 
+      "Launch of the first instance of ABA on the Ethereum network",
+      "Launch of the next instance of ABA on a new network",
     ]},
     {"August": [
       "Launch of 2ØY", 
     ]},
+    {},
     {"6-6-6 (June 6, 2022)": [
       "Mainnet Launch, Aleph-Zero", 
     ]},
+    {},
     {"7-7-7 (July 7, 2023)": [
       "Launch of the dAbax wallet for edge dapps", 
     ]},
     {"Future": ["TBD"]},
+    {}
   ]
 
   const mobileTimelines: Array<String> = 
@@ -58,7 +69,7 @@ export default (): React.ReactNode => {
     variableWidth: true,
     responsive: [
         {
-          breakpoint: 769,
+          breakpoint: 768,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -74,6 +85,7 @@ export default (): React.ReactNode => {
         Road Map
       </div>
 
+      <div className="hide-mobile">
       <Slider ref={slider => (mySlider.current = slider)} {...settings}>
 
         {timelines.map((obj: Object, index: number) => {
@@ -103,18 +115,56 @@ export default (): React.ReactNode => {
       </Slider>
       <Row className="buttons-row" justify="center">
         <Col span={4}>
-          <Button className={currentSlide == 0 ? 'active' : ''} type="text" onClick={() => next(0)}>2019</Button>
+          <Button className={currentSlide < 2 ? 'active' : ''} type="text" onClick={() => next(0)}>2019</Button>
         </Col>
         <Col span={4}>
-          <Button className={currentSlide < 4 && currentSlide > 0 ? 'active' : ''} type="text" onClick={() => next(1)}>2021</Button>
+          <Button className={currentSlide <= 5 && currentSlide >= 3 ? 'active' : ''} type="text" onClick={() => next(3)}>2021</Button>
         </Col>
         <Col span={4}>
-          <Button className={currentSlide == 4 ? 'active' : ''} type="text" onClick={() => next(4)}>2022</Button>
+          <Button className={currentSlide <= 8 && currentSlide >= 6 ? 'active' : ''} type="text" onClick={() => next(6)}>2022</Button>
         </Col>
         <Col span={4}>
-          <Button className={currentSlide == 5 ? 'active' : ''} type="text" onClick={() => next(5)}>2023</Button>
+          <Button className={currentSlide > 8 ? 'active' : ''} type="text" onClick={() => next(9)}>2023</Button>
         </Col>
       </Row>
+      </div>
+
+      <div className="show-mobile">
+      <Slider ref={slider => (myMobileSlider.current = slider)} {...settings}>
+
+        {timelines.filter(t => Object.keys(t).length > 0).map((obj: Object, index: number) => {
+          const month: String = Object.keys(obj)[0];
+            const events: Array<String> = obj[month];
+            return <div>
+              <div className="events">
+              <img className="indicator" src={index < 2 ? indicatorImg : indicatorEmptyImg} />
+              <div className="all-events">
+                <h2>{month}</h2>
+                {events.map((event: String, index: number) => 
+                                <p>{event}</p>
+                              )}
+              </div>
+              </div>
+              <div><img src={pathImg} /></div>
+            </div>
+         })}
+
+      </Slider>
+      <Row className="buttons-row" justify="center">
+        <Col span={4}>
+          <Button className={currentSlide == 0 ? 'active' : ''} type="text" onClick={() => nextMobile(0)}>2019</Button>
+        </Col>
+        <Col span={4}>
+          <Button className={currentSlide <= 3 && currentSlide >= 1 ? 'active' : ''} type="text" onClick={() => nextMobile(1)}>2021</Button>
+        </Col>
+        <Col span={4}>
+          <Button className={currentSlide == 4 ? 'active' : ''} type="text" onClick={() => nextMobile(4)}>2022</Button>
+        </Col>
+        <Col span={4}>
+          <Button className={currentSlide == 5 ? 'active' : ''} type="text" onClick={() => nextMobile(5)}>2023</Button>
+        </Col>
+      </Row>
+      </div>
 
 
     </PageContainer>
