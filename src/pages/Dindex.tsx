@@ -152,6 +152,22 @@ export default (): React.ReactNode => {
       formatter: (datum: Datum) => {
         return { name: datum.time, value: (datum.value*100000000).toFixed(2) + 's' };
       },
+      customContent: (title, items) => {
+        return (
+          <>
+            <ul style={{ paddingLeft: 0 }}>
+              {items?.map((item, index) => {
+                const { name, value, color } = item;
+                return (
+                  <li>
+                    {value}
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        );
+      },
     },
     xAxis: { 
       label: labelConfig,

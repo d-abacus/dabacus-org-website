@@ -3,6 +3,7 @@ import styles from './Coming.less';
 import comingSoon from '../assets/coming-soon.mp4';
 import Countdown from 'react-countdown';
 import { Row, Col } from 'antd';
+import moment from 'moment';
 import learnImg from '../assets/Learn.png'
 import logo from '../assets/logo-white.png'
 
@@ -29,7 +30,7 @@ export default (): React.ReactNode => {
       </div>
 
       <div className={styles.countDown}>
-        <Countdown date={Date.now() + 100000000} renderer={(props) =>
+        <Countdown date={moment('2021-06-21')} renderer={(props) =>
           <Row align="top">
             <Col className={styles.countNum} span={3}>
               <div>{props.days < 10 ? ('0' + props.days) : props.days.toString()}</div>
