@@ -67,15 +67,15 @@ export default (): React.ReactNode => {
     swipeToSlide: true,
     centerPadding: '0px',
     variableWidth: true,
-    responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          }
-        },
-    ],
+    beforeChange: (current, next) => setCurrentSlide(next),
+  };
+
+  const settingsMobile = {
+    dots: false,
+    infinite: false,
+    arrows: false,
+    slidesToShow: 1,
+    swipeToSlide: true,
     beforeChange: (current, next) => setCurrentSlide(next),
   };
 
@@ -130,7 +130,7 @@ export default (): React.ReactNode => {
       </div>
 
       <div className="show-mobile">
-      <Slider ref={slider => (myMobileSlider.current = slider)} {...settings}>
+      <Slider ref={slider => (myMobileSlider.current = slider)} {...settingsMobile}>
 
         {timelines.filter(t => Object.keys(t).length > 0).map((obj: Object, index: number) => {
           const month: String = Object.keys(obj)[0];
