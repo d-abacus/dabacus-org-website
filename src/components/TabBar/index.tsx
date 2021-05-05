@@ -24,7 +24,7 @@ const SideMenu: React.FC = () => {
       <TabBar.Item
         title="Index"
         key="Index"
-        icon={<img width="24" src={indexIcon} />}
+        icon={<img width="24" height="24" src={indexIcon} />}
         selectedIcon={<img width="24" src={indexActiveIcon} />}
         selected={selectedTab === 'index'}
         onPress={() => {
@@ -34,7 +34,7 @@ const SideMenu: React.FC = () => {
         <Dindex />
       </TabBar.Item>
       <TabBar.Item
-        icon={<img width="24" src={swapIcon} />}
+        icon={<img width="24" height="24" src={swapIcon} />}
         selectedIcon={<img width="24" src={swapActiveIcon} />}
         title="Swap"
         key="Swap"
@@ -46,7 +46,7 @@ const SideMenu: React.FC = () => {
         <Swap />
       </TabBar.Item>
       <TabBar.Item
-        icon={<img width="24" src={farmIcon} />}
+        icon={<img width="24" height="24" src={farmIcon} />}
         selectedIcon={<img width="24" src={farmActiveIcon} />}
         title="Farm"
         key="Farm"

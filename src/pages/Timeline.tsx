@@ -19,9 +19,9 @@ export default (): React.ReactNode => {
 
   const timelines: Array<Object> = [
   {},
-    {"Februray": ["Ignition of the Ideas"]},
+    {"February": ["Ignition of the Ideas"]},
     {"5-5-5 (May 5, 2021)": [
-      "Launch of Dabacus.org", 
+      "Launch of dAbacus.org", 
       "Launch of the first instance of ABA on the Ethereum network",
     ]},
     {"June-July": [

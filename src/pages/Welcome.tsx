@@ -32,12 +32,12 @@ const features: Array<string> = [
   "Trustless", "Scalable", "Open", "Secure", "Verifiable", "Permissionless"
 ];
 const featureDesc: Array<string> = [
-  "Dabacus has no trusted central party.", 
+  "dAbacus has no trusted central party.", 
   "Our new blocktree architecture allows unbounded on-chain scaling.", 
-  "Dabacus will remain open for participants to join the network by performing physical permissionless work (PoW) instead of through virtual permissioned ownership (PoS).", 
-  "Dabacus will be backed by Proof-of-Work, tested and proven to be the highest level of ledger security for an open distributed ledger.", 
+  "dAbacus will remain open for participants to join the network by performing physical permissionless work (PoW) instead of through virtual permissioned ownership (PoS).", 
+  "dAbacus will be backed by Proof-of-Work, tested and proven to be the highest level of ledger security for an open distributed ledger.", 
   "All code and transaction data is fully independently verifiable.", 
-  "Dabacus allows everyone to participate as equals."
+  "dAbacus allows everyone to participate as equals."
 ];
 const featuresImg: Array<string> = [
   trustlessImg, scalableImg, openImg, verifiableImg, secureImg, permissionlessImg
@@ -101,8 +101,8 @@ export default (): React.ReactNode => {
       <Col xs={24} sm={24} md={12} order={1}>
         <div className={styles.halfFeatureWrapper}>
         <div className={styles.subtitle}>Building<span className={styles.titleSpan}> the World’s Accounting </span>Machine</div>
-        <div className={styles.subtitleDesc + " hide-mobile"}>Dabacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the post-quantum era.</div>
-        <div className={styles.subtitleDesc + " show-mobile"}>Dabacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the <br/>post-quantum era.</div>
+        <div className={styles.subtitleDesc + " hide-mobile"}>dAbacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the post-quantum era.</div>
+        <div className={styles.subtitleDesc + " show-mobile"}>dAbacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the <br/>post-quantum era.</div>
         </div>
       </Col>
       </Row>

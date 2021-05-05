@@ -48,18 +48,18 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <Menu.Item key="community:3"><span className="menu-item-span">Discord</span></Menu.Item>
         </SubMenu>
         <SubMenu className={isApp ? 'hide-app' : ''} key="developers" title="Developers">
-          <Menu.Item key="developers:1"><span className="menu-item-span">Docs</span></Menu.Item>
-          <Menu.Item key="developers:2"><span className="menu-item-span">Github</span></Menu.Item>
-          <Menu.Item key="developers:3">
+          <Menu.Item key="road-map">
             <Link to="/road-map"><span className="menu-item-span">Road Map</span></Link>
           </Menu.Item>
+          <Menu.Item key="developers:1"><span className="menu-item-span">Docs</span></Menu.Item>
+          <Menu.Item key="developers:2"><span className="menu-item-span">Github</span></Menu.Item>
         </SubMenu>
         <SubMenu className={isApp ? 'hide-app' : ''} key="learn" title="Learn">
           <Menu.Item key="about">
             <Link to="/about"><span className="menu-item-span">About</span></Link>
           </Menu.Item>
           <Menu.Item key="philosophy">
-           <span className="menu-item-span">Dabacus' Values</span>
+           <span className="menu-item-span">dAbacus' Values</span>
           </Menu.Item>
           <Menu.Item key="glossary">
             <Link to="/glossary"><span className="menu-item-span">Glossary</span></Link>
@@ -69,7 +69,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           </Menu.Item>
         </SubMenu>
         <SubMenu className={isApp ? 'hide-app' : ''} key="applications" title="Applications">
-        <Menu.Item key="products:2"><span className="menu-item-span">The Unit</span></Menu.Item>
+          <Menu.Item key="products:2">
+            <Link to="/app/index"><span className="menu-item-span">The Unit</span></Link>
+          </Menu.Item>
           <Menu.Item key="products:1"><span className="menu-item-span">The Unit White Paper</span></Menu.Item>
           <Menu.Item key="products:3"><span className="menu-item-span">Exchange</span></Menu.Item>
         </SubMenu>

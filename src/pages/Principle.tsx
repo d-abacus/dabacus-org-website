@@ -14,23 +14,21 @@ export default (): React.ReactNode => {
       <Row className="announcements-row">
         <Col xs={0} sm={0} md={5}>
           <Affix offsetTop={top} className="affix-container">
-            <Scrollspy items={['introduction', 'interstella', 'accounting', 'crypto-native', 'vision', 'technology', 'incentives', 'tentative', 'community']} currentClassName="is-current">
-              <li><a href="#introduction">Introduction</a></li>
+            <Scrollspy items={['introduction', 'interstellar', 'accounting', 'crypto-native', 'vision', 'technology', 'incentives', 'tentative', 'community']} currentClassName="is-current">
+              <li><a href="#introduction">Welcome to dAbacus</a></li>
               <li><a href="#interstellar">An Interstellar Supernet for Edge Decentralized Applications</a></li>
               <li><a href="#accounting">The World’s Accounting Machine</a></li>
               <li><a href="#crypto-native">A Crypto-Native Unit of Account</a></li>
-              <li><a href="#vision">Dabacus Vision and Mission</a></li>
-              <li><a href="#technology">Dabacus Technology and Resources</a></li>
-              <li><a href="#incentives">Dabacus Incentives</a></li>
+              <li><a href="#vision">dAbacus Vision and Mission</a></li>
+              <li><a href="#technology">dAbacus Technology and Resources</a></li>
+              <li><a href="#incentives">dAbacus Incentives</a></li>
               <li><a href="#tentative">Tentative Blocktree Parameters</a></li>
-              <li><a href="#community">Dabacus Community</a></li>
+              <li><a href="#community">dAbacus Community</a></li>
             </Scrollspy>
           </Affix>
         </Col>
         <Col className="right-col" xs={24} sm={24} md={19}>
-          <div className="page-title">Welcome to Dabacus</div>
-          <div id="introduction" className="page-subtitle">Introduction</div>
-          <p className="page-content"><span className="para-initial">B</span>itcoin combined the mathematical ideas that allowed us to have peer-to-peer electronic cash (our first open-source electronic asset). Since then, thousands of instances of this idea have been launched into cyberspace. A significant achievement was the launch of Ethereum, the second generation network aiming at generalizing the capabilities of Bitcoin. dAbacus is doing its part by creating the next iteration of a value computing structure: the Blocktree. We are learning from the developments of the crypto industry, creating a more complete and modular system capable of successfully fusing the power of decentralized applications with the value storage capabilities of an immutable ledger.</p>
+          <div id="introduction" className="page-title">Welcome to dAbacus</div>
 
           <div id="interstellar" className="page-subtitle">An Interstellar Supernet for Edge Decentralized Applications</div>
           <div className="more-desc">Our network of networks aims at reaching consensus throughout the Milky Way and beyond thanks to our Blocktree ledger structure and our focus on post-quantum cryptography.</div>
@@ -115,7 +113,7 @@ export default (): React.ReactNode => {
 
             Github: <a target="_blank" href="https://github.com/d-abacus">https://github.com/d-abacus</a><br /><br />
 
-            Reddit: <a target="_blank" href="https://www.reddit.com/r/Dabacus/">https://www.reddit.com/r/Dabacus/</a><br /><br />
+            Reddit: <a target="_blank" href="https://www.reddit.com/r/dAbacus/">https://www.reddit.com/r/dAbacus/</a><br /><br />
 
             Medium: <a target="_blank" href="https://medium.com/@dabacus">https://medium.com/@dabacus</a>
           </p>

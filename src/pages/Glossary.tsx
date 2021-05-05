@@ -7,7 +7,7 @@ import { Row, Col } from 'antd';
 const glossaryTitles: Array<String> = [
   "Binary Tree", "Block", "Blocktree", "Blockchain",
   "Branch", "Consensus Algorithm", "Cryptocurrency", "Cryptographic Hash Function",
-  "Dabacus", "Decentralized Application", "Deterministic Wallet (HD Wallet)", "Digital Currency",
+  "dAbacus", "Decentralized Application", "Deterministic Wallet (HD Wallet)", "Digital Currency",
   "Digital Signature", "Directed Acyclic Graph (DAG)", "Distributed Hash Table (DHT)", "Fork",
   "Graph", "Hash", "Hashing", "Hash Function",
   "Hash Pointer", "Leaf", "Merkle Tree", "Mining",

@@ -146,7 +146,6 @@
 .time-buttons {
 
 	    float: right;
-	    margin-top: -35px;
 
 	li {
 		display: inline-block;
@@ -187,10 +186,6 @@
     display: none;
   }
 
-  .time-buttons {
-  	display: none;
-  }
-
   .ant-table-tbody > tr > td, .ant-table-thead > tr > th {
 
 		&:first-child, &:nth-child(2), &:nth-child(6) {
@@ -208,6 +203,23 @@
 		}
 
 		padding-bottom: 60px;
+	}
+
+	.world-unit-amount {
+	    font-size: 24px;
+	}
+
+	.time-buttons {
+	    float: none;
+	    margin: 15px 0 8px 0;
+
+	    ul {
+	    	padding-left: 0;
+
+	    	li:first-child {
+	    		margin-left: 0;
+	    	}
+	    }
 	}
 
 

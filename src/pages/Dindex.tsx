@@ -196,14 +196,14 @@ export default (): React.ReactNode => {
   return <PageContainer>
     <div className="chart-bgd"><img src={appBgd} /></div>
     <div className="index-chart">
-      <div className="world-unit-title">The Unit (Ø)</div>
-      <div className="time-buttons">
+    <div className="time-buttons">
         <ul>
           <li onClick={() => { changeRange(0) }} className={range == 0 ? "selected" : ""}>24H</li>
           <li onClick={() => { changeRange(1) }} className={range == 1 ? "selected" : ""}>1W</li>
           <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
         </ul>
       </div>
+      <div className="world-unit-title">The Unit (Ø)</div>
       <div className="world-unit-amount">{'1Ø = ' + endValue.toFixed(2) + 's'}</div>
       <div className="world-unit-percent">{sign + diff + '   ' + percentage}</div>
       <Line {...config} />
