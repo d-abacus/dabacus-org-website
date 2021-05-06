@@ -19,7 +19,7 @@ export default (): React.ReactNode => {
 <br/><br/>
 It's a community for individuals like Dave, a father of two, energy depleted by the banks toying with his life's assets. Chen, a talented developer, was excited to freelance for the first time, but then he threw the towel when every transfer fee felt like a stab. Carmen, who hasn't voted in the last 20 years because she perceives all parties as holding the same hand, raising her taxes again. A community for those slaved of this modern "democracy" where a centralized few are handling your value. 
 <br/><br/>
-A community united by a common purpose, a solid demand for change. We are building dAbacus because the work demands more equality, privacy, liberty and independence than ever before
+A community united by a common purpose, a solid demand for change. We are building dAbacus because the world demands more equality, privacy, liberty and independence than ever before
         </div>
 
 

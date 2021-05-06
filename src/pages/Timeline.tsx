@@ -48,7 +48,6 @@ export default (): React.ReactNode => {
     {"7-7-7 (July 7, 2023)": [
       "Launch of the dAbax wallet for edge dapps", 
     ]},
-    {"Future": ["TBD"]},
     {}
   ]
 
