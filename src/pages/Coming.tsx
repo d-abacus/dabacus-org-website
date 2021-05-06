@@ -6,16 +6,19 @@ import { Row, Col } from 'antd';
 import moment from 'moment';
 import learnImg from '../assets/Learn.png'
 import logo from '../assets/logo-white.png'
+import video from '../assets/video.gif'
 
 
 export default (): React.ReactNode => {
 
   return (
     <div className={styles.comingSoon}>
-      <video autoPlay loop muted className={styles.video}>
+      <video autoPlay loop muted className={styles.video + " hide-mobile"}>
         <source src={comingSoon} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+
+      <img src={video} className={styles.video + " show-mobile"} />
 
       <div className={styles.logo}>
         <img src={logo} />
