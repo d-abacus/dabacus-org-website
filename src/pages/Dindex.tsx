@@ -36,11 +36,13 @@ export default (): React.ReactNode => {
       title: 'Price',
       dataIndex: 'current_price',
       key: 'price',
+      align: 'right',
     },
     {
       title: '24H',
       dataIndex: 'price_change_percentage_24h',
       key: 'change',
+      align: 'right',
       render: text => <span className={text.indexOf('-') > -1 ? 'dropped' : 'increased'}>
         {(text.indexOf('-') > -1 ? '' : '+') + text}
         </span>,
@@ -49,6 +51,7 @@ export default (): React.ReactNode => {
       title: 'Volumn(24h)',
       width: 168,
       dataIndex: 'total_volume',
+      align: 'right',
       key: 'volum',
     },
   ];
@@ -59,7 +62,7 @@ export default (): React.ReactNode => {
     asyncFetchCoinData();
   }, []);
   const asyncFetch = (cname: string) => {
-    fetch('https://htapi.easy-ins.cn/1.1/classes/'+cname+'?limit=24&order=-createdAt', {
+    fetch('https://htapi.easy-ins.cn/1.1/classes/'+cname+'?limit=23&order=-createdAt', {
       headers: {
         'X-LC-Id': 'Hg1dKKWBU8CPrnI2M13FSjyT-gzGzoHsz',
         'X-LC-Key': 'tRpxTTU9l9QROGBKW54h8TcC',
@@ -178,7 +181,7 @@ export default (): React.ReactNode => {
       label: labelConfig,
       tickLine: null,
       min: 0.000055,
-      max: 0.000059,
+      max: 0.000060,
       subTickLine: null,
       grid: {
         line: {
@@ -198,7 +201,7 @@ export default (): React.ReactNode => {
       market_cap_rank: element["market_cap_rank"],
       image: element["image"],
       name: element["name"],
-      current_price: (element["current_price"] / WUNBTC).toFixed(3).toLocaleString(),
+      current_price: 'Ø' + (element["current_price"] / WUNBTC).toFixed(3).toLocaleString(),
       total_volume: (element["total_volume"] / WUNBTC).toFixed(0).toLocaleString(),
       price_change_percentage_24h: ((element["price_change_24h"] / WUNBTC / (element["current_price"] / WUNBTC) *100).toFixed(2)) + '%',
     }
@@ -219,7 +222,7 @@ export default (): React.ReactNode => {
         </ul>
       </div>
       <div className="world-unit-title">The Unit (Ø)</div>
-      <div className="world-unit-amount">{'1Ø = ' + endValue.toFixed(2) + 's'}</div>
+      <div className="world-unit-amount">{'Ø1 = ' + endValue.toFixed(2) + 's'}</div>
       <div className="world-unit-percent">{sign + diff + '   ' + percentage}</div>
       <Line {...config} />
     </div>
