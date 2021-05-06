@@ -59,7 +59,7 @@ export default (): React.ReactNode => {
     asyncFetchCoinData();
   }, []);
   const asyncFetch = (cname: string) => {
-    fetch('https://htapi.easy-ins.cn/1.1/classes/'+cname+'?limit=24', {
+    fetch('https://htapi.easy-ins.cn/1.1/classes/'+cname+'?limit=24&order=-createdAt', {
       headers: {
         'X-LC-Id': 'Hg1dKKWBU8CPrnI2M13FSjyT-gzGzoHsz',
         'X-LC-Key': 'tRpxTTU9l9QROGBKW54h8TcC',
@@ -68,7 +68,7 @@ export default (): React.ReactNode => {
     })
       .then((response) => response.json())
       .then((json) => {
-        const res: Array<Object> = json['results'].map((obj) => {
+        const res: Array<Object> = json['results'].reverse().map((obj) => {
             return { value: obj.value, "time": moment(obj.time.iso).format(cname === 'HourlyData' ? 'HH' : 'DD')};
           });
         if (cname === 'HourlyData') {
