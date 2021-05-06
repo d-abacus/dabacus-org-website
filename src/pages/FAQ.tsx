@@ -27,13 +27,13 @@ export default (): React.ReactNode => {
             return <CustomIcon imgSrc={caretDown} size={24} />
           }
         }} expandIconPosition="left">
-        <Panel header="01  What is aDbacus?" key="1">
-          <p>aDbacus is a peer-to-peer network and distributed open-source software project 
+        <Panel header="01  What is dAbacus?" key="1">
+          <p>dAbacus is a peer-to-peer network and distributed open-source software project 
           that bases itself on the blocktree ledger structure. dAbacus is also a new medium 
           of exchange and a store of value. </p>
         </Panel>
         <Panel header="02  Is dAbacus money?" key="2">
-          <p>aDbacus is not money since it does not have two of the four functions of money. 
+          <p>dAbacus is not money since it does not have two of the four functions of money. 
           dAbacus is not a standard for deferred payments and it’s also not a unit of account 
           or ruler with which to measure value. These two properties will be covered by a 
           parallel project called Dabax.</p>
