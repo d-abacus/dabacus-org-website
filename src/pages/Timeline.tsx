@@ -28,7 +28,7 @@ export default (): React.ReactNode => {
 
   const timelines: Array<Object> = [
   {},
-    {"February 2019": ["Ignition of the Ideas"]},
+    {"February 2019": ["Ignition of the Idea"]},
     {},
     {"5-5-5 (May 5, 2021)": [
       "Launch of dAbacus.org",
@@ -42,7 +42,7 @@ export default (): React.ReactNode => {
     ]},
     {},
     {"6-6-6 (June 6, 2022)": [
-      "Mainnet Launch, Aleph-Zero", 
+      "Aleph-Zero Mainnet Launch", 
     ]},
     {},
     {"7-7-7 (July 7, 2023)": [

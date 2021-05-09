@@ -41,7 +41,7 @@ At first, dAbacus will use the Ethereum network to bootstrap its development, to
 
 
 
-<div className={styles.aboutTitle}>become dAbacus missionary</div>
+<div className={styles.aboutTitle}>Become dAbacus missionary</div>
         <div className={styles.aboutBody}>Sail across the great sea of decentralization, deploying and acting on a message that will change humanity, bringing a proactive transformation we’ve waited far too long for. 
 </div>
 
