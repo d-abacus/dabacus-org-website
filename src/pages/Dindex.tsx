@@ -95,7 +95,7 @@ export default (): React.ReactNode => {
     const factor: number = cap / 243;
     const resJson = json.filter((element: Object, index: number, array: Array<Object>) => { 
      return element["id"] !== 'tether' && element["id"] !== 'usd-coin' && element["id"] !== 'wrapped-bitcoin' && 
-              element["id"] !== 'binance-usd' && element["id"] !== 'compound-usd-coin' && element["market_cap"] > factor; 
+              element["id"] !== 'binance-usd' && element["id"] !== 'dai' && element["market_cap"] > factor; 
     });
     return resJson;
   }
