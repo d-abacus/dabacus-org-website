@@ -209,7 +209,7 @@ export default (): React.ReactNode => {
   const initialValue: number = data.length > 0 ? data[0].value * 100000000 : 0;
   const endValue: number = data.length > 0 ? data[data.length-1].value * 100000000 : 0;
   const diff: number = (endValue - initialValue).toFixed(3);
-  const sign: string = diff > 0 ? '+' : '-';
+  const sign: string = diff > 0 ? '+' : '';
   const percentage: string = sign + (initialValue > 0 ? diff / initialValue : 0).toFixed(2) + '%';
   return <PageContainer>
     <div className="chart-bgd"><img src={appBgd} /></div>
