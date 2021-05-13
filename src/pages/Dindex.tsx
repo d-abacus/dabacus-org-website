@@ -62,17 +62,15 @@ export default (): React.ReactNode => {
     asyncFetchCoinData();
   }, []);
   const asyncFetch = (cname: string) => {
-    fetch('https://htapi.easy-ins.cn/1.1/classes/'+cname+'?limit=23&order=-createdAt', {
+    fetch('http://dabacus.org:3000/'+(cname === 'HourlyData' ? 'hourly-data' : 'daily-data'), {
       headers: {
-        'X-LC-Id': 'Hg1dKKWBU8CPrnI2M13FSjyT-gzGzoHsz',
-        'X-LC-Key': 'tRpxTTU9l9QROGBKW54h8TcC',
         'Content-Type': 'application/json'
       },
     })
       .then((response) => response.json())
       .then((json) => {
-        const res: Array<Object> = json['results'].reverse().map((obj) => {
-            return { value: obj.value, "time": moment(obj.time.iso).format(cname === 'HourlyData' ? 'HH' : 'DD')};
+        const res: Array<Object> = json.reverse().map((obj) => {
+            return { value: obj.value, "time": moment(obj.time).format(cname === 'HourlyData' ? 'HH' : 'DD')};
           });
         if (cname === 'HourlyData') {
           setData(res);
