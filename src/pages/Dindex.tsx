@@ -179,6 +179,7 @@ export default (): React.ReactNode => {
       label: labelConfig,
       tickLine: null,
       tickInterval: 0.000002,
+      min: 0.000054,
       subTickLine: null,
       grid: {
         line: {
