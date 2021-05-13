@@ -178,8 +178,7 @@ export default (): React.ReactNode => {
     yAxis: { 
       label: labelConfig,
       tickLine: null,
-      min: 0.000057,
-      max: 0.000063,
+      tickInterval: 0.000002,
       subTickLine: null,
       grid: {
         line: {

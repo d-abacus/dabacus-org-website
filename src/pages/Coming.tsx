@@ -21,7 +21,7 @@ export default (): React.ReactNode => {
       <img src={video} className={styles.video + " show-mobile"} />
 
       <div className={styles.logo}>
-        <img src={logo} />
+        <a href="/"><img src={logo} /></a>
       </div>
 
       <div className={styles.learn}>
