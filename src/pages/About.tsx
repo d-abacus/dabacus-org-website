@@ -13,8 +13,8 @@ export default (): React.ReactNode => {
 
 
       <div className={styles.about}>
+        <div className={styles.topPara}>
         <div className={styles.aboutTitle}>We are ... you</div>
-        <div className={styles.aboutBody}>
           A community built by individuals who share the pain of giving their power away to others who claim they can handle their value better than themselves. 
 <br/><br/>
 It's a community for individuals like Dave, a father of two, energy depleted by the banks toying with his life's assets. Chen, a talented developer, was excited to freelance for the first time, but then he threw the towel when every transfer fee felt like a stab. Carmen, who hasn't voted in the last 20 years because she perceives all parties as holding the same hand, raising her taxes again. A community for those slaved of this modern "democracy" where a centralized few are handling your value. 

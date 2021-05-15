@@ -10,17 +10,31 @@
 }
 
 .about {
-	font-family: @dabacus-font-medium;
-	font-size: 18px;
+	font-family: @dabacus-font;
+	font-size: 24px;
+	font-style: italic;
 	line-height: 33px;
 	width: 66%;
 	margin-bottom: 400px;
 
+	.topPara {
+		font-family: @dabacus-font-medium;
+	}
+
 	.aboutTitle {
-		font-size: 24px;
-		line-height: 32px;
 		margin: 48px 0 30px 0;
 		padding-top: 12px;
+	}
+
+	.aboutBody {
+		font-family: @dabacus-font-medium;
+		font-size: 16px;
+		font-style: normal;
+		line-height: 20px;
+
+		&::first-letter {
+		  font-size: 24px;
+		}
 	}
 }
 
