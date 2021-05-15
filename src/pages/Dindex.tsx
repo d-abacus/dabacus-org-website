@@ -199,8 +199,8 @@ export default (): React.ReactNode => {
       market_cap_rank: element["market_cap_rank"],
       image: element["image"],
       name: element["name"],
-      current_price: 'Ø' + (element["current_price"] / WUNBTC).toFixed(3).toLocaleString(),
-      total_volume: (element["total_volume"] / WUNBTC).toFixed(0).toLocaleString(),
+      current_price: 'Ø' + (element["current_price"] / WUNBTC).toFixed(3).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+      total_volume: 'Ø' + (element["total_volume"] / WUNBTC).toFixed(0).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
       price_change_percentage_24h: ((element["price_change_24h"] / WUNBTC / (element["current_price"] / WUNBTC) *100).toFixed(2)) + '%',
     }
   })
