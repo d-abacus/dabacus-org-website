@@ -12,25 +12,72 @@
 .about {
 	font-family: @dabacus-font;
 	font-size: 24px;
-	font-style: italic;
 	line-height: 33px;
 	width: 66%;
 	margin-bottom: 400px;
 
 	.topPara {
 		font-family: @dabacus-font-medium;
+		font-size: 16px;
+		position: relative;
+		font-style: italic;
+		padding: 50px 0 30px 0;
+
+		.openQuote {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 63px;
+		}
+
+		.closeQuote {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 63px;
+		}
 	}
 
 	.aboutTitle {
 		margin: 48px 0 30px 0;
 		padding-top: 12px;
+		font-family: @dabacus-font-heavy;
 	}
 
 	.aboutBody {
 		font-family: @dabacus-font-medium;
 		font-size: 16px;
-		font-style: normal;
 		line-height: 20px;
+
+		&::first-letter {
+		  font-size: 24px;
+		}
+	}
+
+	.teamTitle {
+		font-family: @dabacus-font-medium;
+		font-weight: 800;
+		font-size: 36px;
+		margin-top: 130px;
+		margin-bottom: 37px;
+	}
+
+	.teamAvatar {
+		width: 187px;
+	}
+
+	.teamName {
+		font-family: @dabacus-font-medium;
+		font-weight: 800;
+		font-size: 24px;
+		margin-top: 24px;
+		margin-bottom: 8px;
+	}
+
+	.teamIntro {
+		font-family: @dabacus-font-medium;
+		font-size: 16px;
+		line-height: 19px;
 
 		&::first-letter {
 		  font-size: 24px;

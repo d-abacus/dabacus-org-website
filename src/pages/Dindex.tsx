@@ -127,6 +127,12 @@ export default (): React.ReactNode => {
     setRange(index);
   };
 
+  const numberWithCommas = (x) => {
+      var parts = x.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+  }
+
   var labelConfig = {
         style:{
           fontSize: 14,
@@ -199,8 +205,8 @@ export default (): React.ReactNode => {
       market_cap_rank: element["market_cap_rank"],
       image: element["image"],
       name: element["name"],
-      current_price: 'Ø' + (element["current_price"] / WUNBTC).toFixed(3).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
-      total_volume: 'Ø' + (element["total_volume"] / WUNBTC).toFixed(0).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+      current_price: 'Ø' + numberWithCommas((element["current_price"] / WUNBTC).toFixed(3)),
+      total_volume: 'Ø' + numberWithCommas((element["total_volume"] / WUNBTC).toFixed(0)),
       price_change_percentage_24h: ((element["price_change_24h"] / WUNBTC / (element["current_price"] / WUNBTC) *100).toFixed(2)) + '%',
     }
   })

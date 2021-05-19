@@ -1,6 +1,10 @@
 import React from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
+import { Row, Col } from 'antd';
 import styles from './About.less';
+import openQuote from '../assets/open-quote.png';
+import closeQuote from '../assets/close-quote.png';
+import ibaiAvatar from '../assets/ibai.png';
 
 
 export default (): React.ReactNode => {
@@ -14,12 +18,12 @@ export default (): React.ReactNode => {
 
       <div className={styles.about}>
         <div className={styles.topPara}>
-        <div className={styles.aboutTitle}>We are ... you</div>
+        <img className={styles.openQuote} src={openQuote} />
+        <img className={styles.closeQuote} src={closeQuote} />
+        We are ... you<br/>
           A community built by individuals who share the pain of giving their power away to others who claim they can handle their value better than themselves. 
 <br/><br/>
 It's a community for individuals like Dave, a father of two, energy depleted by the banks toying with his life's assets. Chen, a talented developer, was excited to freelance for the first time, but then he threw the towel when every transfer fee felt like a stab. Carmen, who hasn't voted in the last 20 years because she perceives all parties as holding the same hand, raising her taxes again. A community for those slaved of this modern "democracy" where a centralized few are handling your value. 
-<br/><br/>
-A community united by a common purpose, a solid demand for change. We are building dAbacus because the world demands more equality, privacy, liberty and independence than ever before
         </div>
 
 
@@ -51,7 +55,20 @@ At first, dAbacus will use the Ethereum network to bootstrap its development, to
  
 </div>
 
-
+      <Row>
+        <Col span={10}>
+          <div className={styles.teamTitle}>
+            Meet our team
+          </div>
+          <img className={styles.teamAvatar} src={ibaiAvatar} />
+          <div className={styles.teamName}>
+            Ibai dribai
+          </div>
+          <div className={styles.teamIntro}>
+            Capable to scale much faster and cost-effectively than any current communities on the space. dAbacus is a hub for decentralized applications, a net of networks united by a common purpose, a solid demand for change. We are building dAbacus because the work demands more equality, privacy, liberty and independence than ever before
+          </div>
+        </Col>
+      </Row>
 
       </div>
 
