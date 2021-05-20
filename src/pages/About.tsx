@@ -55,21 +55,6 @@ At first, dAbacus will use the Ethereum network to bootstrap its development, to
  
 </div>
 
-      <Row>
-        <Col span={10}>
-          <div className={styles.teamTitle}>
-            Meet our team
-          </div>
-          <img className={styles.teamAvatar} src={ibaiAvatar} />
-          <div className={styles.teamName}>
-            Ibai dribai
-          </div>
-          <div className={styles.teamIntro}>
-            Capable to scale much faster and cost-effectively than any current communities on the space. dAbacus is a hub for decentralized applications, a net of networks united by a common purpose, a solid demand for change. We are building dAbacus because the work demands more equality, privacy, liberty and independence than ever before
-          </div>
-        </Col>
-      </Row>
-
       </div>
 
 
