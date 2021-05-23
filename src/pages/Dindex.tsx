@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { Table } from 'antd';
+import { history } from 'umi';
 import { Line } from '@ant-design/charts';
 import { PageContainer } from '@ant-design/pro-layout';
 import './Dindex.less';
@@ -202,6 +203,7 @@ export default (): React.ReactNode => {
   var WUNBTC: number = total / (currentWorldPopulation * averageLifeExpectancyInYears);
   var resData: Array<Object> = tableData.map((element: Object) => {
     return {
+      id: element["id"],
       market_cap_rank: element["market_cap_rank"],
       image: element["image"],
       name: element["name"],
@@ -218,7 +220,7 @@ export default (): React.ReactNode => {
   return <PageContainer>
     <div className="chart-bgd"><img src={appBgd} /></div>
     <div className="index-chart">
-    <div className="time-buttons">
+      <div className="time-buttons">
         <ul>
           <li onClick={() => { changeRange(0) }} className={range == 0 ? "selected" : ""}>24H</li>
           <li onClick={() => { changeRange(1) }} className={range == 1 ? "selected" : ""}>1W</li>
@@ -232,7 +234,18 @@ export default (): React.ReactNode => {
     </div>
     <div className="indexed-ranking">Indexed Currencies Ranking</div>
     <div className="index-table">
-      <Table dataSource={resData} columns={columns} pagination={{ pageSize: 50}} />
+      <Table 
+        dataSource={resData} 
+        columns={columns} 
+        pagination={{ pageSize: 50}} 
+        onRow={record => {
+          return {
+            onClick: event => {
+              history.push('/app/coin/' + record['id']);
+            },
+          };
+        }}
+      />
       <img className="logo-ball" src={logoBall} />
     </div>
   </PageContainer>;

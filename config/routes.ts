@@ -23,6 +23,11 @@
             component: './Dindex',
           },
           {
+            name: 'coin',
+            path: '/app/coin/:id',
+            component: './Coin',
+          },
+          {
             name: 'swap',
             path: '/app/swap',
             component: './Swap',

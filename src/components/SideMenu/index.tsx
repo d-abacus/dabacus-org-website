@@ -21,7 +21,11 @@ const SideMenu: React.FC<SideMenuProps> = (props: SideMenuProps) => {
 
   var skeys: Array<string> = [];
   const path: string = props.location['pathname'].replace('/app/', '');
-  skeys.push(path);
+  if (path.indexOf('coin') == 0) {
+    skeys.push('index');
+  } else {
+    skeys.push(path);
+  }
 
   return (
     <div className={styles.appSideBar + " app-side-bar"}>
