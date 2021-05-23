@@ -22,10 +22,9 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
   const changeRange = (index: number) => {
     setRange(index);
   };
+  const coinIds: string = props.location["pathname"].split('/');
+  const coinId: number = coinIds[coinIds.length-1];
   const asyncFetch = (cname: string) => {
-    const coinIds: string = props.location["pathname"].split('/');
-    const coinId: number = coinIds[coinIds.length-1];
-
     fetch('http://dabacus.org:3000/'+(cname === 'HourlyData' ? 'coin-hourly-data' : 'coin-daily-data')+'/'+coinId.toLowerCase(), {
       headers: {
         'Content-Type': 'application/json'
@@ -111,6 +110,12 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     },
   };
 
+  const initialValue: number = data.length > 0 ? data[0].value * 100000000 : 0;
+  const endValue: number = data.length > 0 ? data[data.length-1].value * 100000000 : 0;
+  const diff: number = (endValue - initialValue).toFixed(3);
+  const sign: string = diff > 0 ? '+' : '';
+  const percentage: string = sign + (initialValue > 0 ? diff / initialValue : 0).toFixed(2) + '%';
+
   return <PageContainer>
     <div className="chart-bgd"><img src={appBgd} /></div>
     <div className="index-chart">
@@ -121,6 +126,8 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
           <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
         </ul>
       </div>
+      <div className="world-unit-amount">{coinId}</div>
+      <div className="world-unit-percent">{sign + diff + '   ' + percentage}</div>
       <div className="coin-chart">
         <Line {...config} />
       </div>

@@ -28,8 +28,14 @@
 		& > td {
 			background: #FFFFFF;
 
-			&:first-child, &:last-child {
-				border-radius: 12px;
+			&:first-child {
+				border-top-left-radius: 12px;
+				border-bottom-left-radius: 12px;
+			}
+
+			&:last-child {
+				border-top-right-radius: 12px;
+				border-bottom-right-radius: 12px;
 			}
 		}
 
@@ -172,10 +178,6 @@
 .g2-tooltip {
 	background: none !important;
 	box-shadow: none !important;
-}
-
-.coin-chart {
-	margin-top: 72px;
 }
 
 @media only screen and (max-width: 768px) {
