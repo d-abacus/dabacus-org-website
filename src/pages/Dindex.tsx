@@ -243,7 +243,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
       </div>
       <div className="world-unit-title">The Unit (Ø)</div>
       <div className="world-unit-amount">{'Ø1 = ' + endValue.toFixed(2) + 's'}</div>
-      <div className="world-unit-percent">{sign + diff + '   ' + percentage}</div>
+      <div className={"world-unit-percent" + (diff > 0 ? '' : ' red')}>{sign + diff + '   ' + percentage}</div>
       <Line {...config} />
     </div>
     <div className="indexed-ranking">Indexed Currencies Ranking</div>

@@ -115,8 +115,8 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     },
   };
 
-  const initialValue: number = data.length > 0 ? data[0].value * 100000000 : 0;
-  const endValue: number = data.length > 0 ? data[data.length-1].value * 100000000 : 0;
+  const initialValue: number = data.length > 0 ? data[0].value : 0;
+  const endValue: number = data.length > 0 ? data[data.length-1].value : 0;
   const diff: number = (endValue - initialValue).toFixed(3);
   const sign: string = diff > 0 ? '+' : '';
   const percentage: string = sign + (initialValue > 0 ? diff / initialValue : 0).toFixed(2) + '%';
@@ -132,7 +132,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
         </ul>
       </div>
       <div className="world-unit-amount">{currentCoin.name}</div>
-      <div className="world-unit-percent">{sign + diff + '   ' + percentage}</div>
+      <div className={"world-unit-percent" + (diff > 0 ? '' : ' red')}>{sign + diff + '   ' + percentage}</div>
       <div className="coin-chart">
         <Line {...config} />
       </div>
