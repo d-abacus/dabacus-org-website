@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'umi';
+import { connect } from 'umi';
 import moment from 'moment';
 import { Line } from '@ant-design/charts';
 import { PageContainer } from '@ant-design/pro-layout';
+import type { CoinModelState } from '@/models/coin';
+import type { ConnectState } from '@/models/connect';
 import appBgd from '../assets/app-bgd.png';
 import logoBall from '../assets/logo-ball.png';
 import './Dindex.less';
 
 type CoinProps = {
-  location: Object;
+  coin: CoinModelState;
 };
 
 const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
+
+  const { coin = {} } = props;
+  const { currentCoin } = coin;
+
   const [data, setData] = useState([]);
   const [dailyData, setDailyData] = useState([]);
   const [range, setRange] = useState(0);
@@ -22,8 +28,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
   const changeRange = (index: number) => {
     setRange(index);
   };
-  const coinIds: string = props.location["pathname"].split('/');
-  const coinId: number = coinIds[coinIds.length-1];
+  const coinId: number = currentCoin.id;
   const asyncFetch = (cname: string) => {
     fetch('http://dabacus.org:3000/'+(cname === 'HourlyData' ? 'coin-hourly-data' : 'coin-daily-data')+'/'+coinId.toLowerCase(), {
       headers: {
@@ -126,7 +131,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
           <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
         </ul>
       </div>
-      <div className="world-unit-amount">{coinId}</div>
+      <div className="world-unit-amount">{currentCoin.name}</div>
       <div className="world-unit-percent">{sign + diff + '   ' + percentage}</div>
       <div className="coin-chart">
         <Line {...config} />
@@ -136,5 +141,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
   </PageContainer>;
 };
 
-export default withRouter(CoinPage);
+export default connect(({ coin }: ConnectState) => ({
+  coin: coin,
+}))(CoinPage);
 

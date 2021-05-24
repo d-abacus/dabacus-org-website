@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { Table } from 'antd';
-import { history } from 'umi';
+import { history, connect } from 'umi';
+import type { Dispatch } from 'umi';
 import { Line } from '@ant-design/charts';
 import { PageContainer } from '@ant-design/pro-layout';
+import type { CoinModelState } from '@/models/coin';
+import type { ConnectState } from '@/models/connect';
+
 import './Dindex.less';
 import appBgd from '../assets/app-bgd.png';
 import logoBall from '../assets/logo-ball.png';
 
+export type DindexProps = {
+  dispatch: Dispatch;
+  coin: CoinModelState;
+};
 
-export default (): React.ReactNode => {
+const Dindex: React.FC<DindexProps> = (props) => {
 
   const [data, setData] = useState([]);
   const [tableData, setTableData] = useState([]);
@@ -20,6 +28,7 @@ export default (): React.ReactNode => {
     {
       title: 'Rank',
       key: 'rank',
+      dataIndex: 'rank',
       render: (text, record, index) => <div>{index+1}</div>,
     },
     {
@@ -143,6 +152,9 @@ export default (): React.ReactNode => {
         }
       };
 
+  const values = data.map((d) => d.value);
+  const minVal = values.length > 0 ? Math.min.apply(Math, values) : 0;
+
   var config = {
     data: range == 0 ? data : ( range == 1 ? 
       dailyData.slice(Math.max(0, dailyData.length - 7), dailyData.length) :
@@ -186,7 +198,7 @@ export default (): React.ReactNode => {
       label: labelConfig,
       tickLine: null,
       tickInterval: 0.000002,
-      min: 0.000054,
+      min: minVal,
       subTickLine: null,
       grid: {
         line: {
@@ -204,6 +216,8 @@ export default (): React.ReactNode => {
   var resData: Array<Object> = tableData.map((element: Object) => {
     return {
       id: element["id"],
+      total_supply: element["total_supply"],
+      max_supply: element["max_supply"],
       market_cap_rank: element["market_cap_rank"],
       image: element["image"],
       name: element["name"],
@@ -238,10 +252,22 @@ export default (): React.ReactNode => {
         dataSource={resData} 
         columns={columns} 
         pagination={{ pageSize: 50}} 
+        rowKey="id"
         onRow={record => {
           return {
             onClick: event => {
-              history.push('/app/coin/' + record['id']);
+              const { dispatch } = props;
+              dispatch({
+                type: 'coin/saveCurrentCoin',
+                payload: {
+                  id: record.id,
+                  name: record.name,
+                  image: record.image,
+                  totalSupply: record.total_supply,
+                  maxSupply: record.max_supply,
+                },
+              });
+              history.push('/app/coin/'+record.id);
             },
           };
         }}
@@ -250,3 +276,7 @@ export default (): React.ReactNode => {
     </div>
   </PageContainer>;
 };
+
+export default connect(({ coin }: ConnectState) => ({
+  coin: coin,
+}))(Dindex);
