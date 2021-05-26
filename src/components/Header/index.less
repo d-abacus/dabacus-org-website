@@ -21,3 +21,60 @@
 	font-family: @dabacus-font-medium;
 	font-size: 18px;
 }
+
+.connectWallet {
+  background-color: @theme-color;
+  border-radius: 12px;
+  font-size: 18px;
+  font-family: @dabacus-font-medium;
+  height: 42px;
+  padding: 0 24px;
+  line-height: 42px;
+  color: #fff;
+
+  &:hover {
+    box-shadow: 0px 0px 16px rgba(11, 25, 160, 0.36);
+  }
+}
+
+.walletWrapper {
+  text-align: center;
+  padding: 16px;
+  font-size: 18px;
+  font-family: @dabacus-font-medium;
+  cursor: pointer;
+
+  &:hover {
+    background: #F9F9F9;
+    border-radius: 16px;
+  }
+
+  .connectBtn {
+    background: #5956FF;
+    border-radius: 8px;
+    padding: 6px 32px;
+    color: #fff;
+    margin-top: 30px;
+  }
+
+  img {
+    width: 60px;
+    display: block;
+    margin: 0 auto 16px auto;
+
+    &.walletConnectLogo {
+      margin: 5px auto 22px auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 969px) {
+  .connectWallet {
+    display: block;
+    margin: 0 auto;
+    height: 38px;
+    font-size: 14px;
+    line-height: 38px;
+    padding: 0 15px;
+  }
+}

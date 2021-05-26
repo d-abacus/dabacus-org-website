@@ -6,6 +6,7 @@ import { Row, Col, Menu, Affix } from 'antd';
 import type { ConnectState } from '@/models/connect';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { DrizzleContext } from '@drizzle/react-plugin'
+import { UseWalletProvider } from 'use-wallet'
 import Header from '../components/Header';
 import SideMenu from '../components/SideMenu';
 import TabBar from '../components/TabBar';
@@ -63,8 +64,11 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
           <meta name="description" content="DABACUS" />
         </Helmet>
 
-        <DrizzleContext.Provider drizzle={drizzle}>
+        
         <div className={styles.container}>
+        <UseWalletProvider chainId={1337} connectors={{
+          walletconnect: { rpcUrl: 'http://127.0.0.1:7545' },
+        }}>
           <SideMenu />
           <div className={styles.pageContentContainer}>
             <Affix offsetTop={top} className={styles.appHeader + " app-header"}>
@@ -77,8 +81,9 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
               <TabBar />
             </div>
           </div>
+          </UseWalletProvider>
         </div>
-        </DrizzleContext.Provider>
+        
       </HelmetProvider>
     );
   }

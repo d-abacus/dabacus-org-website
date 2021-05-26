@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Affix } from 'antd';
+import { Menu, Affix, Popover, Row, Col } from 'antd';
 import { Link, withRouter } from 'umi';
 import { useWallet } from 'use-wallet'
 import logo from '../../assets/logo.png';
@@ -8,6 +8,8 @@ import './menu.less';
 import ThemeButton from '../ThemeButton';
 import CustomIcon from '../CustomIcon';
 import earthIcon from '../../assets/ic_round-language.png';
+import metamaskIcon from '../../assets/metamask.svg';
+import walletConnectIcon from '../../assets/walletconnect-logo.svg';
 
 
 
@@ -35,6 +37,38 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   skeys.push('english');
   console.log(path);
   const isApp: boolean = path.indexOf('app') == 0;
+
+  const connectWallet = (walletType: string) => {
+    if (walletType.length > 0) {
+      wallet.connect(walletType);
+    } else {
+      wallet.connect();
+    }
+  }
+
+  const walletSelections = (
+    <Row gutter={24}>
+      <Col span={12}>
+        <div className={styles.walletWrapper} onClick={() => connectWallet('')}>
+          <img src={metamaskIcon} />
+          MetaMask
+          <div className={styles.connectBtn}>
+            Connect
+          </div>
+        </div>
+      </Col>
+      <Col span={12}>
+        <div className={styles.walletWrapper} onClick={() => connectWallet('walletconnect')}>
+          <img className={styles.walletConnectLogo} src={walletConnectIcon} />
+          WalletConnect
+          <div className={styles.connectBtn}>
+            Connect
+          </div>
+        </div>
+      </Col>
+      <Col span={24}><button onClick={() => wallet.reset()}>disconnect</button></Col>
+    </Row>
+  );
 
   return (
     <Affix offsetTop={top}>
@@ -82,7 +116,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         {wallet.status === 'connected' ? (
           <div className={styles.walletAccount}>{wallet.account}</div>
           ) : (
-          <ThemeButton callback={ () => wallet.connect() }>Connect Wallet</ThemeButton>
+          <Popover overlayClassName="connectWalletContainer" placement="bottomRight" title="Select a wallet" content={walletSelections} trigger="click">
+              <div className={styles.connectWallet}>{wallet.error}</div>
+          </Popover>
          )
         }
         </Menu.Item>

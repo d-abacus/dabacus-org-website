@@ -133,6 +133,28 @@ a.hide-app {
 	min-width: 100px;
 }
 
+.connectWalletContainer {
+
+	.ant-popover-inner {
+		padding: 32px;
+		border-radius: 32px;
+	}
+
+	.ant-popover-arrow {
+		display: none;
+	}
+
+	.ant-popover-title {
+		font-family: @dabacus-font-medium;
+		font-size: 24px;
+		border-bottom: none;
+		text-align: center;
+	}
+}
+
+
+
+
 @media only screen and (max-width: 768px) {
 	a.hide-app.show-app-mobile {
 		display: inline-block;
@@ -160,5 +182,12 @@ a.hide-app {
 	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item {
 		margin-left: 8px;
 		margin-right: 8px;
+	}
+
+	.connectWalletContainer {
+		.ant-popover-inner {
+			padding: 8px;
+			border-radius: 8px;
+		}
 	}
 }

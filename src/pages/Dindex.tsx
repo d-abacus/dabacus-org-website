@@ -179,7 +179,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
               {items?.map((item, index) => {
                 const { name, value, color } = item;
                 return (
-                  <li>
+                  <li key={index}>
                     {value}
                   </li>
                 );
