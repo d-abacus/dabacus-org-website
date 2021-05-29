@@ -184,7 +184,130 @@
 	box-shadow: none !important;
 }
 
-@media only screen and (max-width: 768px) {
+.coin-image {
+	width: 30px;
+	margin-top: -7px;
+  margin-right: 8px;
+}
+
+.coin-name {
+	font-family: @dabacus-font-heavy;
+	font-size: 36px;
+}
+
+.coin-back {
+	font-family: @dabacus-font-medium;
+	font-size: 24px;
+	color: #AAB0B8;
+
+	img {
+		width: 24px;
+		margin-top: -4px;
+    margin-right: 4px;
+	}
+}
+
+.coin-info {
+	.info-title {
+		font-family: @dabacus-font-medium;
+		font-size: 24px;
+		font-weight: 800;
+		margin-top: 50px;
+	}
+
+	.coin-info-title {
+		font-family: @dabacus-font-medium;
+		font-size: 14px;
+		line-height: 18px;
+		color: #AAB0B8;
+		margin-bottom: 8px;
+	}
+
+	.coin-info-content {
+		font-family: @dabacus-font-heavy;
+		font-size: 20px;
+		line-height: 24px;
+	}
+
+	.coin-info-wrapper {
+		padding: 24px 40px;
+
+		cursor: pointer;
+
+		&:hover {
+			.coin-info-title {
+				color: #000;
+			}
+
+			.coin-info-content {
+				color: @theme-color;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 769px) {
+	.coin-info {
+
+		.ant-col + .ant-col {
+			border-left: 1px solid #E3E4E7;
+		}
+
+		.ant-col {
+			border-bottom: 1px solid #E3E4E7;
+		}
+
+		.ant-col:nth-child(3), .ant-col:nth-child(5) {
+			border-left: none;
+		}
+
+		.ant-col:nth-child(5), .ant-col:nth-child(6) {
+			border-bottom: none;
+		}
+
+		.ant-col:nth-child(3), .ant-col:nth-child(1), .ant-col:nth-child(5) {
+			.coin-info-wrapper {
+				padding-left: 0;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.coin-info {
+
+		.ant-col + .ant-col {
+			border-left: 1px solid #E3E4E7;
+		}
+
+		.ant-col {
+			border-bottom: 1px solid #E3E4E7;
+		}
+
+		.ant-col:nth-child(4) {
+			border-left: none;
+		}
+
+		.ant-col:nth-child(4), .ant-col:nth-child(5), .ant-col:nth-child(6) {
+			border-bottom: none;
+		}
+
+		.ant-col:nth-child(4), .ant-col:nth-child(1) {
+			.coin-info-wrapper {
+				padding-left: 0;
+			}
+		}
+
+		.ant-col:nth-child(3), .ant-col:nth-child(5) {
+			.coin-info-wrapper {
+				padding-left: 40px;
+			}
+		}
+	}
+}
+
+
+@media only screen and (max-width: 992px) {
   .chart-bgd {
     display: none;
   }
@@ -206,6 +329,11 @@
 		}
 
 		padding-bottom: 60px;
+	}
+
+	.coin-index-chart {
+		padding-bottom: 30px;
+		border-radius: 0;
 	}
 
 	.world-unit-amount {

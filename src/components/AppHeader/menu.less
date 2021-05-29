@@ -1,14 +1,23 @@
 .app-side-bar {
-	.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-		background-color: transparent !important;
-		background: none !important;
+	.ant-menu:not(.ant-menu-horizontal) {
 
-		&:after {
-			display: none;
+		.ant-menu-item {
+			border-color: #5956FF;
+			transition: border 0.1s ease-in-out;
 		}
 
-		color: #000;
-		border-right: 5px solid #5956FF;
+
+		.ant-menu-item-selected {
+			background-color: transparent !important;
+			background: none !important;
+
+			&:after {
+				display: none;
+			}
+
+			color: #000;
+			border-right: 5px solid #5956FF;
+		}
 	}
 
 	.normal-icon {

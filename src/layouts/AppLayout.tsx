@@ -9,11 +9,11 @@ import { DrizzleContext } from '@drizzle/react-plugin'
 import { UseWalletProvider } from 'use-wallet'
 import Header from '../components/Header';
 import SideMenu from '../components/SideMenu';
-import TabBar from '../components/TabBar';
+import CustomTabBar from '../components/TabBar';
 import styles from './AppLayout.less';
 import '../components/AppHeader/menu.less';
-import JOJOToken from '../contracts/JOJOToken.json';
-import { Drizzle } from "@drizzle/store";
+//import JOJOToken from '../contracts/JOJOToken.json';
+//import { Drizzle } from "@drizzle/store";
 
 
 type MainLayoutProps = {
@@ -40,19 +40,19 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
   render() {
     const { isReady, top } = this.state;
     const { children, loading } = this.props;
-    const drizzleOptions = {
-      web3: {
-        block: false,
-        fallback: {
-          type: "ws",
-          url: "ws://127.0.0.1:7545"
-        }
-      },
-      contracts: [
-       JOJOToken
-      ],
-    };
-    const drizzle = new Drizzle(drizzleOptions);
+    // const drizzleOptions = {
+    //   web3: {
+    //     block: false,
+    //     fallback: {
+    //       type: "ws",
+    //       url: "ws://127.0.0.1:7545"
+    //     }
+    //   },
+    //   contracts: [
+    //    JOJOToken
+    //   ],
+    // };
+    // const drizzle = new Drizzle(drizzleOptions);
 
     if (loading || !isReady) {
       return <PageLoading />;
@@ -66,8 +66,8 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
 
         
         <div className={styles.container}>
-        <UseWalletProvider chainId={1337} connectors={{
-          walletconnect: { rpcUrl: 'http://127.0.0.1:7545' },
+        <UseWalletProvider chainId={1} connectors={{
+          walletconnect: { rpcUrl: 'https://mainnet.infura.io/v3/f875625f90da43609ae3a92d8de5dbe4' },
         }}>
           <SideMenu />
           <div className={styles.pageContentContainer}>
@@ -78,7 +78,7 @@ class MainLayout extends React.Component<MainLayoutProps, MainLayoutState> {
             { children }
             </div>
             <div className={styles.tabBar}>
-              <TabBar />
+              <CustomTabBar>{ children }</CustomTabBar>
             </div>
           </div>
           </UseWalletProvider>

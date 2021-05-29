@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'umi';
+import { connect, Link, history } from 'umi';
 import moment from 'moment';
+import { Row, Col } from 'antd';
 import { Line } from '@ant-design/charts';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { CoinModelState } from '@/models/coin';
 import type { ConnectState } from '@/models/connect';
 import appBgd from '../assets/app-bgd.png';
 import logoBall from '../assets/logo-ball.png';
+import backIcon from '../assets/back.png';
 import './Dindex.less';
 
 type CoinProps = {
@@ -22,15 +24,18 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
   const [dailyData, setDailyData] = useState([]);
   const [range, setRange] = useState(0);
   useEffect(() => {
-    asyncFetch('HourlyData');
-    asyncFetch('DailyData');
+    if (currentCoin) {
+      asyncFetch('HourlyData');
+      asyncFetch('DailyData');
+    } else {
+      history.push('/app/index')
+    }
   }, []);
   const changeRange = (index: number) => {
     setRange(index);
   };
-  const coinId: number = currentCoin.id;
   const asyncFetch = (cname: string) => {
-    fetch('http://dabacus.org:3000/'+(cname === 'HourlyData' ? 'coin-hourly-data' : 'coin-daily-data')+'/'+coinId.toLowerCase(), {
+    fetch('http://dabacus.org:3000/'+(cname === 'HourlyData' ? 'coin-hourly-data' : 'coin-daily-data')+'/'+currentCoin.id.toLowerCase(), {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -38,7 +43,13 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
       .then((response) => response.json())
       .then((json) => {
         const res: Array<Object> = json.reverse().map((obj) => {
-            return { value: obj.value, "time": moment(obj.time).format(cname === 'HourlyData' ? 'HH' : 'DD')};
+            return { 
+              value: obj.value, 
+              "time": moment(obj.time).format(cname === 'HourlyData' ? 'HH' : 'DD'),
+              marketCap: obj.market_cap,
+              totalVolume: obj.total_volume,
+              currentSupply: obj.circulating_supply,
+            };
           });
         if (cname === 'HourlyData') {
           setData(res);
@@ -115,15 +126,25 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     },
   };
 
+  const numberWithCommas = (x) => {
+      var parts = x.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+  }
+
   const initialValue: number = data.length > 0 ? data[0].value : 0;
   const endValue: number = data.length > 0 ? data[data.length-1].value : 0;
   const diff: number = (endValue - initialValue).toFixed(3);
   const sign: string = diff > 0 ? '+' : '';
   const percentage: string = sign + (initialValue > 0 ? diff / initialValue : 0).toFixed(2) + '%';
 
+  const marketCap: number = data.length > 0 ? numberWithCommas(data[data.length-1].marketCap.toFixed(0)) : 0;
+  const totalVolume: number = data.length > 0 ? numberWithCommas(data[data.length-1].totalVolume.toFixed(0)) : 0;
+  const currentSupply: number = data.length > 0 ? numberWithCommas(data[data.length-1].currentSupply.toFixed(0)) : 0;
+
   return <PageContainer>
     <div className="chart-bgd"><img src={appBgd} /></div>
-    <div className="index-chart">
+    <div className="index-chart coin-index-chart">
       <div className="time-buttons">
         <ul>
           <li onClick={() => { changeRange(0) }} className={range == 0 ? "selected" : ""}>24H</li>
@@ -131,11 +152,54 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
           <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
         </ul>
       </div>
-      <div className="world-unit-amount">{currentCoin.name}</div>
+      <Link to="/app/index"><div className="coin-back"><img className="coin-back-icon" src={backIcon} />back</div></Link>
+      <div className="coin-name"><img className="coin-image" src={currentCoin?.image ?? ''} />{currentCoin?.name}</div>
       <div className={"world-unit-percent" + (diff > 0 ? '' : ' red')}>{sign + diff + '   ' + percentage}</div>
       <div className="coin-chart">
         <Line {...config} />
       </div>
+      <div className="coin-info">
+      <div className="info-title">Coin Info</div>
+      <Row>
+          <Col xs={24} sm={24} md={12} lg={12} xl={8}>
+            <div className="coin-info-wrapper">
+              <div className="coin-info-title">Rank</div>
+              <div className="coin-info-content">{currentCoin?.rank ?? 1}</div>
+            </div>
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={8}>
+          <div className="coin-info-wrapper">
+            <div className="coin-info-title">Market Cap</div>
+            <div className="coin-info-content">{marketCap}</div>
+          </div>
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={8}>
+          <div className="coin-info-wrapper">
+            <div className="coin-info-title">Dominance</div>
+            <div className="coin-info-content">{((currentCoin?.dominance ?? 0) * 100).toFixed(2)}%</div>
+          </div>
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={8}>
+          <div className="coin-info-wrapper">
+            <div className="coin-info-title">Total Volumn</div>
+            <div className="coin-info-content">{totalVolume}</div>
+          </div>
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={8}>
+          <div className="coin-info-wrapper">
+            <div className="coin-info-title">Available Supply</div>
+            <div className="coin-info-content">{currentSupply}</div>
+          </div>
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={8}>
+          <div className="coin-info-wrapper">
+            <div className="coin-info-title">Total Supply</div>
+            <div className="coin-info-content">{currentCoin?.totalSupply ? numberWithCommas(currentCoin.totalSupply.toFixed(0)) : 'NA'}</div>
+          </div>
+          </Col>
+        </Row>
+      </div>
+      
     </div>
 
   </PageContainer>;

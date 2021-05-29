@@ -28,8 +28,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
     {
       title: 'Rank',
       key: 'rank',
-      dataIndex: 'rank',
-      render: (text, record, index) => <div>{index+1}</div>,
+      dataIndex: 'rank'
     },
     {
       title: '',
@@ -152,8 +151,9 @@ const Dindex: React.FC<DindexProps> = (props) => {
         }
       };
 
-  const values = data.map((d) => d.value);
+  const values = range == 0 ? data.map((d) => d.value) : dailyData.map((d) => d.value);
   const minVal = values.length > 0 ? Math.min.apply(Math, values) : 0;
+  console.log(minVal);
 
   var config = {
     data: range == 0 ? data : ( range == 1 ? 
@@ -197,7 +197,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
     yAxis: { 
       label: labelConfig,
       tickLine: null,
-      tickInterval: 0.000002,
+      tickInterval: 0.000001,
       min: minVal,
       subTickLine: null,
       grid: {
@@ -213,12 +213,14 @@ const Dindex: React.FC<DindexProps> = (props) => {
   const currentWorldPopulation: number = 7673533972;
   const averageLifeExpectancyInYears: number = 72.6;
   var WUNBTC: number = total / (currentWorldPopulation * averageLifeExpectancyInYears);
-  var resData: Array<Object> = tableData.map((element: Object) => {
+  var resData: Array<Object> = tableData.map((element: Object, index: number) => {
     return {
+      rank: index+1,
       id: element["id"],
       total_supply: element["total_supply"],
       max_supply: element["max_supply"],
       market_cap_rank: element["market_cap_rank"],
+      market_cap: element["market_cap"],
       image: element["image"],
       name: element["name"],
       current_price: 'Ø' + numberWithCommas((element["current_price"] / WUNBTC).toFixed(3)),
@@ -265,6 +267,8 @@ const Dindex: React.FC<DindexProps> = (props) => {
                   image: record.image,
                   totalSupply: record.total_supply,
                   maxSupply: record.max_supply,
+                  rank: record.rank,
+                  dominance: record.market_cap / total,
                 },
               });
               history.push('/app/coin/'+record.id);

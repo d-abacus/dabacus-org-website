@@ -6,6 +6,8 @@ export type CurrentCoin = {
   image?: string;
   totalSupply?: number;
   maxSupply?: number;
+  rank?: number;
+  dominance?: number;
 };
 
 export type CoinModelState = {

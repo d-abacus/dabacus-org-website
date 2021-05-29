@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, PropsWithChildren } from 'react';
 import { TabBar } from 'antd-mobile';
 import { history } from 'umi';
 import Dindex from '../../pages/Dindex.tsx';
@@ -11,7 +11,7 @@ import farmIcon from '../../assets/farm-normal-icon.png';
 import swapIcon from '../../assets/swap-normal-icon.png';
 import './index.less';
 
-const SideMenu: React.FC = () => {
+const CustomTabBar: React.FC<PropsWithChildren> = ({ children }: PropsWithChildren) => {
 
   const [selectedTab, setSelectedTab] = useState('index');
 
@@ -31,7 +31,7 @@ const SideMenu: React.FC = () => {
           setSelectedTab('index');
         }}
       >
-        <Dindex />
+        {children}
       </TabBar.Item>
       <TabBar.Item
         icon={<img width="24" height="24" src={swapIcon} />}
@@ -43,7 +43,7 @@ const SideMenu: React.FC = () => {
           setSelectedTab('swap');
         }}
       >
-        <Swap />
+        {children}
       </TabBar.Item>
       <TabBar.Item
         icon={<img width="24" height="24" src={farmIcon} />}
@@ -52,13 +52,13 @@ const SideMenu: React.FC = () => {
         key="Farm"
         selected={selectedTab === 'farm'}
         onPress={() => {
-          history.push('/coming-soon');
+          setSelectedTab('farm');
         }}
       >
-        <div></div>
+        {children}
       </TabBar.Item>
     </TabBar>
   );
 };
 
-export default SideMenu;
+export default CustomTabBar;

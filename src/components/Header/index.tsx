@@ -22,7 +22,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   const [top, setTop] = useState(0);
-  const wallet = useWallet()
+  var wallet;
 
   var skeys: Array<string> = [];
   const path: string = props.location['pathname'].substring(1);
@@ -38,6 +38,17 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   console.log(path);
   const isApp: boolean = path.indexOf('app') == 0;
 
+  if (isApp) {
+     wallet = useWallet();
+  }
+
+  const shorten = (address: string) => {
+    if (address && address.length > 12) {
+      return address.slice(0, 5) + '...' + address.slice(address.length-5, address.length);
+    }
+    return address;
+  }
+
   const connectWallet = (walletType: string) => {
     if (walletType.length > 0) {
       wallet.connect(walletType);
@@ -46,29 +57,36 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
     }
   }
 
-  const walletSelections = (
-    <Row gutter={24}>
-      <Col span={12}>
-        <div className={styles.walletWrapper} onClick={() => connectWallet('')}>
-          <img src={metamaskIcon} />
-          MetaMask
-          <div className={styles.connectBtn}>
-            Connect
+  const walletSelections = wallet != null && wallet.status === 'connecting' ? (
+      <div className={styles.connectingInfo}>Connecting</div>
+      ) : (
+      <Row gutter={24}>
+        <Col span={12}>
+          <div className={styles.walletWrapper} onClick={() => connectWallet('')}>
+            <img src={metamaskIcon} />
+            MetaMask
+            <div className={styles.connectBtn}>
+              Connect
+            </div>
           </div>
-        </div>
-      </Col>
-      <Col span={12}>
-        <div className={styles.walletWrapper} onClick={() => connectWallet('walletconnect')}>
-          <img className={styles.walletConnectLogo} src={walletConnectIcon} />
-          WalletConnect
-          <div className={styles.connectBtn}>
-            Connect
+        </Col>
+        <Col span={12}>
+          <div className={styles.walletWrapper} onClick={() => connectWallet('walletconnect')}>
+            <img className={styles.walletConnectLogo} src={walletConnectIcon} />
+            WalletConnect
+            <div className={styles.connectBtn}>
+              Connect
+            </div>
           </div>
-        </div>
-      </Col>
-      <Col span={24}><button onClick={() => wallet.reset()}>disconnect</button></Col>
-    </Row>
-  );
+        </Col>
+      </Row>
+     );
+
+  const myWallet = (
+      <div className={styles.connectBtn} onClick={() => wallet.reset()}>
+        Disconnect
+      </div>
+     );
 
   return (
     <Affix offsetTop={top}>
@@ -113,11 +131,13 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <Link to="/app/index"><ThemeButton>The Unit</ThemeButton></Link>
         </Menu.Item>
         <Menu.Item className={isApp ? 'hide-other show-app' : 'hide-other'} key="connectWallet">
-        {wallet.status === 'connected' ? (
-          <div className={styles.walletAccount}>{wallet.account}</div>
+        {wallet != null && wallet.status === 'connected' ? (
+          <Popover overlayClassName="connectWalletContainer" placement="bottomRight" title={wallet.balance + " ETH"} content={myWallet} trigger="click">
+              <div className={styles.walletAccount}>{shorten(wallet.account)}</div>
+          </Popover>
           ) : (
           <Popover overlayClassName="connectWalletContainer" placement="bottomRight" title="Select a wallet" content={walletSelections} trigger="click">
-              <div className={styles.connectWallet}>{wallet.error}</div>
+              <div className={styles.connectWallet}>Connect Wallet</div>
           </Popover>
          )
         }
