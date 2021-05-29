@@ -153,7 +153,6 @@ const Dindex: React.FC<DindexProps> = (props) => {
 
   const values = range == 0 ? data.map((d) => d.value) : dailyData.map((d) => d.value);
   const minVal = values.length > 0 ? Math.min.apply(Math, values) : 0;
-  console.log(minVal);
 
   var config = {
     data: range == 0 ? data : ( range == 1 ? 
