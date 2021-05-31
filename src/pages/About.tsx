@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'umi';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Row, Col } from 'antd';
 import styles from './About.less';
@@ -33,9 +34,7 @@ export default (): React.ReactNode => {
 
         <div className={styles.aboutTitle}>What makes us so different?</div>
         <div className={styles.aboutSubtitle}>The BlockTree, a community-based Supernet specially designed for the Metaverse. POS application networks over a POW foundational layer!</div>
-        <div className={styles.aboutBody}>We don't believe in passivism; we are all about change, so we have built a network of networks born in and for the Metaverse, using Satoshi’s blockchain technology to reach consensus beyond the perceived as impossible thanks to our Blocktree ledger structure.</div>
-
-        <Link to='/announcements'>Learn more</Link>
+        <div className={styles.aboutBody}>We don't believe in passivism; we are all about change, so we have built a network of networks born in and for the Metaverse, using Satoshi’s blockchain technology to reach consensus beyond the perceived as impossible thanks to our Blocktree ledger structure.<Link to='/announcements'> Learn more</Link></div>
 
         <div className={styles.aboutTitle}>The Blocktree, world’s next-level Organism after the blockchain</div>
         <div className={styles.aboutBody}>Capable of scaling much faster and cost-effectively than any current community on the space. A throughput supernet of subnetworks that optimize themselves based on our incentive system. Unlimited, unstoppable.
@@ -59,8 +58,8 @@ export default (): React.ReactNode => {
 
 
 <div className={styles.aboutTitle}>Become a dAbacus Missionary</div>
-        <div className={styles.aboutBody}>Sail across the great sea of decentralization, deploying and acting on a message that will change humanity, bringing a proactive transformation we’ve waited for far too long.
-        <Link to='/announcements'>Learn more</Link>
+        <div className={styles.aboutBody}>Sail across the great sea of decentralization, deploying and acting on a message that will change humanity, bringing a proactive transformation we’ve waited for far too long. 
+        <Link to='/announcements'> Learn more</Link>
 </div>
 
       </div>
