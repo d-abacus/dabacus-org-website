@@ -35,7 +35,6 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   }
   skeys.push(path);
   skeys.push('english');
-  console.log(path);
   const isApp: boolean = path.indexOf('app') == 0;
 
   if (isApp) {
