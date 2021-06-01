@@ -140,7 +140,6 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
 
   const marketCap: number = data.length > 0 ? numberWithCommas(data[data.length-1].marketCap.toFixed(0)) : 0;
   const totalVolume: number = data.length > 0 ? numberWithCommas(data[data.length-1].totalVolume.toFixed(0)) : 0;
-  const currentSupply: number = data.length > 0 ? numberWithCommas(data[data.length-1].currentSupply.toFixed(0)) : 0;
 
   return <PageContainer>
     <div className="chart-bgd"><img src={appBgd} /></div>
@@ -170,7 +169,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
           <Col xs={24} sm={24} md={12} lg={12} xl={8}>
           <div className="coin-info-wrapper">
             <div className="coin-info-title">Market Cap</div>
-            <div className="coin-info-content">{marketCap}</div>
+            <div className="coin-info-content">Ø{marketCap}</div>
           </div>
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={8}>
@@ -181,14 +180,14 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={8}>
           <div className="coin-info-wrapper">
-            <div className="coin-info-title">Total Volumn</div>
-            <div className="coin-info-content">{totalVolume}</div>
+            <div className="coin-info-title">Total Volume</div>
+            <div className="coin-info-content">Ø{totalVolume}</div>
           </div>
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={8}>
           <div className="coin-info-wrapper">
             <div className="coin-info-title">Available Supply</div>
-            <div className="coin-info-content">{currentSupply}</div>
+            <div className="coin-info-content">{currentCoin?.currentSupply ? numberWithCommas(currentCoin.currentSupply.toFixed(0)) : 'NA'}</div>
           </div>
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={8}>

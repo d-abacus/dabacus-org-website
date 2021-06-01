@@ -4,6 +4,7 @@ export type CurrentCoin = {
   id?: string;
   name?: string;
   image?: string;
+  currentSupply?: number;
   totalSupply?: number;
   maxSupply?: number;
   rank?: number;
