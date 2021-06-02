@@ -5,10 +5,52 @@ import { Row, Col } from 'antd';
 import styles from './About.less';
 import openQuote from '../assets/open-quote.png';
 import closeQuote from '../assets/close-quote.png';
-import ibaiAvatar from '../assets/ibai.png';
+import ibaiAvatar from '../assets/Ibai Basabe.png';
+import joshAvatar from '../assets/Joshua.png';
+import chenAvatar from '../assets/ChEn.png';
+import elevenAvatar from '../assets/Eleven.png';
+import davidAvatar from '../assets/David.png';
+import twitterIcon from '../assets/twitter.png';
+import twitterGreyIcon from '../assets/twitter-grey.png';
 
 
 export default (): React.ReactNode => {
+
+  const teamNames: Array<string> = [
+    "Ibai Basabe",
+    "Eleven",
+    "Joshua",
+    "David",
+    "ChEn",
+  ];
+
+  const teamAvatars: Array<string> = [
+    ibaiAvatar, ibaiAvatar, joshAvatar, davidAvatar, chenAvatar
+  ];
+
+  const teamTitles: Array<string> = [
+    "dAbacus Founder",
+    "Branding Manager",
+    "Core Developer",
+    "Marketing Director",
+    "UI / UX Designer",
+  ];
+
+  const twitterNames: Array<string> = [
+    "@IbaiBasabe",
+    "@promise302101",
+    "@JoshuaJ39520298",
+    "@DavidCosta2KY",
+    "@Chen32128291",
+  ];
+
+  const twitterLinks: Array<string> = [
+    "https://twitter.com/IbaiBasabe",
+    "https://twitter.com/promise302101",
+    "https://twitter.com/JoshuaJ39520298",
+    "https://twitter.com/DavidCosta2KY",
+    "https://twitter.com/Chen32128291",
+  ];
 
   return (
     <PageContainer>
@@ -61,6 +103,35 @@ export default (): React.ReactNode => {
         <div className={styles.aboutBody}>Sail across the great sea of decentralization, deploying and acting on a message that will change humanity, bringing a proactive transformation we’ve waited for far too long. 
         <Link to='/announcements'> Learn more</Link>
 </div>
+
+
+<div className={styles.team}>
+  <div className={styles.teamTitle}>Meet the Team</div>
+  <Row>
+    {teamNames.map((name, index) => 
+      <Col xs={12} sm={8} className={styles.teamWrapper}>
+        <img className={styles.teamAvatar} src={teamAvatars[index]} />
+        <div className={styles.teamName}>
+          {name}
+        </div>
+        <div className={styles.jobTitle}>
+          {teamTitles[index]}
+        </div>
+        <div className={styles.teamIntro}>
+          <a href={twitterLinks[index]} target="_blank">
+            <img className={styles.twitterActiveIcon} src={twitterIcon} />
+            <img className={styles.twitterIcon} src={twitterGreyIcon} />
+            {twitterNames[index]}
+          </a>
+        </div>
+      </Col>
+
+    )}
+  </Row>
+</div>
+
+
+
 
       </div>
 

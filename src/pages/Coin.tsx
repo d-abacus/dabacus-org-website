@@ -71,6 +71,9 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
         }
       };
 
+  const values = range == 0 ? data.map((d) => d.value) : dailyData.map((d) => d.value);
+  const minVal = values.length > 0 ? Math.min.apply(Math, values) : 0;
+
   var config = {
     data: range == 0 ? data : ( range == 1 ? 
       dailyData.slice(Math.max(0, dailyData.length - 7), dailyData.length) :
@@ -116,6 +119,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
       label: labelConfig,
       tickLine: null,
       subTickLine: null,
+      min: minVal,
       grid: {
         line: {
           style: {
@@ -152,7 +156,11 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
         </ul>
       </div>
       <Link to="/app/index"><div className="coin-back"><img className="coin-back-icon" src={backIcon} />back</div></Link>
-      <div className="coin-name"><img className="coin-image" src={currentCoin?.image ?? ''} />{currentCoin?.name}</div>
+      <div className="coin-name">
+        <img className="coin-image" src={currentCoin?.image ?? ''} />
+        {currentCoin?.name}
+        <span className="coin-price">Ø{endValue.toFixed(2)}</span>
+      </div>
       <div className={"world-unit-percent" + (diff > 0 ? '' : ' red')}>{sign + diff + '   ' + percentage}</div>
       <div className="coin-chart">
         <Line {...config} />

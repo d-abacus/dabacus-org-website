@@ -62,33 +62,64 @@
 		}
 	}
 
-	.teamTitle {
-		font-family: @dabacus-font-medium;
-		font-weight: 800;
-		font-size: 36px;
-		margin-top: 130px;
-		margin-bottom: 37px;
-	}
+	.team {
+		.teamTitle {
+			font-family: @dabacus-font-medium;
+			font-weight: 800;
+			font-size: 36px;
+			margin-top: 130px;
+			margin-bottom: 37px;
+		}
 
-	.teamAvatar {
-		width: 187px;
-	}
+		.teamWrapper {
+			text-align: center;
+			font-family: @dabacus-font-medium;
+			font-weight: 800;
+			padding: 15px 30px;
 
-	.teamName {
-		font-family: @dabacus-font-medium;
-		font-weight: 800;
-		font-size: 24px;
-		margin-top: 24px;
-		margin-bottom: 8px;
-	}
+			.teamAvatar {
+				width: 100%;
+			}
 
-	.teamIntro {
-		font-family: @dabacus-font-medium;
-		font-size: 16px;
-		line-height: 19px;
+			.twitterIcon, .twitterActiveIcon {
+				width: 18px;
+				margin-top: -2px;
+				margin-right: 6px;
+			}
 
-		&::first-letter {
-		  font-size: 24px;
+			.twitterIcon {
+				display: inline-block;
+			}
+
+			.twitterActiveIcon {
+				display: none;
+			}
+
+			.teamName {
+				font-size: 24px;
+				margin-top: 24px;
+				margin-bottom: 8px;
+			}
+
+			.jobTitle, .teamIntro a {
+				font-size: 18px;
+				margin-bottom: 18px;
+				color: #AAB0B8;
+			}
+
+			.teamIntro {
+				a:hover {
+					color: @theme-color;
+
+					.twitterIcon {
+						display: none;
+					}
+
+					.twitterActiveIcon {
+						display: inline-block;
+					}
+				}
+			}
 		}
 	}
 }
