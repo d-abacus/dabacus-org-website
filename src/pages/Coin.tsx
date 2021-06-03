@@ -73,6 +73,8 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
 
   const values = range == 0 ? data.map((d) => d.value) : dailyData.map((d) => d.value);
   const minVal = values.length > 0 ? Math.min.apply(Math, values) : 0;
+  const maxVal = values.length > 0 ? Math.max.apply(Math, values) : 0;
+  const chartFactor = (maxVal - minVal) / 3;
 
   var config = {
     data: range == 0 ? data : ( range == 1 ? 
@@ -91,7 +93,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     tooltip: {
       fields: ['value'],
       formatter: (datum: Datum) => {
-        return { name: datum.time, value: datum.value.toFixed(2) + 's' };
+        return { name: datum.time, value: datum.value.toFixed(3) + 's' };
       },
       customContent: (title, items) => {
         return (
@@ -119,7 +121,9 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
       label: labelConfig,
       tickLine: null,
       subTickLine: null,
-      min: minVal,
+      tickCount: 8,
+      min: minVal - chartFactor,
+      max: maxVal + chartFactor,
       grid: {
         line: {
           style: {
@@ -166,7 +170,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
         <Line {...config} />
       </div>
       <div className="coin-info">
-      <div className="info-title">Coin Info</div>
+      <div className="info-title">{currentCoin?.name ?? ''} Info</div>
       <Row>
           <Col xs={24} sm={24} md={12} lg={12} xl={8}>
             <div className="coin-info-wrapper">

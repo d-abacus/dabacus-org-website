@@ -151,8 +151,11 @@ const Dindex: React.FC<DindexProps> = (props) => {
         }
       };
 
-  const values = range == 0 ? data.map((d) => d.value) : dailyData.map((d) => d.value);
+  var values = range == 0 ? data.map((d) => d.value) : dailyData.map((d) => d.value);
+  values = (range == 1 && values.length > 7) ? values.slice(values.length-8, values.length) : values;
   const minVal = values.length > 0 ? Math.min.apply(Math, values) : 0;
+  const maxVal = values.length > 0 ? Math.max.apply(Math, values) : 0;
+  const chartFactor = (maxVal - minVal) / 5;
 
   var config = {
     data: range == 0 ? data : ( range == 1 ? 
@@ -169,7 +172,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
     tooltip: {
       fields: ['value'],
       formatter: (datum: Datum) => {
-        return { name: datum.time, value: (datum.value*100000000).toFixed(2) + 's' };
+        return { name: datum.time, value: (datum.value*100000000).toFixed(4) + 's' };
       },
       customContent: (title, items) => {
         return (
@@ -196,8 +199,9 @@ const Dindex: React.FC<DindexProps> = (props) => {
     yAxis: { 
       label: labelConfig,
       tickLine: null,
-      tickInterval: 0.000001,
-      min: minVal,
+      tickCount: 6,
+      min: minVal - chartFactor,
+      max: maxVal + chartFactor,
       subTickLine: null,
       grid: {
         line: {
@@ -244,7 +248,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
         </ul>
       </div>
       <div className="world-unit-title">The Unit (Ø)</div>
-      <div className="world-unit-amount">{'Ø1 = ' + endValue.toFixed(2) + 's'}</div>
+      <div className="world-unit-amount">{'Ø1 = ' + endValue.toFixed(2) + ' SATS'}</div>
       <div className={"world-unit-percent" + (diff > 0 ? '' : ' red')}>{sign + diff + '   ' + percentage}</div>
       <Line {...config} />
     </div>
