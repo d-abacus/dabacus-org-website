@@ -14,41 +14,44 @@ export default (): React.ReactNode => {
       <Row className="announcements-row">
         <Col xs={0} sm={0} md={5}>
           <Affix offsetTop={top} className="affix-container">
-            <Scrollspy items={['introduction', 'interstellar', 'accounting', 'crypto-native', 'vision', 'technology', 'incentives', 'tentative', 'community']} currentClassName="is-current">
+            <Scrollspy items={['introduction', 'vision', 'crypto-native', 'blocktree', 'accounting', 'technology', 'incentives', 'parameters', 'community']} currentClassName="is-current">
               <li><a href="#introduction">Welcome to dAbacus</a></li>
-              <li><a href="#interstellar">An Interstellar Supernet for Edge Decentralized Applications</a></li>
-              <li><a href="#accounting">The World’s Accounting Machine</a></li>
-              <li><a href="#crypto-native">A Crypto-Native Unit of Account</a></li>
               <li><a href="#vision">dAbacus Vision and Mission</a></li>
+              <li><a href="#crypto-native">A Crypto-Native Unit of Account</a></li>
+              <li><a href="#blocktree">The BlockTree, a Supernet for Edge Decentralized Applications</a></li>
+              <li><a href="#accounting">The World’s Accounting Hub</a></li>
               <li><a href="#technology">dAbacus Technology and Resources</a></li>
               <li><a href="#incentives">dAbacus Incentives</a></li>
-              <li><a href="#tentative">Tentative Blocktree Parameters</a></li>
+              <li><a href="#parameters">Tentative Blocktree Parameters</a></li>
               <li><a href="#community">dAbacus Community</a></li>
             </Scrollspy>
           </Affix>
         </Col>
         <Col className="right-col" xs={24} sm={24} md={19}>
           <div id="introduction" className="page-title">Welcome to dAbacus</div>
-
-          <div id="interstellar" className="page-subtitle">An Interstellar Supernet for Edge Decentralized Applications</div>
-          <div className="more-desc">Our network of networks aims at reaching consensus throughout the Milky Way and beyond thanks to our Blocktree ledger structure and our focus on post-quantum cryptography.</div>
-          <p className="page-content"><span className="para-initial">d</span>Abacus’ blocktree technology allows the supernet to run on Mars and Earth without latency by splitting the mining process. dAbacus is also an unlimited throughput supernet for our financial future. The throughput will grow indefinitely as the network branches into subnetworks. Subnetworks will optimize themselves based on our incentive system.<br /><br />
-            We believe that PoW is the best way to anchor a financial platform to the world of atoms and energy and the best way to incentivize current and future peers to join. Nocoiners of our platform can mine with CPUs, GPUs and ASICs obtaining rewards and coins from holders in the form of fees.<br /><br />
-            Edge Decentralized Applications will appear as PoS subnetworks are deployed for different applications. The PoS subnetworks will be anchored in the PoW blocktree providing the best security and scalability features.</p>
-
-          <div id="accounting" className="page-subtitle">The World’s Accounting Machine</div>
-          <div className="more-desc">dAbacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the post-quantum era.</div>
-          <p className="page-content"><span className="para-initial">A</span>t first, dAbacus will use the Ethereum network to bootstrap its development. Once dAbacus expansion is underway, we will equip the dAbacus supernet with the dAbax wallet making portfolio-to-portfolio payments a reality mediated by The Unit, the first crypto-native unit of account. In this way, dAbacus and its community will become the world’s accounting center for all financial transactions, governed by all of us.</p>
-
-          <div id="crypto-native" className="page-subtitle">A Crypto-Native Unit of Account</div>
-          <div className="more-desc">Our comprehensive community managed crypto index tied to global population data aims to replace the USD as the World Unit of Account.</div>
-          <p className="page-content"><span className="para-initial">O</span>ur first approach to unifying the crypto community is to create The Unit, an index aiming at becoming the future of accounting and commerce. Creating a meaningful index in crypto is something that we see as essential for the industry’s future. By establishing The Unit connects all  the crypto communities while  building an index for the space. We believe we can create the next-generation accounting tools, and we can do it entirely from inside crypto.</p>
+          <p className="page-content"><span className="para-initial">B</span>itcoin combined the mathematical ideas that allowed us to have peer-to-peer electronic cash (our first open-source electronic asset). Since then, thousands of instances of this idea have been launched into cyberspace. A significant achievement was the launch of Ethereum, the second generation network aiming at generalizing the capabilities of Bitcoin. dAbacus is doing its part by creating the next-level organism after the Blockchain: the BlockTree. We are learning from the developments of the crypto industry, creating a more complete and modular system capable of successfully fusing the power of decentralized applications with the value storage capabilities of an immutable ledger.</p>
 
           <div id="vision" className="page-subtitle">dAbacus Vision and Mission</div>
-          <div className="more-desc">Progress means more freedom to create</div>
-          <p className="page-content"><span className="para-initial">d</span>Abacus’ mission is to be the world’s most secure and most intuitive distributed peer-to-peer liquidity and value storage supernet.<br /><br />
-            We are building dAbacus because the world demands more equality, privacy, liberty and independence than ever before. The world requests high-quality human/software/hardware architectures able to bring permissionless value transfer and storage.<br /><br />
-            We are here to support decentralization, build software that expands our human liberties, and set up a community around those efforts.</p>
+          <div className="more-desc">Human freedom is the main cause of progress</div>
+          <p className="page-content"><span className="para-initial">d</span>Abacus’ mission is to become the world’s next-generation distributed peer-to-peer liquidity and value storage organism after the Blockchain.<br /><br />
+          We are building dAbacus because the world demands more equality, privacy, liberty and independence than ever before. The world requests high-quality human/software/hardware architectures able to bring permissionless value transfer and storage.<br /><br />
+          We are here to support decentralization, build software that expands our human liberties, and set up a community around those efforts. How are we going to achieve it? We have an ambitious yet very unique approach, capable of growing organically by uniting everyone in the Metaverse through the most desired right, the right for equality.</p>
+
+          <div id="crypto-native" className="page-subtitle">The Unit, A Crypto-Native Unit of Account</div>
+          <div className="more-desc">Our comprehensive community-managed crypto index tied to global population data aimed to replace the USD as the World Unit of Account.</div>
+          <p className="page-content"><span className="para-initial">O</span>ur first approach to unify the crypto community is to deploy The Unit, the first crypto-native index for all cryptocurrencies capable of becomig the future of accounting and commerce, connecting all the crypto communities in the space. We believe we will create the next-generation accounting tools, and we will do it entirely from inside crypto.</p>
+
+
+          <div id="blocktree" className="page-subtitle">The BlockTree, a Supernet for Edge Decentralized Applications</div>
+          <div className="more-desc">A modular ledger structure aimed at reaching consensus throughout the whole Metaverse, thanks to its cross-blockchain nature and our focus on post-quantum cryptography.</div>
+          <p className="page-content"><span className="para-initial">d</span>Abacus’ blocktree technology is specially designed for the Metaverse to run without latency by splitting the mining process. dAbacus is also an unlimited throughput supernet for our financial future. The throughput will grow indefinitely as the network branches into subnetworks. Subnetworks will optimize themselves based on our incentive system.<br /><br />
+          We believe that PoW is the best way to anchor a financial platform to the world of atoms and energy and the best way to incentivize current and future peers to join. Nocoiners of our platform can mine with CPUs, GPUs and ASICs, obtaining rewards and coins from holders in the form of fees.<br /><br />
+          Edge Decentralized Applications will appear as PoS subnetworks being deployed for different applications. The PoS subnetworks will be anchored in the PoW blocktree providing the best security and scalability features.</p>
+
+          <div id="accounting" className="page-subtitle">The World’s Accounting Hub</div>
+          <div className="more-desc">dAbacus community-run technology powers the ABA currency to revolutionize how we transfer and store value in the post-quantum era.</p>
+          <p className="page-content"><span className="para-initial">A</span>t first, dAbacus will use the Ethereum network to bootstrap its development and unleash the ABA currency’s power, which will revolutionize the way we transfer and store value. Once the supernet expansion is underway, we will empower our community with the dAbax wallet enabling cross-network payments mediated by The Unit, the first crypto-native unit of account. In this way, dAbacus and its community will become the world’s accounting hub to support all decentralized financial transactions governed by all of us.</p>
+
 
 
           <div id="technology" className="page-subtitle">dAbacus Technology and Resources</div>
@@ -80,7 +83,7 @@ export default (): React.ReactNode => {
 
 
 
-          <div id="tentative" className="page-subtitle">Tentative Blocktree Parameters</div>
+          <div id="parameters" className="page-subtitle">Tentative Blocktree Parameters</div>
           <div className="more-desc">The Blocktree is the New Blockchain</div>
           <p className="page-content">
 
@@ -107,9 +110,9 @@ export default (): React.ReactNode => {
 
             Our site: <a target="_blank" href="www.dabacus.org">https://dAbacus.org</a><br /><br />
 
-            Twitter: <a target="_blank" href="https://twitter.com/dabacusorg">https://twitter.com/dabacusorg</a><br /><br />
+            Twitter: <a target="_blank" href="https://twitter.com/dABACUS_org">https://twitter.com/dabacus_org</a><br /><br />
 
-            Discord: <a target="_blank" href="https://discord.com/invite/nSUDXMtS">https://discord.com/invite/nSUDXMtS</a><br /><br />
+            Discord: <a target="_blank" href="https://discord.gg/ePdsHkw3GD">https://discord.gg/ePdsHkw3GD</a><br /><br />
 
             Github: <a target="_blank" href="https://github.com/d-abacus">https://github.com/d-abacus</a><br /><br />
 
