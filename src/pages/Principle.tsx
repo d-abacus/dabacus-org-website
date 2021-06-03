@@ -49,7 +49,7 @@ export default (): React.ReactNode => {
           Edge Decentralized Applications will appear as PoS subnetworks being deployed for different applications. The PoS subnetworks will be anchored in the PoW blocktree providing the best security and scalability features.</p>
 
           <div id="accounting" className="page-subtitle">The World’s Accounting Hub</div>
-          <div className="more-desc">dAbacus community-run technology powers the ABA currency to revolutionize how we transfer and store value in the post-quantum era.</p>
+          <div className="more-desc">dAbacus community-run technology powers the ABA currency to revolutionize how we transfer and store value in the post-quantum era.</div>
           <p className="page-content"><span className="para-initial">A</span>t first, dAbacus will use the Ethereum network to bootstrap its development and unleash the ABA currency’s power, which will revolutionize the way we transfer and store value. Once the supernet expansion is underway, we will empower our community with the dAbax wallet enabling cross-network payments mediated by The Unit, the first crypto-native unit of account. In this way, dAbacus and its community will become the world’s accounting hub to support all decentralized financial transactions governed by all of us.</p>
 
 
