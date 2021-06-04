@@ -42,8 +42,9 @@
     border-radius: 8px;
     padding: 6px 32px;
     color: #fff;
-    margin-top: 30px;
+    margin-top: 24px;
     font-size: 18px;
+    line-height: 18px;
     font-family: @dabacus-font-medium;
     cursor: pointer;
   }
@@ -65,6 +66,7 @@
   text-align: center;
   padding: 16px;
   font-size: 18px;
+  line-height: 18px;
   font-family: @dabacus-font-medium;
   cursor: pointer;
 
@@ -81,6 +83,57 @@
     &.walletConnectLogo {
       margin: 5px auto 22px auto;
     }
+  }
+}
+
+.myWalletWrapper {
+  font-size: 16px;
+  color: #656A71;
+
+  .ethBalance {
+    margin-bottom: 16px;
+
+    img {
+      width: 14px;
+      margin-top: -2px;
+    }
+  }
+
+  .myBalance {
+    background: #F9F9F9;
+    border-radius: 8px;
+    width: 100%;
+    padding: 23px 9px;
+    color: @theme-color;
+    font-size: 18px;
+    margin-bottom: 16px;
+    font-family: @dabacus-font-medium;
+    font-weight: 800;
+
+    .myBalanceNum {
+      font-size: 24px;
+    }
+  }
+
+  .copyAddress, .changeWallet {
+    border-radius: 8px;
+    padding: 4px 7px;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 16px;
+    cursor: pointer;
+
+    img {
+      width: 18px;
+    }
+
+    &:hover {
+      background: #F9F9F9;
+    }
+  }
+
+  .changeWallet {
+    margin-bottom: 0;
   }
 }
 

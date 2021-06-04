@@ -10,7 +10,9 @@ import CustomIcon from '../CustomIcon';
 import earthIcon from '../../assets/ic_round-language.png';
 import metamaskIcon from '../../assets/metamask.svg';
 import walletConnectIcon from '../../assets/walletconnect-logo.svg';
-
+import ethIcon from '../../assets/eth-icon.png';
+import myWalletIcon from '../../assets/my-wallet.png';
+import copyAddressIcon from '../../assets/copy-address.png';
 
 
 const { SubMenu } = Menu;
@@ -22,6 +24,8 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   const [top, setTop] = useState(0);
+  const originalCopyText: string = 'Copy address';
+  const [copyText, setCopyText] = useState(originalCopyText);
   var wallet;
 
   var skeys: Array<string> = [];
@@ -39,6 +43,10 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   if (isApp) {
      wallet = useWallet();
+  }
+
+  const resetCopyText = () => {
+    setCopyText(originalCopyText);
   }
 
   const shorten = (address: string) => {
@@ -81,9 +89,26 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
       </Row>
      );
 
-  const myWallet = (
-      <div className={styles.connectBtn} onClick={() => wallet.reset()}>
-        Disconnect
+  const myWallet = wallet != null ? (
+      <div className={styles.myWalletWrapper}>
+        <div className={styles.ethBalance}>
+          <img src={ethIcon} /> Etherum Balance ({shorten(wallet.account)})
+        </div>
+        <div className={styles.myBalance}><span className={styles.myBalanceNum}>{wallet.balance}</span> ETH</div>
+        <div className={styles.copyAddress} onClick={() => {
+          navigator.clipboard.writeText(wallet.account);
+          setCopyText('Copied!');
+          setTimeout(resetCopyText, 1200);
+        }}>
+          <img src={copyAddressIcon} /> {copyText}
+        </div>
+        <div className={styles.changeWallet} onClick={() => wallet.reset()}>
+          <img src={myWalletIcon} /> Change wallet
+        </div>
+      </div>
+     ) : (
+      <div className={styles.myWalletWrapper}>
+        Wallet Connection Error
       </div>
      );
 
@@ -131,7 +156,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         </Menu.Item>
         <Menu.Item className={isApp ? 'hide-other show-app' : 'hide-other'} key="connectWallet">
         {wallet != null && wallet.status === 'connected' ? (
-          <Popover overlayClassName="connectWalletContainer" placement="bottomRight" title={wallet.balance + " ETH"} content={myWallet} trigger="click">
+          <Popover overlayClassName="myWalletContainer" placement="bottomRight" title="" content={myWallet} trigger="click">
               <div className={styles.walletAccount}>{shorten(wallet.account)}</div>
           </Popover>
           ) : (
