@@ -115,7 +115,14 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     xAxis: { 
       label: labelConfig,
       tickLine: null,
-      grid: null,
+      grid: {
+        line: {
+          style: {
+            stroke: '#E3E4E7',
+            lineDash: [2, 2],
+          }
+        }
+      },
     },
     yAxis: { 
       label: labelConfig,
@@ -127,7 +134,8 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
       grid: {
         line: {
           style: {
-            stroke: '#f1f1f1',
+            stroke: '#E3E4E7',
+            lineDash: [2, 2],
           }
         }
       },

@@ -194,7 +194,14 @@ const Dindex: React.FC<DindexProps> = (props) => {
     xAxis: { 
       label: labelConfig,
       tickLine: null,
-      grid: null,
+      grid: {
+        line: {
+          style: {
+            stroke: '#E3E4E7',
+            lineDash: [2, 2],
+          }
+        }
+      },
     },
     yAxis: { 
       label: labelConfig,
@@ -206,7 +213,8 @@ const Dindex: React.FC<DindexProps> = (props) => {
       grid: {
         line: {
           style: {
-            stroke: '#f1f1f1',
+            stroke: '#E3E4E7',
+            lineDash: [2, 2],
           }
         }
       },
