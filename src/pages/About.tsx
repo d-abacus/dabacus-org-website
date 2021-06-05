@@ -25,7 +25,7 @@ export default (): React.ReactNode => {
   ];
 
   const teamAvatars: Array<string> = [
-    ibaiAvatar, ibaiAvatar, joshAvatar, davidAvatar, chenAvatar
+    ibaiAvatar, elevenAvatar, joshAvatar, davidAvatar, chenAvatar
   ];
 
   const teamTitles: Array<string> = [
@@ -55,7 +55,7 @@ export default (): React.ReactNode => {
   return (
     <PageContainer>
       <div className={styles.title}>
-        About dABACUS
+        About
       </div>
 
 
@@ -89,27 +89,14 @@ export default (): React.ReactNode => {
 </div>
 
 
-<div className={styles.aboutTitle}>dAbacus Mission, progress leading to freedom</div>
-        <div className={styles.aboutBody}>dAbacus is a hub for decentralized applications, a net of networks united by a common purpose, a solid demand for change. 
-        <br/><br/>
-        dAbacus’ first objective is to promote and expand the world’s most secure and most intuitive distributed peer-to-peer liquidity and value storage supernet.
-        <br/><br/>
-        At first, dAbacus will use the Ethereum network to bootstrap its development and unleash the ABA currency’s power, which will revolutionize the way we transfer and store value. Once the supernet expansion is underway, we will empower our community with the dAbax wallet enabling cross-network payments mediated by The Unit, the first crypto-native unit of account. In this way, dAbacus and its community will become the world’s accounting hub to support all decentralized financial transactions governed by all of us.
-</div>
 
 
 
-<div className={styles.aboutTitle}>Become a dAbacus Missionary</div>
-        <div className={styles.aboutBody}>Sail across the great sea of decentralization, deploying and acting on a message that will change humanity, bringing a proactive transformation we’ve waited for far too long. 
-        <Link to='/announcements'> Learn more</Link>
-</div>
 
-
-<div className={styles.team}>
-  <div className={styles.teamTitle}>Meet the Team</div>
-  <Row>
+<div className={styles.aboutTitle}>dAbacus team</div>
+<ul className={styles.team}>
     {teamNames.map((name, index) => 
-      <Col xs={12} sm={8} className={styles.teamWrapper}>
+      <li className={styles.teamWrapper}>
         <img className={styles.teamAvatar} src={teamAvatars[index]} />
         <div className={styles.teamName}>
           {name}
@@ -124,10 +111,30 @@ export default (): React.ReactNode => {
             {twitterNames[index]}
           </a>
         </div>
-      </Col>
+      </li>
 
     )}
-  </Row>
+</ul>
+
+
+
+
+
+
+
+<div className={styles.aboutTitle}>dAbacus Mission, progress leading to freedom</div>
+        <div className={styles.aboutBody}>dAbacus is a hub for decentralized applications, a net of networks united by a common purpose, a solid demand for change. 
+        <br/><br/>
+        dAbacus’ first objective is to promote and expand the world’s most secure and most intuitive distributed peer-to-peer liquidity and value storage supernet.
+        <br/><br/>
+        At first, dAbacus will use the Ethereum network to bootstrap its development and unleash the ABA currency’s power, which will revolutionize the way we transfer and store value. Once the supernet expansion is underway, we will empower our community with the dAbax wallet enabling cross-network payments mediated by The Unit, the first crypto-native unit of account. In this way, dAbacus and its community will become the world’s accounting hub to support all decentralized financial transactions governed by all of us.
+</div>
+
+
+
+<div className={styles.aboutTitle}>Become a dAbacus Missionary</div>
+        <div className={styles.aboutBody}>Sail across the great sea of decentralization, deploying and acting on a message that will change humanity, bringing a proactive transformation we’ve waited for far too long. 
+        <Link to='/announcements'> Learn more</Link>
 </div>
 
 
