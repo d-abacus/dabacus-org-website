@@ -102,7 +102,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
               {items?.map((item, index) => {
                 const { name, value, color } = item;
                 return (
-                  <li>
+                  <li className="tooltip-value" key={index}>
                     {value}
                   </li>
                 );
@@ -115,6 +115,12 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     xAxis: { 
       label: labelConfig,
       tickLine: null,
+      line: {
+          style: {
+            stroke: '#AAB0B8',
+            lineWidth: 2,
+          }
+        },
       grid: {
         line: {
           style: {
@@ -131,6 +137,12 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
       tickCount: 8,
       min: minVal - chartFactor,
       max: maxVal + chartFactor,
+      line: {
+          style: {
+            stroke: '#AAB0B8',
+            lineWidth: 2,
+          }
+        },
       grid: {
         line: {
           style: {
@@ -167,12 +179,11 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
           <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
         </ul>
       </div>
-      <Link to="/app/index"><div className="coin-back"><img className="coin-back-icon" src={backIcon} />back</div></Link>
-      <div className="coin-name">
+      <div className="world-unit-title">
         <img className="coin-image" src={currentCoin?.image ?? ''} />
         {currentCoin?.name}
-        <span className="coin-price">Ø{endValue.toFixed(3)}</span>
       </div>
+      <div className="world-unit-amount">Ø{endValue.toFixed(3)}</div>
       <div className={"world-unit-percent" + (diff > 0 ? '' : ' red')}>{sign + diff + '   ' + percentage}</div>
       <div className="coin-chart">
         <Line {...config} />

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, Affix, Popover, Row, Col } from 'antd';
 import { Link, withRouter } from 'umi';
 import { useWallet } from 'use-wallet'
+import Cookies from 'universal-cookie';
 import logo from '../../assets/logo.png';
 import styles from './index.less';
 import './menu.less';
@@ -57,10 +58,13 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   }
 
   const connectWallet = (walletType: string) => {
+    const cookies = new Cookies();
     if (walletType.length > 0) {
       wallet.connect(walletType);
+      cookies.set('wallet', walletType, { path: '/' });
     } else {
       wallet.connect();
+      cookies.set('wallet', 'metamask', { path: '/' });
     }
   }
 
@@ -111,6 +115,21 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         Wallet Connection Error
       </div>
      );
+
+
+  useEffect(() => {
+    if (isApp && wallet) {
+      const cookies = new Cookies();
+      const w = cookies.get('wallet');
+      if (w) {
+        if (w === 'metamask') {
+          wallet.connect();
+        } else {
+          wallet.connect(w);
+        }
+      }
+    }
+  }, []);
 
   return (
     <Affix offsetTop={top}>

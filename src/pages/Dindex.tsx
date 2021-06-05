@@ -79,7 +79,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
       .then((response) => response.json())
       .then((json) => {
         const res: Array<Object> = json.reverse().map((obj) => {
-            return { value: obj.value, "time": moment(obj.time).format(cname === 'HourlyData' ? 'HH' : 'DD')};
+            return { value: parseFloat((obj.value*100000000).toFixed(2)), "time": moment(obj.time).format(cname === 'HourlyData' ? 'HH' : 'DD')};
           });
         if (cname === 'HourlyData') {
           setData(res);
@@ -153,9 +153,15 @@ const Dindex: React.FC<DindexProps> = (props) => {
 
   var values = range == 0 ? data.map((d) => d.value) : dailyData.map((d) => d.value);
   values = (range == 1 && values.length > 7) ? values.slice(values.length-8, values.length) : values;
-  const minVal = values.length > 0 ? Math.min.apply(Math, values) : 0;
-  const maxVal = values.length > 0 ? Math.max.apply(Math, values) : 0;
+  var minVal = values.length > 0 ? Math.min.apply(Math, values) : 0;
+  var maxVal = values.length > 0 ? Math.max.apply(Math, values) : 0;
   const chartFactor = (maxVal - minVal) / 5;
+  maxVal += chartFactor;
+  minVal -= chartFactor;
+
+  const tickLineCount = 6;
+  const tickLineInterval = (maxVal - minVal) / tickLineCount;
+
 
   var config = {
     data: range == 0 ? data : ( range == 1 ? 
@@ -172,7 +178,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
     tooltip: {
       fields: ['value'],
       formatter: (datum: Datum) => {
-        return { name: datum.time, value: (datum.value*100000000).toFixed(4) + 'SATS' };
+        return { name: datum.time, value: datum.value.toFixed(2) + 'SATS' };
       },
       customContent: (title, items) => {
         return (
@@ -181,7 +187,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
               {items?.map((item, index) => {
                 const { name, value, color } = item;
                 return (
-                  <li key={index}>
+                  <li className="tooltip-value" key={index}>
                     {value}
                   </li>
                 );
@@ -194,6 +200,13 @@ const Dindex: React.FC<DindexProps> = (props) => {
     xAxis: { 
       label: labelConfig,
       tickLine: null,
+      offset: 0,
+      line: {
+          style: {
+            stroke: '#AAB0B8',
+            lineWidth: 2,
+          }
+        },
       grid: {
         line: {
           style: {
@@ -204,15 +217,18 @@ const Dindex: React.FC<DindexProps> = (props) => {
       },
     },
     yAxis: { 
-      label: { 
-        ...labelConfig, 
-        formatter: (text: string, item: ListItem, index: number) => (parseFloat(text) * 100000000).toFixed(0),
-      },
+      label: labelConfig,
       tickLine: null,
-      tickCount: 6,
-      min: minVal - chartFactor,
-      max: maxVal + chartFactor,
+      tickCount: tickLineCount,
+      min: minVal,
+      max: maxVal,
       subTickLine: null,
+      line: {
+          style: {
+            stroke: '#AAB0B8',
+            lineWidth: 2,
+          }
+        },
       grid: {
         line: {
           style: {
@@ -243,8 +259,8 @@ const Dindex: React.FC<DindexProps> = (props) => {
       price_change_percentage_24h: ((element["price_change_24h"] / WUNBTC / (element["current_price"] / WUNBTC) *100).toFixed(2)) + '%',
     }
   })
-  const initialValue: number = data.length > 0 ? data[0].value * 100000000 : 0;
-  const endValue: number = data.length > 0 ? data[data.length-1].value * 100000000 : 0;
+  const initialValue: number = data.length > 0 ? data[0].value : 0;
+  const endValue: number = data.length > 0 ? data[data.length-1].value : 0;
   const diff: number = (endValue - initialValue).toFixed(3);
   const sign: string = diff > 0 ? '+' : '';
   const percentage: string = sign + (initialValue > 0 ? diff / initialValue : 0).toFixed(2) + '%';
