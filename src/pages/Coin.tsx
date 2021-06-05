@@ -35,7 +35,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     setRange(index);
   };
   const asyncFetch = (cname: string) => {
-    fetch('http://dabacus.org:3000/'+(cname === 'HourlyData' ? 'coin-hourly-data' : 'coin-daily-data')+'/'+currentCoin.id.toLowerCase(), {
+    fetch('https://dabacus.org:3000/'+(cname === 'HourlyData' ? 'coin-hourly-data' : 'coin-daily-data')+'/'+currentCoin.id.toLowerCase(), {
       headers: {
         'Content-Type': 'application/json'
       },
