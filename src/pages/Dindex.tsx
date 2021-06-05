@@ -148,7 +148,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
           fontWeight: 800,
           fill: '#AAB0B8',
           fontFamily: 'Avenir-Medium',
-        }
+        },
       };
 
   var values = range == 0 ? data.map((d) => d.value) : dailyData.map((d) => d.value);
@@ -172,7 +172,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
     tooltip: {
       fields: ['value'],
       formatter: (datum: Datum) => {
-        return { name: datum.time, value: (datum.value*100000000).toFixed(4) + 's' };
+        return { name: datum.time, value: (datum.value*100000000).toFixed(4) + 'SATS' };
       },
       customContent: (title, items) => {
         return (
@@ -204,7 +204,10 @@ const Dindex: React.FC<DindexProps> = (props) => {
       },
     },
     yAxis: { 
-      label: labelConfig,
+      label: { 
+        ...labelConfig, 
+        formatter: (text: string, item: ListItem, index: number) => (parseFloat(text) * 100000000).toFixed(0),
+      },
       tickLine: null,
       tickCount: 6,
       min: minVal - chartFactor,

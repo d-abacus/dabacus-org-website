@@ -93,7 +93,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     tooltip: {
       fields: ['value'],
       formatter: (datum: Datum) => {
-        return { name: datum.time, value: datum.value.toFixed(3) + 's' };
+        return { name: datum.time, value: datum.value.toFixed(3) + 'SATS' };
       },
       customContent: (title, items) => {
         return (
@@ -171,7 +171,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
       <div className="coin-name">
         <img className="coin-image" src={currentCoin?.image ?? ''} />
         {currentCoin?.name}
-        <span className="coin-price">Ø{endValue.toFixed(2)}</span>
+        <span className="coin-price">Ø{endValue.toFixed(3)}</span>
       </div>
       <div className={"world-unit-percent" + (diff > 0 ? '' : ' red')}>{sign + diff + '   ' + percentage}</div>
       <div className="coin-chart">
