@@ -21,7 +21,7 @@ export default (): React.ReactNode => {
     "Eleven",
     "Joshua",
     "David",
-    "ChEn",
+    "ChEN",
   ];
 
   const teamAvatars: Array<string> = [
@@ -93,7 +93,7 @@ export default (): React.ReactNode => {
 
 
 
-<div className={styles.aboutTitle}>dAbacus team</div>
+<div className={styles.aboutTitle}>dAbacus Team</div>
 <ul className={styles.team}>
     {teamNames.map((name, index) => 
       <li className={styles.teamWrapper}>
