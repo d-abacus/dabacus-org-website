@@ -69,6 +69,7 @@
 		overflow: visible;
 		white-space:nowrap;
 		width: 100%;
+		margin-bottom: 80px;
 
 		.teamTitle {
 			font-family: @dabacus-font-medium;
@@ -116,7 +117,7 @@
 			.jobTitle, .teamIntro, .teamIntro a {
 				font-size: 12px;
 				line-height: 12px;
-				margin-bottom: 12px;
+				margin-bottom: 8px;
 				color: #AAB0B8;
 			}
 
@@ -135,7 +136,7 @@
 			}
 
 			&:hover {
-				transform: scale(3.5);
+				transform: scale(2.0);
 
 			}
 		}
@@ -146,5 +147,19 @@
 	.about {
 		width: 100%;
 		margin-bottom: 40px;
+
+		.team {
+			overflow: scroll;
+			white-space:nowrap;
+
+			.teamWrapper {
+					width: 48%;
+
+					&:hover {
+						transform: scale(1.2);
+
+					}
+			}
+		}
 	}
 }
