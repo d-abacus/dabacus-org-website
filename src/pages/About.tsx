@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'umi';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Row, Col } from 'antd';
@@ -11,45 +11,56 @@ import chenAvatar from '../assets/ChEn.png';
 import elevenAvatar from '../assets/Eleven.png';
 import davidAvatar from '../assets/David.png';
 import twitterIcon from '../assets/twitter.png';
+import twitterWhiteIcon from '../assets/twitte-white.png';
 import twitterGreyIcon from '../assets/twitter-grey.png';
 
 
 export default (): React.ReactNode => {
 
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
+  const handleScroll = () => {
+    setTimeout(() => setSelectedIndex(-1), 300);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
   const teamNames: Array<string> = [
     "Ibai Basabe",
-    "Eleven",
     "Joshua",
-    "David",
     "ChEN",
+    "David",
+    "Eleven",
   ];
 
   const teamAvatars: Array<string> = [
-    ibaiAvatar, elevenAvatar, joshAvatar, davidAvatar, chenAvatar
+    ibaiAvatar, joshAvatar, chenAvatar, davidAvatar, elevenAvatar
   ];
 
   const teamTitles: Array<string> = [
     "dAbacus Founder",
-    "Branding Manager",
     "Core Developer",
-    "Marketing Director",
     "UI / UX Designer",
+    "Marketing Director",
+    "Branding Manager",
   ];
 
   const twitterNames: Array<string> = [
     "@IbaiBasabe",
-    "@promise302101",
     "@JoshuaJ39520298",
-    "@DavidCosta2KY",
     "@Chen32128291",
+    "@DavidCosta2KY",
+    "@promise302101",
   ];
 
   const twitterLinks: Array<string> = [
     "https://twitter.com/IbaiBasabe",
-    "https://twitter.com/promise302101",
     "https://twitter.com/JoshuaJ39520298",
-    "https://twitter.com/DavidCosta2KY",
     "https://twitter.com/Chen32128291",
+    "https://twitter.com/promise302101",
+    "https://twitter.com/DavidCosta2KY",
   ];
 
   return (
@@ -96,7 +107,7 @@ export default (): React.ReactNode => {
 <div className={styles.aboutTitle}>dAbacus Team</div>
 <ul className={styles.team}>
     {teamNames.map((name, index) => 
-      <li className={styles.teamWrapper}>
+      <li className={styles.teamWrapper} onClick={() => setSelectedIndex(index)}>
         <img className={styles.teamAvatar} src={teamAvatars[index]} />
         <div className={styles.teamName}>
           {name}
@@ -117,6 +128,24 @@ export default (): React.ReactNode => {
 </ul>
 
 
+<div className={styles.bigTeam + ' ' + styles.team + (selectedIndex > -1 ? (' ' + styles.showBigTeam) : '')} onClick={() => setSelectedIndex(-1)}>
+  <div className={styles.teamWrapper}>
+    <img className={styles.teamAvatar} src={teamAvatars[selectedIndex]} />
+    <div className={styles.teamName}>
+      {teamNames[selectedIndex]}
+    </div>
+    <div className={styles.jobTitle}>
+      {teamTitles[selectedIndex]}
+    </div>
+    <div className={styles.teamIntro}>
+      <a href={twitterLinks[selectedIndex]} target="_blank">
+        <img className={styles.twitterActiveIcon} src={twitterIcon} />
+        <img className={styles.twitterIcon} src={twitterWhiteIcon} />
+        {twitterNames[selectedIndex]}
+      </a>
+    </div>
+  </div>
+</div>
 
 
 

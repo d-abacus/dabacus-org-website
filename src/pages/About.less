@@ -66,9 +66,10 @@
 
 	.team {
 		padding-left: 0;
-		overflow: visible;
+		overflow: scroll;
 		white-space:nowrap;
 		width: 100%;
+		position: relative;
 
 		.teamTitle {
 			font-family: @dabacus-font-medium;
@@ -77,6 +78,63 @@
 			margin-top: 130px;
 			margin-bottom: 37px;
 		}
+
+
+
+		&.bigTeam {
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 99999;
+
+			background: url(../assets/team-bgd.png);
+			width: 100%;
+		    background-size: 100%;
+		    background-repeat: no-repeat;
+		    background-position: center;
+
+		    visibility: hidden;
+		    opacity: 0;
+  			transition: visibility 0s, opacity 0.5s ease-in-out;
+
+
+		    &.showBigTeam {
+		    	visibility: visible;
+		    	opacity: 1;
+		    }
+
+		    .teamWrapper {
+		    	position: relative;
+				width: 568px;
+				top: 50%;
+				display: block;
+				margin: -284px auto 0 auto;
+
+				.teamAvatar {
+					margin-bottom: 15px;
+				}
+
+				.teamName, .jobTitle, .teamIntro, .teamIntro a {
+					font-size: 24px;
+					line-height: 24px;
+					color: #fff;
+				}
+
+				.teamIntro a:hover {
+					color: @theme-color;
+				}
+
+				.twitterIcon, .twitterActiveIcon {
+					width: 25px;
+					margin-right: 8px;
+				}
+		    }
+		}
+
+
+
 
 		.teamWrapper {
 			cursor: pointer;
@@ -133,11 +191,6 @@
 					}
 				}
 			}
-
-			&:hover {
-				transform: scale(3.5);
-
-			}
 		}
 	}
 }
@@ -146,5 +199,32 @@
 	.about {
 		width: 100%;
 		margin-bottom: 40px;
+
+		.team {
+
+			.teamWrapper {
+				width: 33%;
+				min-width: 200px;
+			}
+
+
+			&.bigTeam {
+			    background-size: cover;
+
+			    .teamWrapper {
+					width: 400px;
+					margin: -200px auto 0 auto;
+
+					.teamName, .jobTitle, .teamIntro, .teamIntro a {
+						font-size: 16px;
+						line-height: 16px;
+					}
+					.twitterIcon, .twitterActiveIcon {
+						width: 16px;
+						margin-right: 6px;
+					}
+			    }
+			}
+		}
 	}
 }
