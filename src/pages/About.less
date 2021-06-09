@@ -66,7 +66,7 @@
 
 	.team {
 		padding-left: 0;
-		overflow: scroll;
+		overflow: visible;
 		white-space:nowrap;
 		width: 100%;
 		position: relative;
@@ -130,6 +130,10 @@
 					width: 25px;
 					margin-right: 8px;
 				}
+
+				&:hover {
+					transform: scale(1.1);
+				}
 		    }
 		}
 
@@ -191,6 +195,10 @@
 					}
 				}
 			}
+
+			&:hover {
+				transform: scale(1.2);
+			}
 		}
 	}
 }
@@ -201,6 +209,8 @@
 		margin-bottom: 40px;
 
 		.team {
+			overflow: scroll;
+
 			.teamWrapper {
 				width: 33%;
 				min-width: 200px;
