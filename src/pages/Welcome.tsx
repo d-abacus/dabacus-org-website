@@ -53,18 +53,18 @@ export default (): React.ReactNode => {
       <Row align="middle">
         <Col sm={24} md={14}>
           <div className={styles.title + " hide-mobile"}>
-            The BlockTree: An Interstellar
+            The BlockTree: A Layer-One
             <span className={styles.titleSpan}> Supernet </span> 
-            Specially Designed for the Metaverse
+            Designed for the Metaverse
           </div>
           <div className={styles.title + " show-mobile"}>
-            The BlockTree: An Interstellar <br/>
+            The BlockTree: An Layer-One <br/>
             <span className={styles.titleSpan}>Supernet </span> 
-            Specially Designed for the Metaverse
+            Designed for the Metaverse
           </div>
           <img className={styles.featureGif + " show-mobile"} src={gif1} />
-          <p className={styles.p + " " + styles.topPara}>A post-blockchain next-level organism for Edge Decentralized Applications. dAbacus achieves consensus with the lowest latency and the highest security thanks to our Blocktree ledger structure and our focus on post-quantum cryptography.</p>
-          <Link to='/app/index'><ThemeButton>The Unit</ThemeButton></Link>
+          <p className={styles.p + " " + styles.topPara}>A post-blockchain next-level organism for Edge Decentralized Applications. dAbacus achieves consensus with the lowest latency and the highest throughput thanks to its Blocktree ledger structure and its focus on post-quantum cryptography.</p>
+          <Link to='/about'><ThemeButton>About</ThemeButton></Link>
         </Col>
         <Col xs={0} sm={0} md={10}>
           <img className={styles.featureGif + " " + styles.topGif} src={gif1} />
@@ -99,8 +99,8 @@ export default (): React.ReactNode => {
       <Col xs={24} sm={24} md={12} order={1}>
         <div className={styles.halfFeatureWrapper}>
         <div className={styles.subtitle}>Building<span className={styles.titleSpan}> the World’s Accounting </span>Machine</div>
-        <div className={styles.subtitleDesc + " hide-mobile"}>dAbacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the post-quantum era.</div>
-        <div className={styles.subtitleDesc + " show-mobile"}>dAbacus community-run technology powers the ABA currency to revolutionize the way we transfer and store value in the <br/>post-quantum era.</div>
+        <div className={styles.subtitleDesc + " hide-mobile"}>dAbacus technology empowers the ABA currency to revolutionize the way we transfer and store value in the post-quantum era.</div>
+        <div className={styles.subtitleDesc + " show-mobile"}>dAbacus technology empowers the ABA currency to revolutionize the way we transfer and store value in the <br/>post-quantum era.</div>
         </div>
       </Col>
       </Row>
@@ -116,10 +116,10 @@ export default (): React.ReactNode => {
       <Row className={styles.halfFeature} align="middle">
         <Col xs={24} sm={24} md={12}>
           <div className={styles.halfFeatureWrapperLeft}>
-            <div className={styles.subtitle + " hide-mobile"}>A crypto-native<span className={styles.titleSpan}> Unit </span>of Account</div>
-            <div className={styles.subtitle + " show-mobile"}>A crypto-native<span className={styles.titleSpan}> Unit</span><br />of Account</div>
-            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " hide-mobile"}>Our comprehensive community-managed crypto-native index tied to global population data, The Unit, aims to replace the USD as the World Unit of Account.</div>
-            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " show-mobile"}>Our comprehensive community-managed crypto-native index tied to global population data, The Unit, aims to replace the USD as the <br/>World Unit of Account.</div>
+            <div className={styles.subtitle + " hide-mobile"}>The Unit: A crypto-native<span className={styles.titleSpan}> Unit </span>of Account</div>
+            <div className={styles.subtitle + " show-mobile"}>The Unit: A crypto-native<span className={styles.titleSpan}> Unit</span><br />of Account</div>
+            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " hide-mobile"}>Our comprehensive community-managed crypto-native index tied to global population data, The Unit, aims to become the unit of account of the Metarverse.</div>
+            <div className={styles.subtitleDesc + " " + styles.subtitleLeft + " show-mobile"}>Our comprehensive community-managed crypto-native index tied to global population data, The Unit, aims to replace the unit of account <br/>of the Metarverse.</div>
             <Link to='/app/index'><ThemeButton>The Unit</ThemeButton></Link>
           </div>
         </Col>
