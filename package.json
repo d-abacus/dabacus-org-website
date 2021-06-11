@@ -80,6 +80,7 @@
     "slick-carousel": "^1.8.1",
     "umi": "^3.4.1",
     "umi-request": "^1.0.8",
+    "universal-cookie": "^4.0.4",
     "use-wallet": "^0.9.0"
   },
   "devDependencies": {

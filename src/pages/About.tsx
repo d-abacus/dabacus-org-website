@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'umi';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Row, Col } from 'antd';
@@ -11,51 +11,62 @@ import chenAvatar from '../assets/ChEn.png';
 import elevenAvatar from '../assets/Eleven.png';
 import davidAvatar from '../assets/David.png';
 import twitterIcon from '../assets/twitter.png';
+import twitterWhiteIcon from '../assets/twitte-white.png';
 import twitterGreyIcon from '../assets/twitter-grey.png';
 
 
 export default (): React.ReactNode => {
 
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
+  const handleScroll = () => {
+    setTimeout(() => setSelectedIndex(-1), 300);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
   const teamNames: Array<string> = [
     "Ibai Basabe",
-    "Eleven",
     "Joshua",
+    "ChEN",
     "David",
-    "ChEn",
+    "Eleven",
   ];
 
   const teamAvatars: Array<string> = [
-    ibaiAvatar, ibaiAvatar, joshAvatar, davidAvatar, chenAvatar
+    ibaiAvatar, joshAvatar, chenAvatar, davidAvatar, elevenAvatar
   ];
 
   const teamTitles: Array<string> = [
     "dAbacus Founder",
-    "Branding Manager",
     "Core Developer",
-    "Marketing Director",
     "UI / UX Designer",
+    "Marketing Director",
+    "Branding Manager",
   ];
 
   const twitterNames: Array<string> = [
     "@IbaiBasabe",
-    "@promise302101",
     "@JoshuaJ39520298",
-    "@DavidCosta2KY",
     "@Chen32128291",
+    "@DavidCosta2KY",
+    "@promise302101",
   ];
 
   const twitterLinks: Array<string> = [
     "https://twitter.com/IbaiBasabe",
-    "https://twitter.com/promise302101",
     "https://twitter.com/JoshuaJ39520298",
-    "https://twitter.com/DavidCosta2KY",
     "https://twitter.com/Chen32128291",
+    "https://twitter.com/promise302101",
+    "https://twitter.com/DavidCosta2KY",
   ];
 
   return (
     <PageContainer>
       <div className={styles.title}>
-        About dABACUS
+        About
       </div>
 
 
@@ -89,27 +100,14 @@ export default (): React.ReactNode => {
 </div>
 
 
-<div className={styles.aboutTitle}>dAbacus Mission, progress leading to freedom</div>
-        <div className={styles.aboutBody}>dAbacus is a hub for decentralized applications, a net of networks united by a common purpose, a solid demand for change. 
-        <br/><br/>
-        dAbacus’ first objective is to promote and expand the world’s most secure and most intuitive distributed peer-to-peer liquidity and value storage supernet.
-        <br/><br/>
-        At first, dAbacus will use the Ethereum network to bootstrap its development and unleash the ABA currency’s power, which will revolutionize the way we transfer and store value. Once the supernet expansion is underway, we will empower our community with the dAbax wallet enabling cross-network payments mediated by The Unit, the first crypto-native unit of account. In this way, dAbacus and its community will become the world’s accounting hub to support all decentralized financial transactions governed by all of us.
-</div>
 
 
 
-<div className={styles.aboutTitle}>Become a dAbacus Missionary</div>
-        <div className={styles.aboutBody}>Sail across the great sea of decentralization, deploying and acting on a message that will change humanity, bringing a proactive transformation we’ve waited for far too long. 
-        <Link to='/announcements'> Learn more</Link>
-</div>
 
-
-<div className={styles.team}>
-  <div className={styles.teamTitle}>Meet the Team</div>
-  <Row>
+<div className={styles.aboutTitle}>dAbacus Team</div>
+<ul className={styles.team}>
     {teamNames.map((name, index) => 
-      <Col xs={12} sm={8} className={styles.teamWrapper}>
+      <li className={styles.teamWrapper} onClick={() => setSelectedIndex(index)}>
         <img className={styles.teamAvatar} src={teamAvatars[index]} />
         <div className={styles.teamName}>
           {name}
@@ -124,10 +122,48 @@ export default (): React.ReactNode => {
             {twitterNames[index]}
           </a>
         </div>
-      </Col>
+      </li>
 
     )}
-  </Row>
+</ul>
+
+
+<div className={styles.bigTeam + ' ' + styles.team + (selectedIndex > -1 ? (' ' + styles.showBigTeam) : '')} onClick={() => setSelectedIndex(-1)}>
+  <div className={styles.teamWrapper}>
+    <img className={styles.teamAvatar} src={teamAvatars[selectedIndex]} />
+    <div className={styles.teamName}>
+      {teamNames[selectedIndex]}
+    </div>
+    <div className={styles.jobTitle}>
+      {teamTitles[selectedIndex]}
+    </div>
+    <div className={styles.teamIntro}>
+      <a href={twitterLinks[selectedIndex]} target="_blank">
+        <img className={styles.twitterActiveIcon} src={twitterIcon} />
+        <img className={styles.twitterIcon} src={twitterWhiteIcon} />
+        {twitterNames[selectedIndex]}
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div className={styles.aboutTitle}>dAbacus Mission, progress leading to freedom</div>
+        <div className={styles.aboutBody}>dAbacus is a hub for decentralized applications, a net of networks united by a common purpose, a solid demand for change. 
+        <br/><br/>
+        dAbacus’ first objective is to promote and expand the world’s most secure and most intuitive distributed peer-to-peer liquidity and value storage supernet.
+        <br/><br/>
+        At first, dAbacus will use the Ethereum network to bootstrap its development and unleash the ABA currency’s power, which will revolutionize the way we transfer and store value. Once the supernet expansion is underway, we will empower our community with the dAbax wallet enabling cross-network payments mediated by The Unit, the first crypto-native unit of account. In this way, dAbacus and its community will become the world’s accounting hub to support all decentralized financial transactions governed by all of us.
+</div>
+
+
+
+<div className={styles.aboutTitle}>Become a dAbacus Missionary</div>
+        <div className={styles.aboutBody}>Sail across the great sea of decentralization, deploying and acting on a message that will change humanity, bringing a proactive transformation we’ve waited for far too long. 
+        <Link to='/announcements'> Learn more</Link>
 </div>
 
 

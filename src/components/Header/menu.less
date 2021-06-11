@@ -133,12 +133,12 @@ a.hide-app {
 	min-width: 100px;
 }
 
-.connectWalletContainer {
+.connectWalletContainer,  .myWalletContainer {
 
 	position: fixed;
 
 	.ant-popover-inner {
-		padding: 32px;
+		padding: 24px 32px;
 		border-radius: 32px;
 	}
 
@@ -151,10 +151,20 @@ a.hide-app {
 		font-size: 24px;
 		border-bottom: none;
 		text-align: center;
+		margin-bottom: 16px;
+	}
+
+	.ant-popover-inner-content {
+		padding: 0;
 	}
 }
 
-
+.myWalletContainer {
+	.ant-popover-inner {
+		padding: 16px;
+		border-radius: 16px;
+	}
+}
 
 
 @media only screen and (max-width: 768px) {

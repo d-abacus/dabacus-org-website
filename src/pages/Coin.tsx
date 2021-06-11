@@ -35,7 +35,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     setRange(index);
   };
   const asyncFetch = (cname: string) => {
-    fetch('http://dabacus.org:3000/'+(cname === 'HourlyData' ? 'coin-hourly-data' : 'coin-daily-data')+'/'+currentCoin.id.toLowerCase(), {
+    fetch('https://dabacus.org:3000/'+(cname === 'HourlyData' ? 'coin-hourly-data' : 'coin-daily-data')+'/'+currentCoin.id.toLowerCase(), {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -93,7 +93,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     tooltip: {
       fields: ['value'],
       formatter: (datum: Datum) => {
-        return { name: datum.time, value: datum.value.toFixed(3) + 's' };
+        return { name: datum.time, value: datum.value.toFixed(3) + 'SATS' };
       },
       customContent: (title, items) => {
         return (
@@ -102,7 +102,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
               {items?.map((item, index) => {
                 const { name, value, color } = item;
                 return (
-                  <li>
+                  <li className="tooltip-value" key={index}>
                     {value}
                   </li>
                 );
@@ -115,7 +115,20 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     xAxis: { 
       label: labelConfig,
       tickLine: null,
-      grid: null,
+      line: {
+          style: {
+            stroke: '#AAB0B8',
+            lineWidth: 2,
+          }
+        },
+      grid: {
+        line: {
+          style: {
+            stroke: '#E3E4E7',
+            lineDash: [2, 2],
+          }
+        }
+      },
     },
     yAxis: { 
       label: labelConfig,
@@ -124,10 +137,17 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
       tickCount: 8,
       min: minVal - chartFactor,
       max: maxVal + chartFactor,
+      line: {
+          style: {
+            stroke: '#AAB0B8',
+            lineWidth: 2,
+          }
+        },
       grid: {
         line: {
           style: {
-            stroke: '#f1f1f1',
+            stroke: '#E3E4E7',
+            lineDash: [2, 2],
           }
         }
       },
@@ -159,12 +179,11 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
           <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
         </ul>
       </div>
-      <Link to="/app/index"><div className="coin-back"><img className="coin-back-icon" src={backIcon} />back</div></Link>
-      <div className="coin-name">
+      <div className="world-unit-title">
         <img className="coin-image" src={currentCoin?.image ?? ''} />
         {currentCoin?.name}
-        <span className="coin-price">Ø{endValue.toFixed(2)}</span>
       </div>
+      <div className="world-unit-amount">Ø{endValue.toFixed(3)}</div>
       <div className={"world-unit-percent" + (diff > 0 ? '' : ' red')}>{sign + diff + '   ' + percentage}</div>
       <div className="coin-chart">
         <Line {...config} />
