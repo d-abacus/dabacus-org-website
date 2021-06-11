@@ -98,7 +98,7 @@ export default (): React.ReactNode => {
       </Col>
       <Col xs={24} sm={24} md={12} order={1}>
         <div className={styles.halfFeatureWrapper}>
-        <div className={styles.subtitle}>Building<span className={styles.titleSpan}> the World’s Accounting </span>Machine</div>
+        <div className={styles.subtitle}>Building<span className={styles.titleSpan}> the Metaverse’s Accounting </span>Hub</div>
         <div className={styles.subtitleDesc + " hide-mobile"}>dAbacus technology empowers the ABA currency to revolutionize the way we transfer and store value in the post-quantum era.</div>
         <div className={styles.subtitleDesc + " show-mobile"}>dAbacus technology empowers the ABA currency to revolutionize the way we transfer and store value in the <br/>post-quantum era.</div>
         </div>
