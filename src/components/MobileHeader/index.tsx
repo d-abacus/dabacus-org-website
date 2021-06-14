@@ -92,15 +92,15 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
             <List className="my-list">
               <List.Item onClick={() => onLinkTapped("/announcements")}>Announcements</List.Item>
               <List.Item>Snapshot</List.Item>
-              <List.Item>Medium</List.Item>
-              <List.Item>Discord</List.Item>
+              <List.Item onClick={() => onLinkTapped("https://medium.com/@dabacus")}>Medium</List.Item>
+              <List.Item onClick={() => onLinkTapped("https://discord.gg/ePdsHkw3GD")}>Discord</List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Developers" className="pad">
             <List className="my-list">
               <List.Item onClick={() => onLinkTapped("/road-map")}>Road Map</List.Item>
               <List.Item>Docs</List.Item>
-              <List.Item>Github</List.Item>
+              <List.Item onClick={() => onLinkTapped("https://github.com/d-abacus")}>Github</List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Learn" className="pad">
@@ -115,7 +115,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
             <List className="my-list">
               <List.Item onClick={() => onLinkTapped("/app/index")}>The Unit</List.Item>
               <List.Item>The Unit White Paper</List.Item>
-              <List.Item>Exchange</List.Item>
+              <List.Item onClick={() => onLinkTapped("/app/swap")}>Swap</List.Item>
             </List>
           </Accordion.Panel>
         </Accordion>
