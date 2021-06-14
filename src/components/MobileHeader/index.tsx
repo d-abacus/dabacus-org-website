@@ -44,7 +44,11 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
 
   const onLinkTapped = (link: string) => {
     setVisible(false);
-    history.push(link);
+    if (link.indexOf('http') == 0) {
+      window.open(link, "_blank");
+    } else {
+      history.push(link);
+    }
   }
 
   return (

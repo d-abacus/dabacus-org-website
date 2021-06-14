@@ -169,7 +169,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           </Menu.Item>
           <Menu.Item key="products:1"><span className="menu-item-span">The Unit White Paper</span></Menu.Item>
           <Menu.Item key="products:3">
-          <Link to="/app/swap"><span className="menu-item-span">Swap</span></Menu.Item>
+          <Link to="/app/swap"><span className="menu-item-span">Swap</span></Link></Menu.Item>
         </SubMenu>
         <Menu.Item className={isApp ? 'hide-app' : ''} key="useApp">
           <Link to="/app/index"><ThemeButton>The Unit</ThemeButton></Link>
