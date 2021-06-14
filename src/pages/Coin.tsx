@@ -45,7 +45,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
         const res: Array<Object> = json.reverse().map((obj) => {
             return { 
               value: obj.value, 
-              "time": moment(obj.time).format(cname === 'HourlyData' ? 'HH' : 'DD'),
+              "time": moment(obj.time).format(cname === 'HourlyData' ? 'DD-HH' : 'YY-MM-DD'),
               marketCap: obj.market_cap,
               totalVolume: obj.total_volume,
               currentSupply: obj.circulating_supply,
@@ -113,8 +113,14 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
       },
     },
     xAxis: { 
-      label: labelConfig,
+      label: { ...labelConfig,
+        formatter: (text: string, item: ListItem, index: number) => {
+          const arr = text.split('-');
+          return range == 0 ? arr[arr.length-1] : (arr[arr.length-2] + '-' + arr[arr.length-1]);
+        }
+      },
       tickLine: null,
+      tickCount: range == 1 ? 7 : 12,
       line: {
           style: {
             stroke: '#AAB0B8',
@@ -176,7 +182,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
         <ul>
           <li onClick={() => { changeRange(0) }} className={range == 0 ? "selected" : ""}>24H</li>
           <li onClick={() => { changeRange(1) }} className={range == 1 ? "selected" : ""}>1W</li>
-          <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
+          <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>ALL</li>
         </ul>
       </div>
       <div className="world-unit-title">

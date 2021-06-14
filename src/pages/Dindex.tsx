@@ -79,7 +79,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
       .then((response) => response.json())
       .then((json) => {
         const res: Array<Object> = json.reverse().map((obj) => {
-            return { value: parseFloat((obj.value*100000000).toFixed(2)), "time": moment(obj.time).format(cname === 'HourlyData' ? 'HH' : 'DD')};
+            return { value: parseFloat((obj.value*100000000).toFixed(2)), "time": moment(obj.time).format(cname === 'HourlyData' ? 'DD-HH' : 'YY-MM-DD')};
           });
         if (cname === 'HourlyData') {
           setData(res);
@@ -148,7 +148,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
           fontWeight: 800,
           fill: '#AAB0B8',
           fontFamily: 'Avenir-Medium',
-        },
+        }
       };
 
   var values = range == 0 ? data.map((d) => d.value) : dailyData.map((d) => d.value);
@@ -198,8 +198,14 @@ const Dindex: React.FC<DindexProps> = (props) => {
       },
     },
     xAxis: { 
-      label: labelConfig,
+      label: { ...labelConfig,
+        formatter: (text: string, item: ListItem, index: number) => {
+          const arr = text.split('-');
+          return range == 0 ? arr[arr.length-1] : (arr[arr.length-2] + '-' + arr[arr.length-1]);
+        }
+      },
       tickLine: null,
+      tickCount: range == 1 ? 7 : 12,
       offset: 0,
       line: {
           style: {
@@ -271,7 +277,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
         <ul>
           <li onClick={() => { changeRange(0) }} className={range == 0 ? "selected" : ""}>24H</li>
           <li onClick={() => { changeRange(1) }} className={range == 1 ? "selected" : ""}>1W</li>
-          <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>1M</li>
+          <li onClick={() => { changeRange(2) }} className={range == 2 ? "selected" : ""}>ALL</li>
         </ul>
       </div>
       <div className="world-unit-title">The Unit (Ø)</div>
