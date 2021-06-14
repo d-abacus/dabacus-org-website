@@ -16,14 +16,14 @@ const Footer: React.FC = () => {
   			<div className={styles.footerTitle}>Community</div>
         <Link to="/announcements">Announcements</Link>
   			<a href="#">Snapshot</a>
-  			<a href="https://medium.com/@dabacus">Medium</a>
-  			<a href="https://discord.gg/ePdsHkw3GD">Discord</a>
+  			<a target="_blank" href="https://medium.com/@dabacus">Medium</a>
+  			<a target="_blank" href="https://discord.gg/ePdsHkw3GD">Discord</a>
   		</Col>
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Developers</div>
         <Link to="/road-map">Road Map</Link>
   			<a href="#">Docs</a>
-  			<a href="https://github.com/d-abacus">Github</a>
+  			<a target="_blank" href="https://github.com/d-abacus">Github</a>
   		</Col>
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Learn</div>
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Applications</div>
   			<Link to="/app/index">The Unit</Link>
-  			<a href="#">The Unit White Paper</a>
+        <a href="#">The Unit White Paper</a>
   			<a href="/app/swap">Swap</a>
   		</Col>
   		<Col xs={24} sm={24} md={8}>
