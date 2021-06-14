@@ -139,15 +139,15 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         <SubMenu className={isApp ? 'hide-app' : ''} key="community" title="Community">
         <Menu.Item key="announcements"><Link to="/announcements"><span className="menu-item-span">Announcements</span></Link></Menu.Item>
           <Menu.Item key="community:1"><span className="menu-item-span">Snapshot</span></Menu.Item>
-          <Menu.Item key="community:2"><span className="menu-item-span">Medium</span></Menu.Item>
-          <Menu.Item key="community:3"><span className="menu-item-span">Discord</span></Menu.Item>
+          <Menu.Item key="community:2"><a href="https://medium.com/@dabacus" target="_blank"><span className="menu-item-span">Medium</span></a></Menu.Item>
+          <Menu.Item key="community:3"><a href="https://discord.gg/ePdsHkw3GD" target="_blank"><span className="menu-item-span">Discord</span></a></Menu.Item>
         </SubMenu>
         <SubMenu className={isApp ? 'hide-app' : ''} key="developers" title="Developers">
           <Menu.Item key="road-map">
             <Link to="/road-map"><span className="menu-item-span">Road Map</span></Link>
           </Menu.Item>
           <Menu.Item key="developers:1"><span className="menu-item-span">Docs</span></Menu.Item>
-          <Menu.Item key="developers:2"><span className="menu-item-span">Github</span></Menu.Item>
+          <Menu.Item key="developers:2"><a href="https://github.com/d-abacus" target="_blank"><span className="menu-item-span">Github</span></a></Menu.Item>
         </SubMenu>
         <SubMenu className={isApp ? 'hide-app' : ''} key="learn" title="Learn">
           <Menu.Item key="about">
@@ -168,7 +168,8 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
             <Link to="/app/index"><span className="menu-item-span">The Unit</span></Link>
           </Menu.Item>
           <Menu.Item key="products:1"><span className="menu-item-span">The Unit White Paper</span></Menu.Item>
-          <Menu.Item key="products:3"><span className="menu-item-span">Exchange</span></Menu.Item>
+          <Menu.Item key="products:3">
+          <Link to="/app/swap"><span className="menu-item-span">Swap</span></Menu.Item>
         </SubMenu>
         <Menu.Item className={isApp ? 'hide-app' : ''} key="useApp">
           <Link to="/app/index"><ThemeButton>The Unit</ThemeButton></Link>
