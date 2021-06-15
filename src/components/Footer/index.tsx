@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Applications</div>
   			<Link to="/app/index">The Unit</Link>
-        <a href="#">The Unit White Paper</a>
+        <a href="https://dabacus.org:3000/download/the_unit_paper.pdf" download target="_blank">The Unit White Paper</a>
   			<a href="/app/swap">Swap</a>
   		</Col>
   		<Col xs={24} sm={24} md={8}>

@@ -167,7 +167,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <Menu.Item key="products:2">
             <Link to="/app/index"><span className="menu-item-span">The Unit</span></Link>
           </Menu.Item>
-          <Menu.Item key="products:1"><span className="menu-item-span">The Unit White Paper</span></Menu.Item>
+          <Menu.Item key="products:1"><a href="https://dabacus.org:3000/download/the_unit_paper.pdf" download target="_blank"><span className="menu-item-span">The Unit White Paper</span></a></Menu.Item>
           <Menu.Item key="products:3">
           <Link to="/app/swap"><span className="menu-item-span">Swap</span></Link></Menu.Item>
         </SubMenu>
