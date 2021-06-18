@@ -71,7 +71,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
     asyncFetchCoinData();
   }, []);
   const asyncFetch = (cname: string) => {
-    fetch('https://dabacus.org:3000/'+(cname === 'HourlyData' ? 'hourly-data' : 'daily-data'), {
+    fetch('https://api.dabacus.org/'+(cname === 'HourlyData' ? 'hourly-data' : 'daily-data'), {
       headers: {
         'Content-Type': 'application/json'
       },

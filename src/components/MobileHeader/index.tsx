@@ -118,7 +118,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
           <Accordion.Panel header="Products" className="pad">
             <List className="my-list">
               <List.Item onClick={() => onLinkTapped("/app/index")}>The Unit</List.Item>
-              <List.Item onClick={() => onLinkTapped("https://dabacus.org:3000/download/the_unit_paper.pdf")}>The Unit White Paper</List.Item>
+              <List.Item onClick={() => onLinkTapped("https://api.dabacus.org/files/the_unit_paper.pdf")}>The Unit White Paper</List.Item>
               <List.Item onClick={() => onLinkTapped("/app/swap")}>Swap</List.Item>
             </List>
           </Accordion.Panel>
