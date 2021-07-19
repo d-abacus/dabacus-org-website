@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, Affix, Popover, Row, Col } from 'antd';
-import { Link, withRouter } from 'umi';
-import { useWallet } from 'use-wallet'
-import Cookies from 'universal-cookie';
+import { Link, withRouter, connect } from 'umi';
+import type { GlobalModelState } from '@/models/global';
+import type { ConnectState } from '@/models/connect';
+import type { Dispatch } from 'umi';
+import Web3 from "web3";
+import getWeb3 from "../../utils/getWeb3";
 import logo from '../../assets/logo.png';
 import styles from './index.less';
 import './menu.less';
@@ -20,6 +23,8 @@ const { SubMenu } = Menu;
 
 type HeaderProps = {
   location: Object;
+  global: GlobalModelState;
+  dispatch: Dispatch;
 };
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
@@ -27,7 +32,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const [top, setTop] = useState(0);
   const originalCopyText: string = 'Copy address';
   const [copyText, setCopyText] = useState(originalCopyText);
-  var wallet;
+  const [myBalance, setMyBalance] = useState('0');
 
   var skeys: Array<string> = [];
   const path: string = props.location['pathname'].substring(1);
@@ -42,13 +47,11 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   skeys.push('english');
   const isApp: boolean = path.indexOf('app') == 0;
 
-  if (isApp) {
-     wallet = useWallet();
-  }
-
   const resetCopyText = () => {
     setCopyText(originalCopyText);
   }
+
+  const { global, dispatch } = props;
 
   const shorten = (address: string) => {
     if (address && address.length > 12) {
@@ -57,56 +60,56 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
     return address;
   }
 
-  const connectWallet = (walletType: string) => {
-    const cookies = new Cookies();
-    if (walletType.length > 0) {
-      wallet.connect(walletType);
-      cookies.set('wallet', walletType, { path: '/' });
-    } else {
-      wallet.connect();
-      cookies.set('wallet', 'metamask', { path: '/' });
+  useEffect(() => {
+    if (isApp) {
+      if (global.web3Modal?.cachedProvider) {
+        dispatch({
+          type: 'global/setupWeb3',
+          payload: { },
+        });
+      }
+    }
+  }, []);
+
+  const { web3, address } = global;
+
+  const changeMyWallet = () => {
+    dispatch({
+      type: 'global/changeWeb3',
+      payload: { },
+    });
+  }
+
+  const onAddressOpen = async (visible: boolean) => {
+    if (visible && web3 && address) {
+      const bal = await web3.eth.getBalance(address);
+      const wei = parseFloat(web3.utils.fromWei(bal)).toFixed(2);
+      setMyBalance(wei.toString());
     }
   }
 
-  const walletSelections = wallet != null && wallet.status === 'connecting' ? (
-      <div className={styles.connectingInfo}>Connecting</div>
-      ) : (
-      <Row gutter={24}>
-        <Col span={12}>
-          <div className={styles.walletWrapper} onClick={() => connectWallet('')}>
-            <img src={metamaskIcon} />
-            MetaMask
-            <div className={styles.connectBtn}>
-              Connect
-            </div>
-          </div>
-        </Col>
-        <Col span={12}>
-          <div className={styles.walletWrapper} onClick={() => connectWallet('walletconnect')}>
-            <img className={styles.walletConnectLogo} src={walletConnectIcon} />
-            WalletConnect
-            <div className={styles.connectBtn}>
-              Connect
-            </div>
-          </div>
-        </Col>
-      </Row>
-     );
+  const connectWallet = () => {
+    dispatch({
+      type: 'global/setupWeb3',
+      payload: { },
+    });
+  }
 
-  const myWallet = wallet != null ? (
+  const myWallet = web3 && address ? (
       <div className={styles.myWalletWrapper}>
         <div className={styles.ethBalance}>
-          <img src={ethIcon} /> Etherum Balance ({shorten(wallet.account)})
+          <img src={ethIcon} /> Etherum Balance <br/>
+          <div style={{fontSize: '12px', marginLeft: '19px'}}>{address}</div>
         </div>
-        <div className={styles.myBalance}><span className={styles.myBalanceNum}>{wallet.balance}</span> ETH</div>
+        <div className={styles.myBalance}><span className={styles.myBalanceNum}>{myBalance}</span> ETH</div>
         <div className={styles.copyAddress} onClick={() => {
-          navigator.clipboard.writeText(wallet.account);
+          navigator.clipboard.writeText(address);
           setCopyText('Copied!');
           setTimeout(resetCopyText, 1200);
         }}>
           <img src={copyAddressIcon} /> {copyText}
         </div>
-        <div className={styles.changeWallet} onClick={() => wallet.reset()}>
+        <div className={styles.changeWallet} onClick={() => changeMyWallet()}>
           <img src={myWalletIcon} /> Change wallet
         </div>
       </div>
@@ -115,21 +118,6 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         Wallet Connection Error
       </div>
      );
-
-
-  useEffect(() => {
-    if (isApp && wallet) {
-      const cookies = new Cookies();
-      const w = cookies.get('wallet');
-      if (w) {
-        if (w === 'metamask') {
-          wallet.connect();
-        } else {
-          wallet.connect(w);
-        }
-      }
-    }
-  }, []);
 
   return (
     <Affix offsetTop={top}>
@@ -175,14 +163,12 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <Link to="/app/index"><ThemeButton>The Unit</ThemeButton></Link>
         </Menu.Item>
         <Menu.Item className={isApp ? 'hide-other show-app' : 'hide-other'} key="connectWallet">
-        {wallet != null && wallet.status === 'connected' ? (
-          <Popover overlayClassName="myWalletContainer" placement="bottomRight" title="" content={myWallet} trigger="click">
-              <div className={styles.walletAccount}>{shorten(wallet.account)}</div>
+        {web3 && address ? (
+          <Popover overlayClassName="myWalletContainer" placement="bottomRight" title="" content={myWallet} trigger="click" onVisibleChange={onAddressOpen}>
+              <div className={styles.walletAccount}>{shorten(address)}</div>
           </Popover>
           ) : (
-          <Popover overlayClassName="connectWalletContainer" placement="bottomRight" title="Select a wallet" content={walletSelections} trigger="click">
-              <div className={styles.connectWallet}>Connect Wallet</div>
-          </Popover>
+            <div className={styles.connectWallet} onClick={connectWallet}>Connect Wallet</div>
          )
         }
         </Menu.Item>
@@ -203,4 +189,6 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   );
 };
 
-export default withRouter(Header);
+export default withRouter(connect(({ global }: ConnectState) => ({
+  global: global,
+}))(Header));

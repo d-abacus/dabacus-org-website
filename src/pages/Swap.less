@@ -9,10 +9,10 @@
 	box-shadow: 50px 38px 102.371px rgba(120, 118, 148, 0.14);
 	backdrop-filter: blur(21.5519px);
 	border-radius: 32px;
-	width: 406px;
+	width: 600px;
 	height: 437px;
 	position: relative;
-	margin-left: -203px;
+	margin-left: -300px;
 	left: 50%;
 	top: 20%;
 	margin-bottom: 400px;
@@ -33,16 +33,41 @@
 	margin: 18px 0 4px 0;
 }
 
-.ant-input.swap-input {
-	background: #F9F9F9;
-	border-radius: 12px;
-	border: none;
-	padding: 16px 20px;
-	font-size: 24px;
-	font-family: @dabacus-font-medium;
-	color: #AAB0B8;
-	line-height: 24px;
+.swap-input {
+	.ant-input, .ant-input-group-addon {
+		background: #F9F9F9;
+		border-radius: 12px;
+		border: none;
+		padding: 16px 20px;
+		font-size: 24px;
+		font-family: @dabacus-font-medium;
+		color: #AAB0B8;
+		line-height: 24px;
+	}
+
+	.ant-input-group-addon {
+		font-size: 21px;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	.ant-select-selection-item {
+		color: @theme-color;
+		font-size: 21px;
+	}
+
+	.ant-select-arrow {
+		color: @theme-color;
+		font-size: 14px;
+	}
 }
+
+.token-select {
+	.ant-select-item-option-content {
+		padding: 6px 15px;
+	}
+}
+
 .swap-button {
 	background: @theme-color;
 	border-radius: 12px;
@@ -54,6 +79,13 @@
 	font-weight: 800;
 	text-align: center;
 	margin-top: 48px;
+}
+
+@media only screen and (max-width: 1200px) {
+	.swap-wrapper {
+	    width: 406px;
+	    margin-left: -203px;
+	}
 }
 
 @media only screen and (max-width: 768px) {

@@ -1,32 +1,32 @@
 import type { Reducer, Effect } from 'umi';
-
-import type { NoticeIconData } from '@/components/NoticeIcon';
-import { queryNotices } from '@/services/user';
 import type { ConnectState } from './connect.d';
-
-export type NoticeItem = {
-  id: string;
-  type: string;
-  status: string;
-} & NoticeIconData;
+import Web3 from "web3";
+import Web3Modal from "web3modal";
+import { providerOptions } from "../utils/web3Utils";
+import { 
+  connectProvider, 
+  getAccounts, 
+  closeProvider, 
+  clearProviderCache 
+} from "../services/web3";
 
 export type GlobalModelState = {
-  collapsed: boolean;
-  notices: NoticeItem[];
+  web3: Web3;
+  showWalletModal: boolean;
+  web3Modal: Web3Modal;
+  address: string;
 };
 
 export type GlobalModelType = {
   namespace: 'global';
   state: GlobalModelState;
   effects: {
-    fetchNotices: Effect;
-    clearNotices: Effect;
-    changeNoticeReadState: Effect;
+    setupWeb3: Effect;
+    changeWeb3: Effect;
   };
   reducers: {
-    changeLayoutCollapsed: Reducer<GlobalModelState>;
-    saveNotices: Reducer<GlobalModelState>;
-    saveClearedNotices: Reducer<GlobalModelState>;
+    setShowWalletModal: Reducer<GlobalModelState>;
+    saveWeb3: Reducer<GlobalModelState>;
   };
 };
 
@@ -34,90 +34,75 @@ const GlobalModel: GlobalModelType = {
   namespace: 'global',
 
   state: {
-    collapsed: false,
-    notices: [],
+    showWalletModal: false,
+    web3: null,
+    address: null,
+    web3Modal: new Web3Modal({
+      network: "rinkeby",
+      cacheProvider: true,
+      providerOptions: providerOptions
+    }),
   },
 
   effects: {
-    *fetchNotices(_, { call, put, select }) {
-      const data = yield call(queryNotices);
-      yield put({
-        type: 'saveNotices',
-        payload: data,
-      });
-      const unreadCount: number = yield select(
-        (state: ConnectState) => state.global.notices.filter((item) => !item.read).length,
-      );
-      yield put({
-        type: 'user/changeNotifyCount',
-        payload: {
-          totalCount: data.length,
-          unreadCount,
-        },
-      });
-    },
-    *clearNotices({ payload }, { put, select }) {
-      yield put({
-        type: 'saveClearedNotices',
-        payload,
-      });
-      const count: number = yield select((state: ConnectState) => state.global.notices.length);
-      const unreadCount: number = yield select(
-        (state: ConnectState) => state.global.notices.filter((item) => !item.read).length,
-      );
-      yield put({
-        type: 'user/changeNotifyCount',
-        payload: {
-          totalCount: count,
-          unreadCount,
-        },
-      });
-    },
-    *changeNoticeReadState({ payload }, { put, select }) {
-      const notices: NoticeItem[] = yield select((state: ConnectState) =>
-        state.global.notices.map((item) => {
-          const notice = { ...item };
-          if (notice.id === payload) {
-            notice.read = true;
-          }
-          return notice;
-        }),
-      );
+    *setupWeb3(_, { call, put, select }) {
+      const modal: Web3Modal = yield select((state: ConnectState) => state.global.web3Modal);
+      try {
+        const provider = yield call(connectProvider, modal);
+        const web3: any = new Web3(provider);
+        const accounts = yield call(getAccounts, web3);
+        const address = accounts[0];
 
-      yield put({
-        type: 'saveNotices',
-        payload: notices,
-      });
+        yield put({
+          type: 'saveWeb3',
+          payload: { web3, address },
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    *changeWeb3(_, { call, put, select }) {
+      const web3: Web3 = yield select((state: ConnectState) => state.global.web3);
+      const web3Modal: Web3Modal = yield select((state: ConnectState) => state.global.web3Modal);
+      try {
+        if (web3 && web3.currentProvider && web3.currentProvider.close) {
+          yield call(closeProvider, web3.currentProvider);
+        }
+        yield call(clearProviderCache, web3Modal);
+        yield put({
+          type: 'saveWeb3',
+          payload: { 
+            web3: null, 
+            address:null, 
+          },
+        });
 
-      yield put({
-        type: 'user/changeNotifyCount',
-        payload: {
-          totalCount: notices.length,
-          unreadCount: notices.filter((item) => !item.read).length,
-        },
-      });
+        const provider = yield call(connectProvider, web3Modal);
+        const webThree: any = new Web3(provider);
+        const accounts = yield call(getAccounts, web3);
+        const address = accounts[0];
+
+        yield put({
+          type: 'saveWeb3',
+          payload: { web3: webThree, address },
+        });
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
-
   reducers: {
-    changeLayoutCollapsed(state = { notices: [], collapsed: true }, { payload }): GlobalModelState {
+    saveWeb3(state, { payload }): GlobalModelState {
       return {
         ...state,
-        collapsed: payload,
+        web3: payload.web3,
+        address: payload.address
       };
     },
-    saveNotices(state, { payload }): GlobalModelState {
-      return {
-        collapsed: false,
-        ...state,
-        notices: payload,
-      };
-    },
-    saveClearedNotices(state = { notices: [], collapsed: true }, { payload }): GlobalModelState {
+    setShowWalletModal(state, { payload }): GlobalModelState {
       return {
         ...state,
-        collapsed: false,
-        notices: state.notices.filter((item): boolean => item.type !== payload),
+        showWalletModal: payload,
       };
     },
   },
