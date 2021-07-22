@@ -93,7 +93,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
     tooltip: {
       fields: ['value'],
       formatter: (datum: Datum) => {
-        return { name: datum.time, value: datum.value.toFixed(3) + 'SATS' };
+        return { name: datum.time, value: 'Ø' + datum.value.toFixed(3) };
       },
       customContent: (title, items) => {
         return (

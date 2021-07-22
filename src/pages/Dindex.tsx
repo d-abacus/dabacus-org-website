@@ -178,7 +178,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
     tooltip: {
       fields: ['value'],
       formatter: (datum: Datum) => {
-        return { name: datum.time, value: datum.value.toFixed(2) + 'SATS' };
+        return { name: datum.time, value: 'Ø' + datum.value.toFixed(2) };
       },
       customContent: (title, items) => {
         return (
