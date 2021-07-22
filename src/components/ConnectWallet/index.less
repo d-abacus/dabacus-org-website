@@ -1,0 +1,128 @@
+@import '../../global.less';
+
+.button {
+  background-color: @theme-color;
+  border-radius: 12px;
+  font-size: 18px;
+  font-family: @dabacus-font-medium;
+  height: 42px;
+  padding: 0 24px;
+  line-height: 18px;
+
+  &:hover {
+  	box-shadow: 0px 0px 16px rgba(11, 25, 160, 0.36);
+  	background-color: @theme-color;
+  }
+}
+
+.connectWallet {
+  background-color: @theme-color;
+  border-radius: 12px;
+  font-size: 18px;
+  font-family: @dabacus-font-medium;
+  height: 42px;
+  padding: 0 24px;
+  line-height: 42px;
+  color: #fff;
+
+  &:hover {
+    box-shadow: 0px 0px 16px rgba(11, 25, 160, 0.36);
+  }
+}
+
+.connectBtn {
+  background: #5956FF;
+  border-radius: 8px;
+  padding: 6px 32px;
+  color: #fff;
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 18px;
+  font-family: @dabacus-font-medium;
+  cursor: pointer;
+}
+
+.walletAccount {
+font-size: 14px;
+font-family: @dabacus-font-medium;
+font-weight: 800;
+color: @theme-color;
+padding: 0px 16px;
+
+&:hover {
+  background: #F9F9F9;
+  border-radius: 12px;
+}
+}
+
+.myWalletWrapper {
+  font-size: 16px;
+  color: #656A71;
+
+  .ethBalance {
+    margin-bottom: 16px;
+
+    img {
+      width: 14px;
+      margin-top: -2px;
+    }
+  }
+
+  .myBalance {
+    background: #F9F9F9;
+    border-radius: 8px;
+    width: 100%;
+    padding: 23px 9px;
+    color: @theme-color;
+    font-size: 18px;
+    margin-bottom: 16px;
+    font-family: @dabacus-font-medium;
+    font-weight: 800;
+
+    .myBalanceNum {
+      font-size: 24px;
+    }
+  }
+
+  .copyAddress, .changeWallet {
+    border-radius: 8px;
+    padding: 4px 7px;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 16px;
+    cursor: pointer;
+
+    img {
+      width: 18px;
+    }
+
+    &:hover {
+      background: #F9F9F9;
+    }
+  }
+
+  .changeWallet {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 969px) {
+  .connectWallet {
+    display: block;
+    margin: 0 auto;
+    height: 38px;
+    font-size: 14px;
+    line-height: 38px;
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 969px) {
+  .button {
+    display: block;
+    margin: 0 auto;
+    height: 38px;
+    font-size: 14px;
+    padding: 0 15px;
+  }
+}
