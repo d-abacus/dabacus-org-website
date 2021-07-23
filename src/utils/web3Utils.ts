@@ -1,5 +1,17 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
+
+interface Web3Constants {
+  networkId: number;
+  tokenSwapAddress: string;
+}
+
+export const web3Constants: Web3Constants = {
+  networkId: 4,
+  tokenSwapAddress: '0xfc7439fDEbB54fD2D7E6dEd44E3741765c2a74A5',
+}
+
+
 interface IAssetData {
     symbol: string;
     name: string;

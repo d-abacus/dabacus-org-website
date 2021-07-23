@@ -15,7 +15,7 @@
   }
 }
 
-.connectWallet {
+.connectWallet, .connectWalletFull {
   background-color: @theme-color;
   border-radius: 12px;
   font-size: 18px;
@@ -24,10 +24,19 @@
   padding: 0 24px;
   line-height: 42px;
   color: #fff;
+  text-align: center;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0px 0px 16px rgba(11, 25, 160, 0.36);
   }
+}
+
+.connectWalletFull {
+  width: 100%;
+  padding: 16px 24px;
+  line-height: 28px;
+  height: auto;
 }
 
 .connectBtn {

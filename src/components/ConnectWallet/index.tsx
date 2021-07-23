@@ -4,7 +4,7 @@ import type { ConnectState } from '@/models/connect';
 import type { Dispatch } from 'umi';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
-import { providerOptions } from "../../utils/web3Utils";
+import { providerOptions, web3Constants } from "../../utils/web3Utils";
 import { connect } from 'umi';
 import { Popover } from 'antd';
 import styles from './index.less';
@@ -28,7 +28,7 @@ const ConnectWallet: React.FC<ConnectWalletProps> = (props: ConnectWalletProps) 
   const [myBalance, setMyBalance] = useState('');
 
   const web3Modal = new Web3Modal({
-    network: "rinkeby",
+    network: web3Constants.networkId == 1 ? "mainnet" : "rinkeby",
     cacheProvider: true,
     providerOptions: providerOptions
   });
@@ -41,8 +41,12 @@ const ConnectWallet: React.FC<ConnectWalletProps> = (props: ConnectWalletProps) 
 
   const resetApp = async () => {
     const { web3 } = global;
-    if (web3 && web3.currentProvider && web3.currentProvider.close) {
-      await web3.currentProvider.close();
+    if (web3 && web3.currentProvider) {
+      if (web3.currentProvider.disconnect) {
+        await web3.currentProvider.disconnect();
+      } else if (web3.currentProvider.close) {
+        await web3.currentProvider.close();
+      }
     }
     await web3Modal.clearCachedProvider();
     setMyBalance('');
@@ -60,6 +64,9 @@ const ConnectWallet: React.FC<ConnectWalletProps> = (props: ConnectWalletProps) 
       return;
     }
     provider.on("close", () => resetApp());
+    provider.on("disconnect", (error: { code: number; message: string }) => {
+      resetApp();
+    });
     provider.on("accountsChanged", async (accounts: string[]) => {
       dispatch({
         type: 'global/saveWeb3',
@@ -136,7 +143,11 @@ const ConnectWallet: React.FC<ConnectWalletProps> = (props: ConnectWalletProps) 
           </Popover>
   }
 
-  return <div style={{width: props.fullwidth ? '100%' : 'auto'}} className={styles.connectWallet} onClick={onConnect}>Connect Wallet</div>;
+  return <div 
+      className={props.fullwidth ? styles.connectWalletFull : styles.connectWallet} onClick={onConnect}
+    >
+      Connect Wallet
+    </div>;
 };
 
 export default connect(({ global }: ConnectState) => ({
