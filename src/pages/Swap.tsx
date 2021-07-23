@@ -160,6 +160,12 @@ const SwapPage: React.FC<SwapProps> = (props: SwapProps) => {
       return;
     }
 
+    const networkId = await web3.eth.net.getId();
+    if (networkId != web3Constants.networkId) {
+      openNotification('error', 'Currently swap only supports ' + (networkId == 1 ? 'mainnet' : 'rinkeby'));
+      return;
+    }
+
     if (selectedToken == 0 && selectedAmount < 0.1) {
       openNotification('error', 'Cannot swap less than 0.1 ETH');
       return;
