@@ -1,13 +1,14 @@
 import React from 'react';
 
 import styles from './index.less';
-import { Row, Col } from 'antd';
+import { Row, Col, Popover } from 'antd';
 import { Link } from 'umi';
 import discord from '../../assets/discord-black.png';
 import medium from '../../assets/medium-black.png';
 import snapshot from '../../assets/snapshot-black.png';
 import wechat from '../../assets/wechat-blakc.png';
 import logo from '../../assets/logo.png';
+import qrcode from '../../assets/qrcode.png';
 
 const Footer: React.FC = () => {
   return <div className={styles.footer}>
@@ -43,7 +44,11 @@ const Footer: React.FC = () => {
   				<Col span={6}><a target="_blank" href="https://snapshot.org/#/shuajj.eth"><img src={snapshot} /></a></Col>
   				<Col span={6}><a target="_blank" href="https://medium.com/@dabacus"><img src={medium} /></a></Col>
   				<Col span={6}><a target="_blank" href="https://discord.gg/4MjRckMJZN"><img src={discord} /></a></Col>
-  				<Col span={6}><a href="#"><img src={wechat} /></a></Col>
+  				<Col span={6}>
+					<Popover zIndex="1000000" placement="top" content={<img width="100" src={qrcode} />} title="">
+					  <img src={wechat} />
+					</Popover>
+				</Col>
   			</Row>
   		</Col>
   	</Row>

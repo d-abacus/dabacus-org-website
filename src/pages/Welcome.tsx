@@ -2,7 +2,7 @@ import React from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import ThemeButton from '../components/ThemeButton';
 import styles from './Welcome.less';
-import { Row, Col } from 'antd';
+import { Row, Col, Popover } from 'antd';
 import { Link } from 'umi';
 import trustlessImg from '../assets/Trustless.png';
 import secureImg from '../assets/Secure.png';
@@ -24,6 +24,7 @@ import gif3 from '../assets/gif3.gif';
 import bgdImg from '../assets/bgd-img.png';
 import shortLine from '../assets/short-line.png';
 import longLine from '../assets/long-line.png';
+import qrcode from '../assets/qrcode.png';
 import Fade from 'react-reveal/Fade';
 
 
@@ -157,8 +158,10 @@ export default (): React.ReactNode => {
           </a>
         </Col>
         <Col xs={12} sm={12} md={6} className={styles.communityImg}>
-          <img src={wechat} />
-          <img src={wechatActive} className={styles.activeSocial} />
+          <Popover content={<img width="100" src={qrcode} />} title="">
+            <img src={wechat} />
+            <img src={wechatActive} className={styles.activeSocial} />
+          </Popover>
         </Col>
       </Row>
       </Fade>
