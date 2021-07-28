@@ -186,7 +186,8 @@ const SwapPage: React.FC<SwapProps> = (props: SwapProps) => {
         const contract = new web3.eth.Contract(TokenSwapContract.abi, tokenSwapAddress);
 
         if (selectedToken == 0) {
-          contract.methods.swapETH().send({ from: address, value: web3.utils.toWei(selectedAmount.toString(), "ether") }, function(error, transactionHash){ 
+          const gasl = await contract.methods.swapETH().estimateGas({ from: address });
+          contract.methods.swapETH().send({ from: address, gasLimit: gasl, value: web3.utils.toWei(selectedAmount.toString(), "ether") }, function(error, transactionHash){ 
             setLoading(false);
             if (error) {
               openNotification('error', error.message);
@@ -198,7 +199,8 @@ const SwapPage: React.FC<SwapProps> = (props: SwapProps) => {
         } else {
           const tokenAddress = tokenOptions[selectedToken].address;
           await checkAllowance(selectedToken, selectedAmount);
-          contract.methods.swapOtherTokens(tokenAddress, selectedAmount).send({ from: address }, function(error, transactionHash){ 
+          const gasl = await contract.methods.swapOtherTokens(tokenAddress, selectedAmount).estimateGas({ from: address });
+          contract.methods.swapOtherTokens(tokenAddress, selectedAmount).send({ from: address, gasLimit: gasl }, function(error, transactionHash){ 
             setLoading(false);
             if (error) {
               openNotification('error', error.message);
