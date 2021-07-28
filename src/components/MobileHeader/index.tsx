@@ -95,9 +95,9 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
           <Accordion.Panel header="Community">
             <List className="my-list">
               <List.Item onClick={() => onLinkTapped("/announcements")}>Announcements</List.Item>
-              <List.Item>Snapshot</List.Item>
+              <List.Item onClick={() => onLinkTapped("https://snapshot.org/#/shuajj.eth")}>Snapshot</List.Item>
               <List.Item onClick={() => onLinkTapped("https://medium.com/@dabacus")}>Medium</List.Item>
-              <List.Item onClick={() => onLinkTapped("https://discord.gg/ePdsHkw3GD")}>Discord</List.Item>
+              <List.Item onClick={() => onLinkTapped("https://discord.gg/4MjRckMJZN")}>Discord</List.Item>
             </List>
           </Accordion.Panel>
           <Accordion.Panel header="Developers" className="pad">
@@ -110,7 +110,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = (props: MobileHeaderProps) => 
           <Accordion.Panel header="Learn" className="pad">
             <List className="my-list">
               <List.Item onClick={() => onLinkTapped("/about")}>About</List.Item>
-              <List.Item>dAbacus' Values</List.Item>
+              <List.Item onClick={() => onLinkTapped("https://github.com/d-abacus/community-values-paper/blob/main/dAbacus-community%26values.md")}>dAbacus' Values</List.Item>
               <List.Item onClick={() => onLinkTapped("/glossary")}>Glossary</List.Item>
               <List.Item onClick={() => onLinkTapped("/faq")}>FAQ</List.Item>
             </List>

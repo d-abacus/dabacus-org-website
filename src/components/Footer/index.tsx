@@ -15,9 +15,9 @@ const Footer: React.FC = () => {
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Community</div>
         <Link to="/announcements">Announcements</Link>
-  			<a href="#">Snapshot</a>
+  			<a target="_blank" href="https://snapshot.org/#/shuajj.eth">Snapshot</a>
   			<a target="_blank" href="https://medium.com/@dabacus">Medium</a>
-  			<a target="_blank" href="https://discord.gg/ePdsHkw3GD">Discord</a>
+  			<a target="_blank" href="https://discord.gg/4MjRckMJZN">Discord</a>
   		</Col>
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Developers</div>
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Learn</div>
         <Link to="/about">About</Link>
-  			<a href="#">dAbacus’ Values</a>
+  			<a target="_blank" href="https://github.com/d-abacus/community-values-paper/blob/main/dAbacus-community%26values.md">dAbacus' Values</a>
   			<Link to="/glossary">Glossary</Link>
   			<Link to="/faq">FAQ</Link>
   		</Col>
@@ -40,9 +40,9 @@ const Footer: React.FC = () => {
   		</Col>
   		<Col xs={24} sm={24} md={8}>
   			<Row className={styles.socialLinks}>
-  				<Col span={6}><a href="#"><img src={snapshot} /></a></Col>
-  				<Col span={6}><a href="#"><img src={medium} /></a></Col>
-  				<Col span={6}><a href="#"><img src={discord} /></a></Col>
+  				<Col span={6}><a target="_blank" href="https://snapshot.org/#/shuajj.eth"><img src={snapshot} /></a></Col>
+  				<Col span={6}><a target="_blank" href="https://medium.com/@dabacus"><img src={medium} /></a></Col>
+  				<Col span={6}><a target="_blank" href="https://discord.gg/4MjRckMJZN"><img src={discord} /></a></Col>
   				<Col span={6}><a href="#"><img src={wechat} /></a></Col>
   			</Row>
   		</Col>

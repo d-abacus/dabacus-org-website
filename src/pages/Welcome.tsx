@@ -139,16 +139,22 @@ export default (): React.ReactNode => {
       <Row>
         <Col span={24}><div className={styles.subtitle + " " + styles.communityTitle}>Community</div></Col>
         <Col xs={12} sm={12} md={6} className={styles.communityImg}>
-          <img src={snapshot} />
-          <img src={snapshotActive} className={styles.activeSocial} />
+          <a href="https://snapshot.org/#/shuajj.eth" target="_blank">
+            <img src={snapshot} />
+            <img src={snapshotActive} className={styles.activeSocial} />
+          </a>
         </Col>
         <Col xs={12} sm={12} md={6} className={styles.communityImg}>
-          <img src={medium} />
-          <img src={mediumActive} className={styles.activeSocial} />
+        <a href="https://medium.com/@dabacus" target="_blank">
+            <img src={medium} />
+            <img src={mediumActive} className={styles.activeSocial} />
+        </a>
         </Col>
         <Col xs={12} sm={12} md={6} className={styles.communityImg}>
+          <a href="https://discord.gg/4MjRckMJZN" target="_blank">
           <img src={discord} />
           <img src={discordActive} className={styles.activeSocial} />
+          </a>
         </Col>
         <Col xs={12} sm={12} md={6} className={styles.communityImg}>
           <img src={wechat} />

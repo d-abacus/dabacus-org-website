@@ -110,7 +110,7 @@ export default (): React.ReactNode => {
 
             Twitter: <a target="_blank" href="https://twitter.com/dABACUS_org">https://twitter.com/dabacus_org</a><br /><br />
 
-            Discord: <a target="_blank" href="https://discord.gg/ePdsHkw3GD">https://discord.gg/ePdsHkw3GD</a><br /><br />
+            Discord: <a target="_blank" href="https://discord.gg/4MjRckMJZN">https://discord.gg/4MjRckMJZN</a><br /><br />
 
             Github: <a target="_blank" href="https://github.com/d-abacus">https://github.com/d-abacus</a><br /><br />
 

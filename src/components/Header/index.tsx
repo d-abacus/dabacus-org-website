@@ -40,9 +40,9 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         <Menu className={styles.pageMenu} mode="horizontal" selectedKeys={skeys}>
         <SubMenu className={isApp ? 'hide-app' : ''} key="community" title="Community">
         <Menu.Item key="announcements"><Link to="/announcements"><span className="menu-item-span">Announcements</span></Link></Menu.Item>
-          <Menu.Item key="community:1"><span className="menu-item-span">Snapshot</span></Menu.Item>
+          <Menu.Item key="community:1"><a href="https://snapshot.org/#/shuajj.eth" target="_blank"><span className="menu-item-span">Snapshot</span></a></Menu.Item>
           <Menu.Item key="community:2"><a href="https://medium.com/@dabacus" target="_blank"><span className="menu-item-span">Medium</span></a></Menu.Item>
-          <Menu.Item key="community:3"><a href="https://discord.gg/ePdsHkw3GD" target="_blank"><span className="menu-item-span">Discord</span></a></Menu.Item>
+          <Menu.Item key="community:3"><a href="https://discord.gg/4MjRckMJZN" target="_blank"><span className="menu-item-span">Discord</span></a></Menu.Item>
         </SubMenu>
         <SubMenu className={isApp ? 'hide-app' : ''} key="developers" title="Developers">
           <Menu.Item key="road-map">
@@ -55,9 +55,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <Menu.Item key="about">
             <Link to="/about"><span className="menu-item-span">About</span></Link>
           </Menu.Item>
-          <Menu.Item key="philosophy">
-           <span className="menu-item-span">dAbacus' Values</span>
-          </Menu.Item>
+          <Menu.Item key="philosophy"><a href="https://github.com/d-abacus/community-values-paper/blob/main/dAbacus-community%26values.md" target="_blank"><span className="menu-item-span">dAbacus' Values</span></a></Menu.Item>
           <Menu.Item key="glossary">
             <Link to="/glossary"><span className="menu-item-span">Glossary</span></Link>
           </Menu.Item>
