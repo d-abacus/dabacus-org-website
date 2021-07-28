@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
   		<Col xs={12} sm={12} md={4}>
   			<div className={styles.footerTitle}>Developers</div>
         <Link to="/road-map">Road Map</Link>
-  			<a href="#">Docs</a>
+  			<a target="_blank" href="https://docs.dabacus.org">Docs</a>
   			<a target="_blank" href="https://github.com/d-abacus">Github</a>
   		</Col>
   		<Col xs={12} sm={12} md={4}>

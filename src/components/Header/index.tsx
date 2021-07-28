@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
           <Menu.Item key="road-map">
             <Link to="/road-map"><span className="menu-item-span">Road Map</span></Link>
           </Menu.Item>
-          <Menu.Item key="developers:1"><span className="menu-item-span">Docs</span></Menu.Item>
+          <Menu.Item key="developers:1"><a href="https://docs.dabacus.org" target="_blank"><span className="menu-item-span">Docs</span></a></Menu.Item>
           <Menu.Item key="developers:2"><a href="https://github.com/d-abacus" target="_blank"><span className="menu-item-span">Github</span></a></Menu.Item>
         </SubMenu>
         <SubMenu className={isApp ? 'hide-app' : ''} key="learn" title="Learn">
