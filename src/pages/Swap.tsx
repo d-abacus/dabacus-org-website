@@ -4,7 +4,7 @@ import { Input, Select, notification, Row, Col } from 'antd';
 const { Option } = Select;
 import ConnectWallet from '@/components/ConnectWallet';
 import { PageContainer } from '@ant-design/pro-layout';
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import TokenSwapContract from "../contracts/TokenSwap.json";
 import ERC20_ABI from "../contracts/erc20.json"
 import { web3Constants } from '@/utils/web3Utils';
@@ -12,6 +12,7 @@ import RINKEBY_TOKEN_LIST from "../contracts/rinkeby-token-list.json"
 import TOKEN_LIST from "../contracts/token-list.json"
 import type { GlobalModelState } from '@/models/global';
 import type { ConnectState } from '@/models/connect';
+import convertIcon from '../assets/convert-icon.png';
 import './Swap.less';
 
 
@@ -104,22 +105,21 @@ const SwapPage: React.FC<SwapProps> = (props: SwapProps) => {
   const menu = (
     <Select 
       value={selectedToken.toString()} 
-      style={{ minWidth: 120 }}
+      style={{ minWidth: 95 }}
       onChange={handleChange} 
       dropdownClassName="token-select"
       dropdownMatchSelectWidth={300}
+      suffixIcon={<DownOutlined style={{color: '#000'}} />}
     >
       {tokenOptions.map((token, index) => 
         <Option key={index} value={index.toString()}>
-          <Row justify="space-around" align="middle">
-            <Col span={4}>
-              <img width="18" src={token.logoURI} />
-            </Col>
-            <Col span={20}>
-              <div className="token-symbol">{token.symbol}</div>
-              <div className="token-name">{token.name}</div>
-            </Col>
-          </Row>
+          <div>
+          <img width="18" src={token.logoURI} />
+          <div className="tokenInfoWrapper">
+            <div className="token-symbol">{token.symbol}</div>
+            <div className="token-name">{token.name}</div>
+          </div>
+          </div>
         </Option>
       )}
     </Select>
@@ -242,12 +242,13 @@ const SwapPage: React.FC<SwapProps> = (props: SwapProps) => {
           />
         <div className="swap-subtitle">To</div>
         <Input
-            className="swap-input"
+            className="swap-input dabacus-input"
             placeholder="0.0"
             disabled={true}
             addonAfter="dAbacus"
             value={transferAmount}
           />
+          <div className="convert-info">1 {tokenOptions[selectedToken].name} = 3000 dAbacus <img src={convertIcon} /></div>
           {buttonGroup()}
       </div>
     </div>

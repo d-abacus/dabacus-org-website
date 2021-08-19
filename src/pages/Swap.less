@@ -32,6 +32,10 @@
 	margin: 18px 0 4px 0;
 }
 
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item, .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder  {
+	padding-right: 28px;
+}
+
 .swap-input {
 	.ant-input, .ant-input-group-addon {
 		background: #F9F9F9;
@@ -44,10 +48,16 @@
 		line-height: 24px;
 	}
 
-	.ant-input-group-addon {
-		font-size: 21px;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
+	&.dabacus-input {
+		.ant-input {
+			color: #000;
+		}
+	}
+
+	&.dabacus-input .ant-input-group-addon {
+		font-size: 18px;
+		font-weight: 800;
+		color: #000;
 	}
 
 	.ant-select-selection-item {
@@ -61,9 +71,41 @@
 	}
 }
 
+.convert-info {
+	font-size: 18px;
+	font-family: @dabacus-font-medium;
+	color: #656A71;
+
+	margin: 24px 0;
+	text-align: center;
+
+	img {
+		width: 18px;
+		margin-top: -3px;
+	}
+}
+
 .token-select {
+	padding: 16px;
+    border-radius: 12px;
+
+	.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+		background-color: #f9f9f9;
+		border-radius: 8px;
+	}
+
+	.rc-virtual-list-holder-inner {
+		.ant-select-item.ant-select-item-option {
+			border-radius: 8px;
+
+			&:hover {
+				background-color: #f9f9f9;
+			}
+		}
+	}
+
 	.ant-select-item-option-content {
-		padding: 6px 15px;
+		padding: 11px 0px 4px 0px;
 	}
 }
 
@@ -77,7 +119,6 @@
 	font-family: @dabacus-font-medium;
 	font-weight: 800;
 	text-align: center;
-	margin-top: 48px;
 	cursor: pointer;
 
 	&.with-approve {
@@ -94,10 +135,33 @@
 	font-size: 18px;
 }
 
+.ant-input-group > .ant-input:last-child .ant-select .ant-select-selector, .ant-input-group-addon:last-child .ant-select .ant-select-selector {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
 .ant-input-group-addon {
+	.ant-select {
+		background-color: #fff;
+		border-radius: 8px;
+
+		.ant-select-selector {
+			border-radius: 8px;
+			height: 36px;
+    		padding: 3px 0 3px 12px;
+		}
+	}
+
 	.ant-select-selection-item {
-		.ant-col-4.ant-col {
-			display: none;
+		color: #000;
+		text-align: left;
+
+		img, .tokenInfoWrapper {
+			display: inline-block;
+		}
+
+		img {
+			margin-right: 8px;
 		}
 
 		.token-name {
@@ -105,9 +169,35 @@
 		}
 
 		.token-symbol {
-			font-size: 21px;
-			line-height: 34px;
+			font-size: 14px;
+			font-weight: 800;
 		}
+	}
+}
+
+.ant-select-item-option-content {
+	img, .tokenInfoWrapper {
+		display: inline-block;
+	}
+
+	img {
+		margin-right: 15px;
+		width: 24px;
+		height: 24px;
+		vertical-align: top;
+	}
+
+	.token-name {
+		font-size: 10px;
+		font-weight: 400;
+		line-height: 10px;
+		color: #AAB0B8;
+	}
+
+	.token-symbol {
+		font-size: 14px;
+		font-weight: 800;
+		line-height: 14px;
 	}
 }
 
