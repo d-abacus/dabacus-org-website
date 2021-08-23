@@ -57,7 +57,13 @@ const Dindex: React.FC<DindexProps> = (props) => {
         </span>,
     },
     {
-      title: 'Volume(24h)',
+      title: 'Market Cap*',
+      dataIndex: 'market_cap',
+      key: 'marketcap',
+      align: 'right',
+    },
+    {
+      title: '24H Volume*',
       width: 168,
       dataIndex: 'total_volume',
       align: 'right',
@@ -102,6 +108,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
     const factor: number = cap / 243;
     const resJson = json.filter((element: Object, index: number, array: Array<Object>) => { 
      return element["id"] !== 'tether' && element["id"] !== 'usd-coin' && element["id"] !== 'wrapped-bitcoin' && 
+     element["id"] !== 'compound-usd-coin' && element["id"] !== 'compound-ether' && element["id"] !== 'cdai' &&
               element["id"] !== 'binance-usd' && element["id"] !== 'dai' && element["market_cap"] > factor; 
     });
     return resJson;
@@ -257,11 +264,11 @@ const Dindex: React.FC<DindexProps> = (props) => {
       max_supply: element["max_supply"],
       circulating_supply: element["circulating_supply"],
       market_cap_rank: element["market_cap_rank"],
-      market_cap: element["market_cap"],
+      market_cap: numberWithCommas((element["market_cap"] / WUNBTC / 1000000).toFixed(0)),
       image: element["image"],
       name: element["name"],
       current_price: 'Ø' + numberWithCommas((element["current_price"] / WUNBTC).toFixed(3)),
-      total_volume: 'Ø' + numberWithCommas((element["total_volume"] / WUNBTC).toFixed(0)),
+      total_volume: numberWithCommas((element["total_volume"] / WUNBTC / 1000000).toFixed(0)),
       price_change_percentage_24h: ((element["price_change_24h"] / WUNBTC / (element["current_price"] / WUNBTC) *100).toFixed(2)) + '%',
     }
   })
@@ -286,6 +293,7 @@ const Dindex: React.FC<DindexProps> = (props) => {
       <Line {...config} />
     </div>
     <div className="indexed-ranking">Indexed Currencies Ranking</div>
+    <div className="indexed-ranking-notes">*Market Cap and 24h Volume are in millions of units.</div>
     <div className="index-table">
       <Table 
         dataSource={resData} 

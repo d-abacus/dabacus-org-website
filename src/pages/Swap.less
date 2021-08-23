@@ -39,13 +39,21 @@
 .swap-input {
 	.ant-input, .ant-input-group-addon {
 		background: #F9F9F9;
-		border-radius: 12px;
 		border: none;
 		padding: 16px 20px;
 		font-size: 24px;
 		font-family: @dabacus-font-medium;
 		color: #AAB0B8;
 		line-height: 24px;
+	}
+
+	.ant-input-group-addon {
+		border-top-right-radius: 12px;
+		border-bottom-right-radius: 12px;
+	}
+
+	.ant-input {
+		border-radius: 12px;
 	}
 
 	&.dabacus-input {
