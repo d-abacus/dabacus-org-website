@@ -28,25 +28,28 @@ export default (): React.ReactNode => {
 
   const timelines: Array<Object> = [
   {},
-    {"February 2019": ["Ignition of the Idea"]},
+    {"2019 - February": ["Idea Ignition"]},
     {},
-    {"5-5-5 (May 5, 2021)": [
-      "Launch of dAbacus.org",
+    {"2021 - May - 5 (5-5-5)": [
+      "Launch of The Unit v0.1.0",
+      "Launch of dabacus.org"
     ]},
-    {"June-July": [
-      "Launch of the first instance of ABA on the Ethereum network",
-      "Launch of the next instance of ABA on a new network",
+    {"2021 - September": [
+      "Launch of The Unit governance token",
     ]},
-    {"August": [
+    {"2021 - October": [
       "Launch of 2ØY", 
     ]},
     {},
-    {"6-6-6 (June 6, 2022)": [
-      "Aleph-Zero Mainnet Launch", 
+    {"2022 - January": [
+      "dAbacus Testnet Launch", 
+    ]},
+    {"2022 - June - 6 (6-6-6)": [
+      "dAbacus Aleph-Zero Mainnet Launch, Blocktree Genesis Block", 
     ]},
     {},
-    {"7-7-7 (July 7, 2023)": [
-      "Launch of the dAbax wallet for edge dapps", 
+    {"2023 - July - 7 (7-7-7)": [
+      "dAbax Layer 2 Launch (Edge-dApps Portal)", 
     ]},
     {}
   ]

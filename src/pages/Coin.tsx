@@ -217,7 +217,7 @@ const CoinPage: React.FC<CoinProps> = (props: CoinProps) => {
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={8}>
           <div className="coin-info-wrapper">
-            <div className="coin-info-title">Total Volume</div>
+            <div className="coin-info-title">24H Volume</div>
             <div className="coin-info-content">Ø{totalVolume}</div>
           </div>
           </Col>

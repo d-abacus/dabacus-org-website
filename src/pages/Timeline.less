@@ -35,7 +35,7 @@
 
     			h2 {
     				font-family: @dabacus-font-heavy;
-    				font-size: 24px;
+    				font-size: 22px;
     				color: @theme-color;
     				width: 230px;
     			}
@@ -46,6 +46,8 @@
     				line-height: 19px;
     				margin-top: 0;
     				margin-bottom: 16px;
+					position: relative;
+					padding-left: 12px;
 
     				&:before {
     					content:"\A";
@@ -53,8 +55,9 @@
 					    height:4px;
 					    border-radius:50%;
 					    background: #000;
-					    display:inline-block;
-					    margin-right: 8px;
+						position: absolute;
+						top: 7px;
+						left: 0;
     				}
     			}
 			}
