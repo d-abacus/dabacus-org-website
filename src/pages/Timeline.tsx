@@ -40,13 +40,13 @@ export default (): React.ReactNode => {
     {"2021 - October": [
       "Launch of 2ØY", 
     ]},
-    {},
     {"2022 - January": [
       "dAbacus Testnet Launch", 
     ]},
     {"2022 - June - 6 (6-6-6)": [
       "dAbacus Aleph-Zero Mainnet Launch, Blocktree Genesis Block", 
     ]},
+    {},
     {},
     {"2023 - July - 7 (7-7-7)": [
       "dAbax Layer 2 Launch (Edge-dApps Portal)", 
