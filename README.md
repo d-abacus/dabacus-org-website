@@ -1,2 +1,5 @@
-# dabacus-org-website
-dAbacus website
+# dabacus.org
+
+This is the repo of the dAbacus website.
+
+## Contributing to dabacus.org
