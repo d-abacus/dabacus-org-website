@@ -22,11 +22,11 @@ function formatter(routes, parentPath = '') {
 beforeEach(async () => {
   await page.goto(`${BASE_URL}`);
   await page.evaluate(() => {
-    localStorage.setItem('antd-pro-authority', '["admin"]');
+    localStorage.setItem('dabacus-authority', '["admin"]');
   });
 });
 
-describe('Ant Design Pro E2E test', () => {
+describe('dAbacus Website E2E test', () => {
   const testPage = (path) => async () => {
     await page.goto(`${BASE_URL}${path}`);
     await page.waitForSelector('footer', {

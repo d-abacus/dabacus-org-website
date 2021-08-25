@@ -33,7 +33,7 @@ export default (): React.ReactNode => {
       </div>
 
       <div className={styles.countDown}>
-        <Countdown date={moment('2021-08-21')} renderer={(props) =>
+        <Countdown date={moment('2021-09-30')} renderer={(props) =>
           <Row align="top">
             <Col className={styles.countNum} span={3}>
               <div>{props.days < 10 ? ('0' + props.days) : props.days.toString()}</div>
